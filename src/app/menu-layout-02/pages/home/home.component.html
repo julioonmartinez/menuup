@@ -1,0 +1,26 @@
+<div class="container-page-home">
+    <div class="list-paltillos">
+       @for (item of products; track $index) {
+        <div (click)="openBottomSheet(item)" class="card">
+            <div class="image-platillo">
+                <img  [src]="item.urlImage" alt="">
+                <div class="shadow"></div>
+            </div>
+            <div class="container-text">
+                <div class="title">
+                    <p>{{item.name}} </p>
+                </div>
+                <div class="subtitle">
+                    {{item.subtitle}}
+                </div>
+                <div class="container-footer">
+                    <p  class="price" >{{item.price | currency}} </p>
+                    <button mat-icon-button class="btn-favorite" >
+                        <mat-icon class="icon" >favorite</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+       }
+    </div>
+</div>

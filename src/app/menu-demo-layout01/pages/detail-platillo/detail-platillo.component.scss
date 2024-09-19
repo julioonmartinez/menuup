@@ -1,0 +1,41 @@
+.content-img-header {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+  }
+  
+  .header-platillo-image {
+    width: 100%; /* Asegura que la imagen cubra todo el ancho del contenedor */
+    height: 100%; /* Asegura que la imagen cubra toda la altura del contenedor */
+    object-fit: cover; /* Similar a background-size: cover; */
+    object-position:center; /* Centra la imagen dentro del contenedor */
+    
+  }
+
+  .container-platillo{
+    padding: 24px 16px;
+    .container-title{
+        .title{
+            font-size: 1.2rem;
+            color: #D7C1AA;
+            font-weight: 800;
+            // text-transform: capitalize;
+            
+        }
+        .price{
+            font-size: 1rem;
+            color: #C67250 ;
+            font-weight: 600;
+        }
+    }
+    .container-descripcion{
+        .description{
+            // text-transform: capitalize;
+            color: #D7C1AA;
+        }
+    }
+  }

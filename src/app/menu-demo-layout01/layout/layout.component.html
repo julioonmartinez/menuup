@@ -1,0 +1,33 @@
+@if (loading) {
+    <div class="contain-spinner">
+        <mat-progress-spinner  class="progress-spinner" mode="indeterminate"></mat-progress-spinner>
+    </div>
+}@else {
+    <mat-toolbar [ngStyle]="{'background-color': bussines.principalColor}" class="toolbar">
+        <ng-container *ngIf="!showBackButton">
+            <div class="container-left">
+                <!-- <button [ngStyle]="{'color': bussines.secondaryColor}" class="home" mat-icon-button routerLink="/">
+                    <mat-icon class="icon" >home</mat-icon>
+                </button> -->
+                <button [ngStyle]="{'color': bussines.secondaryColor}" routerLink="/menu-demo-layout-01/{{bussines.id}}/infogeneral" mat-icon-button class="button" color="primary">
+                    <mat-icon class="icon">info</mat-icon>
+                </button>
+                
+            </div>
+        </ng-container>
+    
+        <ng-container *ngIf="showBackButton">
+            <button [ngStyle]="{'color': bussines.secondaryColor}" class="button" mat-icon-button (click)="goBack()">
+                <mat-icon class="icon">arrow_back_ios</mat-icon>
+            </button>
+        </ng-container>
+       
+        <span [ngStyle]="{'color': bussines.secondaryColor}" >{{bussines.nameCompany  == undefined ? '' : bussines.nameCompany}}</span>
+    </mat-toolbar>
+    
+    <div [ngStyle]="{'background-color': bussines.principalColor}" class="content-router" [@routeAnimations]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+    </div>
+   
+}
+

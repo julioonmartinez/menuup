@@ -1,0 +1,30 @@
+<div class="container-page">
+    
+<mat-toolbar class="toolbar" >
+    <button (click)="openDialogInfo()" mat-icon-button >
+        <mat-icon>info</mat-icon>
+
+    </button>
+</mat-toolbar>
+<div class="container-header-page">
+    <p class="title" >Sabor y frescura en cada bocado</p>
+    <p class="subtitle" >Sabores auténticos</p>
+</div>
+<div class="container-icons-categorias">
+    @for (category of listCategories; track $index) {
+        <button [routerLink]="['home', category.id ]" (click)="setIDCategorySelected(category.id!)" class="container-icon"  routerLinkActive="active" >
+           
+                <img class="icon icon-active" width="30" height="30" [src]="searchIconSelected(category.idIcons!)" [alt]="category.name"/>
+
+       
+                <img class="icon icon-desactive" width="30" height="30" [src]="searchIcon(category.idIcons!)" [alt]="category.name"/>
+
+        </button>
+    }
+</div>
+<div class="container-router">
+   
+    
+    <router-outlet></router-outlet>
+</div>
+</div>

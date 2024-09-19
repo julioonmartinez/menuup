@@ -1,0 +1,30 @@
+<div class="container-page">
+    <div class="container-image">
+        <img class="image-product" [src]="data.product.urlImage" alt="">
+    <div class="shadow-image"></div>
+    </div>
+    <div class="container-body">
+        <div class="header">
+            <p class="name" >{{data.product.name}}</p>
+            <p class="subtitle" ><mat-icon class="icon" >menu_book</mat-icon> {{data.product.subtitle}}</p>
+        </div>
+        <div class="container-description">
+            
+            <p  >{{data.product.description}} </p>
+             <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil deserunt veritatis qui odit!t</p> -->
+
+        </div>
+        <div class="container-footer">
+            <div class="container-first">
+                <p class="title" >Precio</p>
+                <p class="price" >{{data.product.price | currency}}</p>
+            </div>
+
+            <div class="container-final">
+                <button mat-icon-button class="btn" >
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

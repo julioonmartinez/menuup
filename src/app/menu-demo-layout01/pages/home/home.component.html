@@ -1,0 +1,36 @@
+
+
+<div class="content-img-header">
+    <img  [src]="business?.urlImgRestaurante ? business?.urlImgRestaurante : imageHeader  " alt="Imagen del Platillo" class="header-platillo-image">
+  
+</div>
+
+<div class="content-menu-sections">
+
+    @for (item of sectionRestarunts; track $index) {
+
+        <mat-card [ngStyle]="{'background-color': business?.principalColor ? lightenColor(business?.principalColor!, 15) : '#f7f7f7'  }"  routerLink="sections/{{item.id}}" class="mat-elevation-z6 card " >
+            @if (item.urlImage) {
+                <div mat-card-image [ngStyle]="{'background-image': 'url(' + item.urlImage + ')'}" class="container-image-card">
+                
+                </div>
+            }@else {
+                <div mat-card-image [ngStyle]="{'background-image': 'url(' + imagePlatillo  + ')'}" class="container-image-card">
+                
+                </div>
+            }
+
+           
+            <mat-card-content class="content-card" >
+                <span [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="name-platillo" >{{item.name}}</span>
+            </mat-card-content>
+          
+        </mat-card>
+
+    }
+
+
+
+   
+    
+</div>

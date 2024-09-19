@@ -1,0 +1,80 @@
+.content-img-header {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+  }
+  
+  .header-platillo-image {
+    width: 100%; /* Asegura que la imagen cubra todo el ancho del contenedor */
+    height: 100%; /* Asegura que la imagen cubra toda la altura del contenedor */
+    object-fit: cover; /* Similar a background-size: cover; */
+    object-position:center; /* Centra la imagen dentro del contenedor */
+  }
+.content-img-header::after{
+    content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo semi-transparente para mejorar la legibilidad del texto */
+  z-index: 1; /* Coloca el overlay debajo del texto pero encima de la imagen */
+}
+
+.content-menu-sections{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 32px 24px;
+    row-gap: 32px;
+    column-gap: 16px;
+    justify-content: center;
+    // max-width: 600px;
+   
+    .card{
+        // border-radius: 12px;
+        box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+        max-width: 320px;
+        // background-color: #43597c;
+        // min-height: 240px;
+        // max-width: 100%;
+        // grid-template-rows: 2fr 1fr;
+        .container-image-card{
+            position: relative;
+            width: 100%;
+            height: 20vh;
+            // border-radius: 12px 12px 0 0;
+            // background-image: url('https://th.bing.com/th/id/OIP.7Gv4IGTQRkLtrMkgJsRPHAAAAA?rs=1&pid=ImgDetMain');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f7f7f7;
+            
+        }
+        .content-card{
+            // background-color: #43597c;
+            // border-radius: 0 0 12px 12px;
+            padding-top: 12px;
+            .name-platillo{
+                // color: #D7C1AA;
+                font-weight: 500;
+                letter-spacing: 0.1rem;
+                margin: 0; 
+                
+            }
+        }
+    }
+}
+
+@media (min-width:1024px) {
+    .content-menu-sections{
+        grid-template-columns: repeat(4, 1fr);
+        padding: 60px 80px;
+    }
+    
+}

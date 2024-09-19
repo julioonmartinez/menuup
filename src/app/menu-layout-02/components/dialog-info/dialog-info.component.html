@@ -1,0 +1,21 @@
+<div class="container-page">
+    <div class="container-title">
+        <p class='title' >{{data.company.nameCompany ? data.company.nameCompany : ''}} </p>
+    </div>
+    <div class="section-qr" >
+        <!-- <p class="title" >Codigo QR</p> -->
+        <img [src]="qrCodeImage" alt="code qr">
+    </div>
+    
+    <div class="container-body">
+        <div class="line">
+            <p class="info" >Dirección:</p>
+            <p class="text" >{{data.company.adress ? data.company.adress : 'Sin dirección registrada' }}</p>
+        </div>
+        <div class="line">
+            <p class="info" >Horario:</p>
+            <p class="text" >{{data.company.horario ? data.company.horario : 'Sin horario regristrado' }}</p>
+        </div>
+       
+    </div>
+</div>

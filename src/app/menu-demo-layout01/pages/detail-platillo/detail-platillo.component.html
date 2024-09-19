@@ -1,0 +1,18 @@
+@if (product) {
+  <div class="content-img-header">
+    @if (product.urlImage) {
+      <img [src]="product.urlImage" alt="Imagen del Platillo" class="header-platillo-image">
+    }@else {
+      <img [src]="noImage" alt="Imagen del Platillo" class="header-platillo-image">
+    }
+  </div>
+  <div class="container-platillo">
+    <div class="container-title">
+      <p  [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="title">{{product.name | capitalizeFirst }}</p>
+      <p  [ngStyle]="{'color': business?.terciaryColor ? business?.terciaryColor : '#2b2b2b'  }" class="price">{{product.price | currency}}</p>
+    </div>
+    <div class="container-descripcion">
+      <span [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="description">{{product.description | capitalizeFirst}}</span>
+    </div>
+  </div>
+}

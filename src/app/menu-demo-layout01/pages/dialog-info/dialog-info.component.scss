@@ -1,0 +1,53 @@
+.content-img-header{
+    position: relative;
+    width: 100%;
+    height: 32vh;
+    // background-image: url('https://th.bing.com/th/id/OIP.7Gv4IGTQRkLtrMkgJsRPHAAAAA?rs=1&pid=ImgDetMain');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // color: white;
+    text-align: center;
+    // display: none
+    padding-top: 120px;
+    img{
+        border-radius: 12px;
+    }
+    
+    
+}
+
+
+.container-info{
+    padding: 24px 12px;
+    display: grid;
+    margin-top: 40px;
+   
+    .list{
+        display: grid;
+        row-gap: 16px;
+        .item-list{
+            // background-color: #D7C1AA ;
+            border-radius: 12px;
+            .icon{
+                // color:  #C67250 ;
+
+            }
+            .title{
+                // color:  #43597c;
+                font-size: 1rem;
+                font-weight: 650;
+
+            }
+            .line{
+                // color:  #43597c;
+
+            }
+
+        }
+
+    }
+
+}

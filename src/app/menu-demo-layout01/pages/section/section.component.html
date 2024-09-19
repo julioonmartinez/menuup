@@ -1,0 +1,33 @@
+@if (category) {
+    <div class="content-img-header">
+        @if (category.urlImage) {
+            <img [src]="category.urlImage" alt="Imagen del Platillo" class="header-platillo-image">
+        }@else {
+            <img  [src]="imagePlatillo" alt="Imagen del Platillo" class="header-platillo-image">
+        }
+    </div>
+    <div class="content-name-category">
+        <span [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="text" >{{category.name}}</span>
+    </div>
+    
+    <div class="content-platillos-list">
+        @for (item of productsList; track $index) {
+            <mat-card  
+                  (click)="routerLink(item)"
+                  class="mat-elevation-z6 card">
+            @if (item.urlImage) {
+                <img [src]="item.urlImage" alt="{{item.name}}">
+            }@else {
+                <img [src]="noImage" alt="{{item.name}}">
+            }
+            <mat-card-content class="content-card-platillo" [ngStyle]="{'background-color': business?.principalColor ? lightenColor(business?.principalColor!, 15) : '#f7f7f7'  }" >
+                <span  [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="name">{{ item.name | capitalizeFirst }}</span>
+                <span  [ngStyle]="{'color': business?.terciaryColor ? business?.terciaryColor : '#2b2b2b'  }" class="price">{{ item.price | currency }}</span>
+                <span  [ngStyle]="{'color': business?.secondaryColor ? business?.secondaryColor : '#2b2b2b'  }" class="subtitle">{{ item.subtitle! | capitalizeFirst }}</span>
+            </mat-card-content>
+        </mat-card>
+        }
+        
+    </div>
+}
+

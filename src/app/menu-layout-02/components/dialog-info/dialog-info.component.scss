@@ -1,0 +1,40 @@
+.container-page{
+    // height: 60vh;
+    color: #2b2b2b;
+    padding-top: 32px;
+    
+    .container-title{
+        .title{
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+        }
+    }
+    .container-body{
+        display: grid;
+        row-gap: 24px;
+        .line{
+            
+            .info{
+                font-weight: 650;
+            }
+            .text{
+                color: #454545;
+            }
+        }
+    }
+    .section-qr{
+        display: grid;
+        justify-content: center;
+        padding: 16px 12px;
+        .title{
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-align: center;
+        }
+        .section-qr{
+            width: fit-content;
+
+        }
+    }
+}
