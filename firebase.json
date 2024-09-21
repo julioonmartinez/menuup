@@ -1,6 +1,6 @@
 {
   "hosting": {
-    
+    "site": "samari-app",
     "public": "/dist/menus-app/browser",
     "ignore": [
       "firebase.json",

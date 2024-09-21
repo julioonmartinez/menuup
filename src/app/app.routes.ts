@@ -10,6 +10,7 @@ import { LayoutComponent02 } from './menu-layout-02/components/layout/layout.com
 import { LayoutWelcomeComponent } from './welcome/components/layout-welcome/layout-welcome.component';
 import { PagesHomeComponent } from './welcome/pages-home/pages-home.component';
 import { LayoutRoutingComponent } from './routing/layout-routing/layout-routing.component';
+import { LayoutWebComponent } from './web/components/layout-web/layout-web.component';
 
 export const routes: Routes = [
     {path:'menus/:idCompany',
@@ -37,17 +38,23 @@ export const routes: Routes = [
             path:'',
             component:LayoutWelcomeComponent,
             children:[
-                {
-                    path:'home',
-                    component:PagesHomeComponent
-                },
-                {
-                    path:'',
-                    redirectTo:'/home',
-                    pathMatch:'full'
-                }
-            ],
-        },   
+                {path:'', redirectTo:'/web/home', pathMatch:'full'}
+            ]
+        },
+        {
+            path:'web',
+            component:LayoutWebComponent,
+            children:[
+                {path:'home', component:PagesHomeComponent},
+                {path: '', redirectTo: '/home' , pathMatch: 'full' }
+            ]
+        },
+    
+        {
+            path:'**',
+            redirectTo: '/web/home',
+            pathMatch:'full'
+        }  
     
     
 ];

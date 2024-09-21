@@ -1,5 +1,51 @@
-<div class="container-page-home">
-    <h1>Bienvenido a Samari</h1>
-    <p>Qué deseas comer hoy?</p>
-    <p>Estos son nuestros restaurantes activos</p>
+<div class="container-page">
+    <div class="contianer-header">
+        <p  class="title">Bienvenido a iMenu.io</p>
+        <div class="subtitle">
+            <p>¿Que se te antoja hoy?</p>
+        </div>
+    </div>
+
+
+    <div class="container-body-page">
+        @for (item of bussinesList; track $index) {
+            <mat-card class="card-business" appearance="outlined">
+                <mat-card-header>
+                  <img [src]="item.urlImgRestaurante ? item.urlImgRestaurante : urlNoImage" mat-card-avatar alt="">
+                  <mat-card-title>{{item.nameCompany}}</mat-card-title>
+                </mat-card-header>
+            
+                <mat-card-content class="content-card-general">
+                  <div class="container-categories-list">
+                    @for (category of  item.categories; track $index) {
+                      <button (click)="selectedproduct(item.id!, category.id!)" [ngClass]="{'active': category.id == item.categorySelected}" class="btn-category" mat-button >
+                        <span>{{category.name}}</span>
+                      </button>
+                    }
+                  </div>
+                  <div class="content-card">
+                    <div class="image-slider">
+                      <img *ngFor="let product of item.productsSelected; let j = index" [src]="product.urlImage ? product.urlImage : urlNoImage" alt="">
+                    </div>
+                  </div>
+                  
+                </mat-card-content>
+            
+                <mat-card-actions class="actions-card">
+                  <button class="btn-show" mat-button (click)="routerLinkMenu(item.id!, item.idMenu!)">Ver Menú</button>
+                  <div class="container-icon-btns">
+                    <button mat-icon-button>
+                      <mat-icon>share</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                      <mat-icon>forum</mat-icon>
+                    </button>
+                    <button mat-icon-button>
+                      <mat-icon>thumb_up</mat-icon>
+                    </button>
+                  </div>
+                </mat-card-actions>
+              </mat-card>
+        }
+      </div>
 </div>

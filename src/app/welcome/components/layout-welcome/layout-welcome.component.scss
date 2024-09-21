@@ -1,0 +1,13 @@
+.contain-spinner{
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+
+.progress-spinner ::ng-deep svg circle {
+    stroke: #2b2b2b; /* Color del círculo del spinner */
+    stroke-width: 3px; /* Grosor del círculo */
+}

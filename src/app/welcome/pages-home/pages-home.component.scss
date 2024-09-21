@@ -1,0 +1,107 @@
+.container-page{
+    padding-bottom: 60px;
+}
+.container-body-page {
+    display: grid;
+    padding-left: 16px;
+    padding-right: 16px;
+    grid-gap: 16px; /* Espaciado entre cards */
+}
+.contianer-header{
+    // display: grid;
+    padding: 12px 16px 16px 16px;
+    .title{
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        text-transform: uppercase;
+        height: fit-content;
+    }
+    .subtitle{
+        p{
+        font-size: 0.9rem;
+        color: rgb(180, 180, 180);    
+        }
+    }
+}
+
+.card-business {
+    display: grid;
+    padding: 16px;
+}
+.content-card-general{
+    display: grid;
+    
+
+}
+.container-categories-list {
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Espaciado entre imágenes */
+    scrollbar-width: thin; /* Opcional: estiliza el scroll */
+    height: fit-content;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+    .btn-category {
+        background-color: #e7e7e7;
+        color: #2b2b2b;
+        padding: 4px 60px !important;
+        font-size: 0.9rem;
+        height: fit-content;
+    }
+    .btn-category.active{
+        background-color: #2b2b2b;
+        color: #e7e7e7;
+    }
+}
+
+
+.container-categories-list::-webkit-scrollbar{
+    display: none;
+}
+
+.content-card {
+    overflow-x: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Espaciado entre imágenes */
+    scrollbar-width: none;
+    .container-categories-list{
+        display: flex;
+        column-gap: 10px;
+    }
+}
+.content-card::-webkit-scrollbar {
+   
+    .container-categories-list{
+        display: none;
+    }
+}
+
+.image-slider {
+    display: flex;
+    gap: 10px; /* Espaciado entre imágenes */
+    padding-bottom: 16px;
+}
+
+.image-slider img {
+    width: 120px;
+    height: 120px; /* Asegura que las imágenes tengan una altura consistente */
+    object-fit: cover; /* Hace que la imagen cubra completamente el contenedor manteniendo la relación de aspecto */
+    border-radius: 8px; /* Añadir bordes redondeados */
+}
+
+.actions-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .btn-show{
+        color: #2b2b2b;
+    }
+}
+
+.container-icon-btns {
+    display: flex;
+    column-gap: 12px;
+}

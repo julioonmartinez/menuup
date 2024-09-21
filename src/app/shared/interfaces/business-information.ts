@@ -1,3 +1,6 @@
+import { Categories } from "./categories"
+import { Product } from "./product"
+
 export interface BusinessInformation {
 
     id?:string,
@@ -16,4 +19,6 @@ export interface BusinessInformation {
     secondaryColor?:string,
     terciaryColor?:string,
     url?:string
+    products?: Product[],
+    categories?:Categories[],
 }
