@@ -1,0 +1,43 @@
+.container-component-plats{
+    display: grid;
+    padding-top: 24px;
+}
+
+.container-list-plats{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 12px;
+    row-gap: 12px;
+    padding-left: 16px;
+    padding-right: 16px;
+    .card-plat{
+        overflow: hidden;
+        display: grid;
+        .img-card{
+            object-fit: contain;
+            width: 100%;
+        }
+        .content{
+            margin-top: 16px;
+            .name{
+                font-size: 0.9rem;
+                line-height: 16px;
+                
+            }
+        }
+        
+        .footer{
+            display: flex;
+            justify-content: space-between;
+            align-self: baseline;
+            .container-star{
+                
+                .icon{
+                    font-size: 12px;
+                    width: fit-content;
+                }
+            }
+
+        }
+    }
+}

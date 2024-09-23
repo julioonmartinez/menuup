@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
-import { collection, collectionData, doc, docData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, catchError, from, map, Observable } from 'rxjs';
-import { query, where } from 'firebase/firestore';
+import { addDoc, query, where } from 'firebase/firestore';
 import { BusinessInformation } from '../interfaces/business-information';
 import { Product } from '../interfaces/product';
 import { Categories } from '../interfaces/categories';
+import { Survey } from '../interfaces/survey';
 
 
 @Injectable({
@@ -21,6 +22,8 @@ export class MenuService {
   nameLocalStorageProductsDemo:string = this.nameColletionListProductDemo;
 
   nameColletionListCategoriesDemo: string = 'categories';
+
+  nameColletionSurvey: string = 'surveyService'
 
   noImage = 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fdemo-app%2Fimage_100dp_E8EAED_FILL0_wght400_GRAD0_opsz48%20(1).png?alt=media&token=4bf50080-9ea4-4dbc-9e21-ba1d0a50f4eb'
 
@@ -105,6 +108,17 @@ export class MenuService {
 
       // getProduct(idProduct){
       // }
+
+      likes( idBu:string, ){
+        const docRef = doc(this.firestore, `${this.nameColletionBussinesDemo}/${idBu}`)
+        return updateDoc(docRef, {likes: 1} )
+      }
+
+      AddSurvey(idBu : string, surve: Survey ){
+        surve.create = new Date()
+        const surveyColletion = collection(this.firestore, `${this.nameColletionBussinesDemo}/${idBu}/${this.nameColletionSurvey}`)
+        return addDoc(surveyColletion, surve )
+      }
 
 }
 

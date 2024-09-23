@@ -1,0 +1,18 @@
+.star-rating {
+    display: flex;
+  }
+  
+  .mat-icon {
+    width: fit-content;
+    cursor: pointer;
+    font-size: 2rem;
+    height: fit-content;
+  }
+  
+  .filled-star {
+    color: gold;
+  }
+  
+  .empty-star {
+    color: lightgray;
+  }

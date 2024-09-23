@@ -19,6 +19,8 @@ export interface BusinessInformation {
     secondaryColor?:string,
     terciaryColor?:string,
     url?:string
+    status?: 'active' | 'desactive'  | 'delete'
     products?: Product[],
     categories?:Categories[],
+    likes?: number;
 }

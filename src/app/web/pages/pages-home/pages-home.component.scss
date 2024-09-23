@@ -3,27 +3,12 @@
 }
 .container-body-page {
     display: grid;
+    grid-gap: 16px; /* Espaciado entre cards */
+    margin-top: 32px;
     padding-left: 16px;
     padding-right: 16px;
-    grid-gap: 16px; /* Espaciado entre cards */
 }
-.contianer-header{
-    // display: grid;
-    padding: 12px 16px 16px 16px;
-    .title{
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-        text-transform: uppercase;
-        height: fit-content;
-    }
-    .subtitle{
-        p{
-        font-size: 0.9rem;
-        color: rgb(180, 180, 180);    
-        }
-    }
-}
+
 
 .card-business {
     display: grid;

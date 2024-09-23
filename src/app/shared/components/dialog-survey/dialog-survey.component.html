@@ -1,0 +1,63 @@
+
+<mat-dialog-content>
+    <span matDialogTitle >¡Danos tu opnion!</span>
+    <form [formGroup]="encuestaForm">
+      <!-- Pregunta: Calificación del servicio -->
+      <div class="pregunta">
+        <p>¿Cómo calificarías la atención del personal?</p>
+        <app-star-rating formControlName="servicio"></app-star-rating>
+      </div>
+  
+      <!-- Pregunta: Calificación de la comida -->
+      <div class="pregunta">
+        <p>¿Qué te pareció la calidad de los platillos?</p>
+        <app-star-rating formControlName="calidadComida"></app-star-rating>
+      </div>
+  
+      <!-- Pregunta: Tiempo de espera -->
+      <div class="pregunta">
+        <p>¿El tiempo de espera fue adecuado?</p>
+        <mat-radio-group formControlName="tiempoEspera">
+          <mat-radio-button value="si">Sí</mat-radio-button>
+          <mat-radio-button value="no">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+  
+      <!-- Pregunta: Recomendación -->
+      <div class="pregunta">
+        <p>¿Recomendarías este restaurante?</p>
+        <mat-radio-group formControlName="recomendacion">
+          <mat-radio-button value="si">Sí</mat-radio-button>
+          <mat-radio-button value="no">No</mat-radio-button>
+        </mat-radio-group>
+      </div>
+  
+      <!-- Pregunta: Comentarios adicionales -->
+      <div class="pregunta">
+        <p>¿Tienes alguna sugerencia?</p>
+        <mat-form-field appearance="outline">
+          <textarea matInput formControlName="sugerencias" placeholder="Escribe tu sugerencia aquí"></textarea>
+        </mat-form-field>
+      </div>
+  
+      <!-- Información opcional: Teléfono y correo -->
+      <div class="informacion-opcional">
+        <p>Déjanos tus datos (opcional):</p>
+        <mat-form-field appearance="outline">
+          <mat-label>Número de teléfono</mat-label>
+          <input matInput formControlName="telefono" placeholder="123-456-7890">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput formControlName="email" placeholder="ejemplo@correo.com">
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions>
+    <button class="cancel-btn" mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button class="btn-send" color="primary" (click)="submit()">Enviar</button>
+  </mat-dialog-actions>
+  

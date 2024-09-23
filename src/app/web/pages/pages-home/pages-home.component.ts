@@ -3,17 +3,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
-import { GeneralAppService } from '../../shared/services/general-app.service';
-import { BusinessInformation } from '../../shared/interfaces/business-information';
+import { GeneralAppService } from '../../../shared/services/general-app.service';
+import { BusinessInformation } from '../../../shared/interfaces/business-information';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { Router, RouterLink } from '@angular/router';
-import { Product } from '../../shared/interfaces/product';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Product } from '../../../shared/interfaces/product';
 
 @Component({
   selector: 'app-pages-home',
   standalone: true,
-  imports:  [RouterLink, MatButtonModule, MatProgressSpinnerModule , CommonModule, MatIconModule, MatCardModule],
+  imports:  [RouterLinkActive, RouterLink, MatButtonModule, MatProgressSpinnerModule , CommonModule, MatIconModule, MatCardModule],
   templateUrl: './pages-home.component.html',
   styleUrls: ['./pages-home.component.scss'],
 })

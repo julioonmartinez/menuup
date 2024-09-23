@@ -1,0 +1,30 @@
+<div class="container-page">
+    <div class="promos-list-container">
+        @for (promo of promos; track $index) {
+            <mat-card class="card-promo" appearance="outlined" >
+            <mat-card-header>
+                <img mat-card-avatar [src]="promo.urlImage" alt="">
+                <mat-card-title>{{promo.nameBusiness}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="promo.urlImage" alt="">
+            <mat-card-content class="content-card" >
+                <p class="title" >{{promo.title}}</p>
+                <p class="descriptions" >{{promo.description}}</p>
+                <p class="period" >Vigencia: {{promo.promotionPeriod | date: 'dd/MM/yy' }} </p>
+            </mat-card-content>
+            <mat-card-footer class="footer-card" >
+                <div class="content-actions">
+                    <button mat-button (click)="openDialogCondition(promo.conditions)" >Terminos y condiciones </button>
+                </div>
+               <div class="content-actions-rigth">
+                <button mat-icon-button >
+                    <mat-icon>favorite</mat-icon>
+                </button>
+               
+               </div>
+            </mat-card-footer>
+            </mat-card>
+        }
+    </div>
+
+</div>

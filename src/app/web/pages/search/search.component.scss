@@ -1,0 +1,83 @@
+.container-page-search{
+    height: 100vh;
+    background-color: rgb(246, 246, 246);
+}
+
+.container-header{
+    height: 50vh;
+   
+    display: grid;
+    place-content: center;
+    position: relative;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/mexican-2456038_640.jpg?alt=media&token=98473d89-b30e-4ad7-95c7-239cbc5d984c');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    .container-name{
+        background-color: white;
+        padding: 8px 40px;
+        border-radius: 4px;
+        p{
+            margin: 0;
+            color: #2b2b2b;
+            
+        }
+        .title{
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 0.1rem;
+        }
+        .subtitle{
+            font-size: 0.9rem;
+        }
+    }
+    .input{
+        width: 80vw;
+       
+        border: none;
+        height: 32px;
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
+        color: #a0a0a0;
+        font-size: 1.2rem;
+        padding: 12px 16px;
+        outline: none
+
+    }
+    .input:focus {
+        outline: none; /* Elimina el borde por defecto */
+        border: 2px solid #a0a0a0; /* Establece un borde azul de 2 píxeles */
+        // box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
+      }
+}
+.container-option{
+   
+    height: 50vh;
+    .container-list-options-searchs{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+       padding-top: 40px;
+        .option-search{
+            padding: 8px 16px 24px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            img{
+                object-position: center;
+            }
+            .name-option{
+                text-align: center;
+                color: #a0a0a0;
+                font-weight: 400;
+                font-size: 1rem;
+                margin-top: 16px;
+            }
+
+        }
+    }
+}

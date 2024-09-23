@@ -1,0 +1,23 @@
+<div class="container-component-plats">
+    <div class="container-list-plats">
+      @for (plat of productList; track $index) {
+        <mat-card class="card-plat my-card" appearance="outlined">
+          <img class="img-card" [src]="plat.urlImage" alt="">
+          <mat-card-content class="content" >
+            <p class="name" >{{plat.name}}</p>
+          </mat-card-content>
+          <mat-card-footer class="footer" >
+            <div class="container-first">
+               <button class="btn-tap" mat-icon-button >
+                <mat-icon>touch_app</mat-icon>
+               </button>
+            </div>
+            <button mat-icon-button class="btn-save" >
+                <mat-icon>bookmark</mat-icon>
+            </button>
+           
+          </mat-card-footer>
+        </mat-card>
+      }
+    </div>
+  </div>

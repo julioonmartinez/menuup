@@ -15,11 +15,13 @@ import { Categories } from '../../../shared/interfaces/categories';
 import { Icon } from '../../../shared/interfaces/icon';
 import { ICONS } from '../../../shared/enums/icon';
 import { BusinessInformation } from '../../../shared/interfaces/business-information';
+import { SurveyButtonComponent } from "../../../shared/components/survey-button/survey-button.component";
+import { DialogSurveyComponent } from '../../../shared/components/dialog-survey/dialog-survey.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatBottomSheetModule, RouterLink, RouterLinkActive, CommonModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, ],
+  imports: [MatDialogModule, SurveyButtonComponent, MatBottomSheetModule, RouterLink, RouterLinkActive, CommonModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, SurveyButtonComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
@@ -42,7 +44,8 @@ export class LayoutComponent02 {
     private activatedRouter : ActivatedRoute,
     private menuService : MenuService,
     private router : Router,
-    private sheet : MatBottomSheet
+    private sheet : MatBottomSheet,
+    private dialog : MatDialog,
   ){
     // this.menuService.bussinesData$.subscribe(data=>{
     //   if(data){
@@ -78,6 +81,14 @@ export class LayoutComponent02 {
    
     
 
+  }
+
+  openDialogSurvey(){
+    this.dialog.open(DialogSurveyComponent, {
+      data: this.business
+    }).afterClosed().subscribe(result=>{
+      result
+    })
   }
 
   searchIcon(idIcon:string){

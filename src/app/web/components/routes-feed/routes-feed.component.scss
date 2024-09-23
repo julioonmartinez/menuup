@@ -1,0 +1,38 @@
+.contianer-header{
+    position: relative;
+  .container-option{
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     background-color: white;
+     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.108);
+  }
+     .btn-icon{
+         border-radius: 0;
+         height: 60px;
+        display: grid;
+        place-content: center;
+       
+         .icon{
+             width: 32px;
+             object-position: center;
+ 
+ 
+         }
+         .icon-active{
+             display: none;
+         }
+     }
+     .btn-icon.active{
+         background-color: #5b73ff;
+        
+       
+        
+         .icon{
+             display: none;
+         }
+         .icon-active{
+             display: block;
+             
+         }
+     }
+ }

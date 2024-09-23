@@ -1,0 +1,18 @@
+.container-survey{
+    padding: 12px 24px;
+    .container-action{
+        background-color: greenyellow;
+        color: green;
+        font-size: 0.9rem;
+        padding: 12px 12px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .text{
+            line-height: 20px;
+            text-align: center;
+            }
+    }
+
+}

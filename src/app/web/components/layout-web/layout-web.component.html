@@ -1,8 +1,24 @@
 
-<mat-toolbar class="toolbar" >
-    <mat-icon>menu</mat-icon>
-
-</mat-toolbar>
 <div class="container-router">
     <router-outlet></router-outlet>
 </div>
+<nav class="footer-menu">
+    <ul>
+      <button mat-button routerLink="/web/search" routerLinkActive="active" >
+        <mat-icon class="material-icons">search</mat-icon>
+        <span>Buscar</span>
+      </button>
+      <button mat-button routerLink="/web/feed" routerLinkActive="active" >
+        <mat-icon class="material-icons">feed</mat-icon>
+        <span>Feed</span>
+      </button>
+      <button mat-button routerLink="/web/menus" routerLinkActive="active" >
+        <mat-icon class="material-icons">menu_book</mat-icon>
+        <span>Menus</span>
+      </button>
+      <button mat-button routerLink="/web/account" routerLinkActive="active" >
+        <mat-icon class="material-icons">account_circle</mat-icon>
+        <span>Mi perfil</span>
+      </button>
+    </ul>
+  </nav>

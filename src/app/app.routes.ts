@@ -8,9 +8,17 @@ import { DialogInfoComponent } from './menu-demo-layout01/pages/dialog-info/dial
 import { HomeComponent02 } from './menu-layout-02/pages/home/home.component';
 import { LayoutComponent02 } from './menu-layout-02/components/layout/layout.component';
 import { LayoutWelcomeComponent } from './welcome/components/layout-welcome/layout-welcome.component';
-import { PagesHomeComponent } from './welcome/pages-home/pages-home.component';
+import { PagesHomeComponent } from './web/pages/pages-home/pages-home.component';
 import { LayoutRoutingComponent } from './routing/layout-routing/layout-routing.component';
 import { LayoutWebComponent } from './web/components/layout-web/layout-web.component';
+import { SearchComponent } from './web/pages/search/search.component';
+import { TapsComponent } from './web/pages/taps/taps.component';
+import { AccountComponent } from './web/pages/account/account.component';
+import { RoutesFeedComponent } from './web/components/routes-feed/routes-feed.component';
+import { PlatsFeedComponent } from './web/components/plats-feed/plats-feed.component';
+import { PromosFeedComponent } from './web/components/promos-feed/promos-feed.component';
+import { PlacesFeedComponent } from './web/components/places-feed/places-feed.component';
+import { MyMenusComponent } from './web/pages/my-menus/my-menus.component';
 
 export const routes: Routes = [
     {path:'menus/:idCompany',
@@ -38,21 +46,34 @@ export const routes: Routes = [
             path:'',
             component:LayoutWelcomeComponent,
             children:[
-                {path:'', redirectTo:'/web/home', pathMatch:'full'}
+                {path:'', redirectTo:'/web/search', pathMatch:'full'}
             ]
         },
         {
             path:'web',
             component:LayoutWebComponent,
             children:[
-                {path:'home', component:PagesHomeComponent},
-                {path: '', redirectTo: '/home' , pathMatch: 'full' }
+                {path:'search', component:SearchComponent},
+                {
+                    path:'feed', 
+                    component:RoutesFeedComponent,
+                    children:[
+                        {path:'menus', component:PagesHomeComponent},
+                        {path:'plats', component:PlatsFeedComponent},
+                        {path:'promos', component:PromosFeedComponent},
+                        {path:'places', component:PlacesFeedComponent},
+                        {path:'', redirectTo:'/web/feed/menus', pathMatch:'full'}
+                    ]
+                },
+                {path:'menus', component:MyMenusComponent},
+                {path:'account', component:AccountComponent},
+                {path: '', redirectTo: '/search' , pathMatch: 'full' }
             ]
         },
     
         {
             path:'**',
-            redirectTo: '/web/home',
+            redirectTo: '/web/search',
             pathMatch:'full'
         }  
     

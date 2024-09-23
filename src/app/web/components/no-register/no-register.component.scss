@@ -1,0 +1,72 @@
+.page-accounts{
+    min-height: 100vh;
+    background-image: url('https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/restaurant%2Fameyalli%2Fplatillos%2FDALL%C2%B7E%202024-08-31%2013.30.41%20-%20A%20delicious%20restaurant%20dish%20featuring%20Papas%20Gajo.%20The%20plate%20showcases%20golden%2C%20crispy%20potato%20wedges%2C%20seasoned%20perfectly%20and%20arranged%20elegantly%20on%20a%20rus.webp?alt=media&token=c312f7f3-932c-4fb9-a66c-01446adc9fa9');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: grid;
+    place-content: center;
+}
+.page-accounts::after   {
+    content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2); /* Fondo semi-transparente para mejorar la legibilidad del texto */
+  z-index: 1; /* Coloca el overlay debajo del texto pero encima de la imagen */
+}
+.header-register{
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: white;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-right: 16px;
+    margin-left: 16px;
+    z-index: 1000;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.289);
+    .title{
+        font-size: 2rem;
+        text-align: center;
+        font-weight: 800;
+        letter-spacing: 0.1rem;
+        color: #2b2b2b;
+
+    }
+    .subtitle{
+        font-size: 1.4rem;
+        text-align: center;
+        font-weight: 800;
+        letter-spacing: 0.1rem;
+        color: #2b2b2b;
+
+    }
+    
+}
+
+.container-option-register{
+    background-color: rgba(255, 255, 255, 0.242);
+    margin-top: 24px;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    .title{
+        font-size: 1rem;
+        font-weight: 550;
+    }
+    .options-register{
+        display: flex;
+        justify-content: center;
+        column-gap: 12px;
+        button{
+            background-color: white;
+            z-index: 1000;
+
+        }
+    }
+
+}
