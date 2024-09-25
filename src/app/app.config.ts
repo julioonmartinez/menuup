@@ -6,6 +6,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideServiceWorker } from '@angular/service-worker';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,9 +26,13 @@ export const appConfig: ApplicationConfig = {
       messagingSenderId: '556872637819',
       measurementId: 'G-KEQ647P1S2'
     })),
-    provideFirestore(() => getFirestore()), provideAnimationsAsync(), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          })
+    provideFirestore(() => getFirestore()),
+    provideAnimationsAsync(),
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
+    provideAuth(() => getAuth()),
+    provideStorage(() => getStorage()),
   ]
 };

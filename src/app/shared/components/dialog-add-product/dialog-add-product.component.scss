@@ -1,0 +1,172 @@
+
+
+.fixed-progress-bar {
+  position: sticky; /* Fijo en la parte superior del bottom sheet */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+}
+.container-gral{
+ 
+ color: #4A4A4A;
+ 
+
+}
+.container-gral::-webkit-scrollbar{
+  width: 0;
+}
+
+.bottom-sheet-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-top: 12px;
+    // margin-bottom: 52px;
+    // border-radius: 12px;
+    row-gap: 16px;
+  
+   
+   
+  
+    .titleform {
+      font-size: 1.2rem;
+      color: #4A4A4A;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+  
+    .cancel {
+      color: #4A4A4A;
+      margin-top: 12px;
+    }
+  
+    .add {
+      background-color: #4A4A4A;
+      color: white;
+      margin-top: 8px;
+    }
+    
+  
+    .container-add-image {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      .container-hint{
+        
+        .hint{
+          font-size: 12px;
+        }
+      }
+      .button-image-unpload{
+        background-color: rgb(221, 221, 221);
+        // border: 1px solid #4A4A4A;
+        color: #4A4A4A !important;
+        border-radius: 12px;
+        min-height: 145px;
+        font-size: 1.2rem;
+        
+        .icon{
+          color: #4A4A4A;
+    font-size: 2rem;
+    object-fit: contain;
+    width: fit-content;
+    height: fit-content;
+          // object-position: center center;
+        }
+
+      }
+      .button-image-change{
+        background-color: white;
+        border: 1px solid #e1e1e1;
+        padding: 12px 16px;
+        min-height: 60px;
+        height: auto;
+        color: #4A4A4A;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 800;
+        box-shadow: 2px 2px 4px 0px  #e7e7e7;
+       
+      }
+    }
+
+
+  
+    .container-preview-image {
+      margin-top: 12px;
+      display: grid;
+      justify-content: center;
+  
+      .image-product {
+        max-width: 240px;
+        max-height: 240px;
+        object-fit: cover;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+    }
+
+    .container-progress{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+    }
+  
+    .save-message {
+      margin-top: 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4A4A4A;
+      text-align: center;
+    }
+
+    
+  }
+
+  .buttons-actions{
+  
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 16px;
+    padding-bottom: 80px;
+    margin-top: 16px;
+
+  
+
+    button{
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      padding-left:24px ;
+      padding-right: 24px;
+    }
+  
+    .add{
+      background-color: #4A4A4A;
+     
+      color: white;
+    }
+    .cancel{
+      
+      background-color: white;
+      color: #2b2b2b;
+    }
+  }
+
+  @media (min-width:420px) {
+    .container-gral{
+      display: grid;
+      justify-content: center;
+      .bottom-sheet-container{
+        width: 400px;
+      }
+    }
+    
+  }
+
+ 
+
+  
+  

@@ -1,0 +1,338 @@
+@if (spinnerPrincipal) {
+    
+    @if (uploadProgress) {
+        <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+      
+    }
+    <div class="container-page">
+        
+        <div class="container-section-one-page">
+            @if (!currenUser) {
+                <div class="container-title">
+                    <span class="start-menu" >Crea una cuenta y no pierdas tu menu.
+                         <!-- <button mat-button (click)="clearLocalStorage()" >borrar</button> -->
+                    </span>
+                    <!-- <button class="btn menu" mat-button >Ver menu</button>
+                    <button class="btn pedidos" mat-button >Ver pedidos</button> -->
+                </div>
+            }
+            <div class="container-info">
+                <mat-card class="name-company" appearance="outlined" >
+                    
+                    <mat-card-content class="content-card" >
+                       
+                       
+                        <div class="container-top">
+                            <span class="label" >Nombre de tu negocio</span>
+                        <button  mat-icon-button [matMenuTriggerFor]="menuInfo" >
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                        <mat-menu #menuInfo="matMenu" >
+                            <button  [routerLink]="['/web/menus/app-samari/generate-code-qr', infoDemo.id]"  mat-menu-item> 
+                                <mat-icon>qr_code_2</mat-icon>
+                                <span>Ver QR</span>
+                            </button>
+                            <button [routerLink]="['/menus', infoDemo.id!]"  mat-menu-item> 
+                                <mat-icon>slideshow</mat-icon>
+                                <span>Vista del menu</span>
+                            </button>
+                            <button [routerLink]="['/web/menus/app-samari/configuration', infoDemo.id]"  mat-menu-item> 
+                                <mat-icon>palette</mat-icon>
+                                <span>Estilos</span>
+                            </button>
+                            <button (click)="openDialogDeleteBusiness()"  mat-menu-item> 
+                                <mat-icon>delete</mat-icon>
+                                <span>Borrar</span>
+                            </button>
+                        </mat-menu>
+                        </div>
+                    
+                        <span class="name" ><div>{{infoDemo.nameCompany}}</div> <button (click)="openDialogCompanyName('edit', infoDemo)" class="btn" mat-icon-button ><mat-icon >edit</mat-icon></button>   </span>
+                    
+                    @if (infoDemo.nameCompany == '') {
+                        <mat-progress-bar class="query-name" mode="query" ></mat-progress-bar>
+                    }
+                    </mat-card-content>
+        
+                </mat-card>
+                
+            </div>
+            <div class="container-btn-screen-big">
+                <button [routerLink]="['/menu', infoDemo.id!]" class="btn" mat-button >Vista de menu</button>
+                <button class="btn" [routerLink]="['/web/menus/app-samari/generate-code-qr', infoDemo.id]" mat-button >Ver QR</button>
+                <button class="btn" [routerLink]="['/web/menus/app-samari/configuration', infoDemo.id]" mat-button >Configurar</button>
+                <button color="warn" class="btn" (click)="openDialogDeleteBusiness()" mat-button >Borrar</button>
+                
+                
+                <button class="btn btn-register " mat-button >
+                    <mat-icon>menu</mat-icon>
+                    <div class="container-text">
+                        <span class="title-btn-menu-what" >Menu por Whatsapp</span>
+                        <span class="text-prueba" >Prueba gratis por 3 meses</span>
+                    </div>
+                </button>
+                
+            </div>
+
+        </div>
+        <div class="container-section-two">
+            @if (infoDemo.urlImgRestaurante == undefined) {
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+            <button (click)="fileInput.click()"  type="button" class="button-image-unpload" mat-button >
+                <mat-icon class="icon" >image</mat-icon>
+                <div class="content-text">
+                    <span class="title-btn" >Agrega una portada a tu restaurante</span>
+                    <span class="subtitle-btn" >Te recomendamos una foto horizontal</span>
+                    <span class="requeriments" >Max: 5mb, formato: JPG, PNG,</span>
+                </div>
+            </button>
+            }@else {
+                <div class="container-image-restaurante">
+                    <img class="image-restaunrante"  [src]="infoDemo.urlImgRestaurante" alt="">
+                    <input type="file" (change)="changeImageRestaruante($event)" accept="image/*" hidden #fileInputChange>
+                    <button (click)="fileInputChange.click()" class="btn-edit-image" mat-mini-fab ><mat-icon>edit</mat-icon> </button>
+                </div>
+            }
+         
+            
+            <div class="container-menu-contetn">
+                
+                <div class="content-categories">
+                   <div class="container-menu-options">
+                   @if (categoriesList.length > 0) {
+                    <span class="title1" >Tu menu</span>
+                   }
+                    <div class="container-actions">
+                        <div [ngClass]="{'without-category': categoriesList.length == 0}" class="btns-screen-md">
+                           @if (categoriesList.length > 0) {
+                            <!-- <button mat-button class="btn add-product-btn" (click)="openSheetAddProduct('', infoDemo.id!, 'Crea un producto', 'new')"  >
+                                <mat-icon class="icon" >add_box</mat-icon>
+                                 <p>Agregar producto</p>
+                            </button> -->
+                            <button mat-button class="btn add-category-btn " (click)="openSheedAddCategory('Crea una categoria', infoDemo.id!, 'new', undefined, undefined, categoriesList.length)" >
+                                <mat-icon class="icon" >inventory_2</mat-icon>
+                                <p>Crear categoria</p>     
+                            </button>
+                           }
+                           
+                        </div>
+                       <div class="btns-mobiles">
+                        <button  mat-icon-button [matMenuTriggerFor]="menu" >
+                            <mat-icon>more_horiz</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" >
+                            
+        
+                            @if (categoriesList.length > 0) {
+                                <!-- <button (click)="openSheetAddProduct('', infoDemo.id!, 'Crea un producto', 'new')" mat-menu-item> 
+                                    <mat-icon>add_circle</mat-icon>
+                                    <span> Agregar productos</span>
+                                </button> -->
+                                <button (click)="openSheedAddCategory('Crea una categoria', infoDemo.id!, 'new', undefined, undefined, categoriesList.length)"  mat-menu-item> 
+                                    <mat-icon>inventory_2</mat-icon>
+                                    <span>Crear categoria</span>
+                                </button>
+                            }
+                            
+                            
+                        </mat-menu>
+                       </div>
+                        
+                    </div>
+                   </div>
+                   @if (categoriesList.length > 0 ) {
+                    <div class="container-categories-list" cdkDropList (cdkDropListDropped)="drop($event)" >
+                       
+                        @for (item of categoriesList; track $index) {
+                            <div class="container-category" [ngClass]="{ 'expanded': item.statusPanel}"  [cdkDragDisabled]="item.statusPanel" cdkDrag >
+                                <div class="container-header-category">
+                                    <button class="btn-expanded"  (click)="togglebtn(item.id!)" mat-icon-button >
+                                        <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </button>
+                                    <div class="container-name-category">
+                                        @if(searchIcons(item.idIcons!)){
+                                            <button mat-icon-button >
+                                                <img [src]="searchIcons(item.idIcons!)" alt="">
+                                            </button>
+                                        }
+                                        <span class="name" >{{item.name}}</span>
+                                        <span class="total-products" >({{filterProducts(item.id!).length}}) </span>
+                                    </div>
+                                    <div class="container-buton-more-optiones">
+                                        <div class="container-btn-desktop">
+                                            <button mat-button class="btn-catagory" >
+                                                <mat-icon class="icon" >add_circle</mat-icon>
+                                               <span class="text" >Producto</span>
+                                            </button>
+                                        </div>
+                                        <button   mat-icon-button [matMenuTriggerFor]="menuCategory" >
+                                            <mat-icon>more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu class="matmenu" #menuCategory="matMenu" >
+                        
+                                            <button class="btn-add-product-mobil" mat-menu-item (click)="openSheetAddProduct(item.id!, infoDemo.id!, 'Crea un producto', 'new', undefined,filterProducts(item.id!).length)" > 
+                                                <mat-icon>add_circle</mat-icon>
+                                                <span> Agregar Producto</span>
+                                            </button>
+        
+                                            <button (click)="openSheedAddCategory('Edita la categoria', infoDemo.id!, 'edit', item.id, item)" mat-menu-item> 
+                                                <mat-icon>edit</mat-icon>
+                                                <span>Editar Categoria</span>
+                                            </button>
+        
+                                            <button (click)="openDialogDeleteCategory(item.id!, filterProducts(item.id!) )" mat-menu-item> 
+                                                <mat-icon>delete</mat-icon>
+                                                <span>Eliminar categoria</span>
+                                            </button>
+                        
+                                        </mat-menu>
+                                        <button (mousedown)="onMouseDown()" cdkDragHandle class="btn-drop" mat-icon-button >
+                                            <mat-icon>drag_indicator</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                                @if (item.statusPanel) {
+                                <div class="container-list-products">
+                                  
+                                        @for (product of filterProducts(item.id!); track $index) {
+                                            <div class="card-product">
+                                              
+                                                <div class="avatar-product">
+                                                    <img [src]="product.urlImage == '' ? noImage : product.urlImage " alt="">
+                                                </div>
+                                                <div class="container-descriptions">
+                                                    <div class="section-one-description">
+                                                        <span class="name-product">{{product.name}}</span>
+                                                        <span class="price-product" >{{product.price | currency }}</span>
+                                                    </div>
+                                                    <div class="section-actions">
+                                                        <mat-slide-toggle (change)="toggleActive(product.id!)" [(ngModel)]="product.status" class="toggle" labelPosition="before"  ngSkipHydration >Activar-- </mat-slide-toggle>
+                                                        <button mat-icon-button color="warn" (click)="deleteProduct(product)" ><mat-icon>delete</mat-icon> </button>
+                                                        <button mat-icon-button (click)="openSheetAddProduct(item.id!, infoDemo.id!,'Edita tu producto', 'edit', product )" ><mat-icon>edit</mat-icon> </button>
+                                                    </div>
+                                                    
+                                                </div>
+                                                @if (progressBarProduct == product.id) {
+                                                    <mat-progress-bar mode="query" ></mat-progress-bar>
+                                                }
+                                            </div>
+                                        }
+            
+                                  
+            
+                                </div>
+                            }
+                           
+                            
+                            </div>
+                            
+                        }
+        
+                        @if (filterProducts('').length > 0 ) {
+                            <div class="container-category" [ngClass]="{ 'expanded': statusPanelWithCategory}">
+                                <div class="container-header-category">
+                                    <button  (click)="!statusPanelWithCategory" mat-icon-button >
+                                        <mat-icon>keyboard_arrow_down</mat-icon>
+                                    </button>
+                                    <div class="container-name-category">
+                                        <span class="name" >Productos sin categoria</span>
+                                        <span class="total-products" >Productos {{filterProducts('').length}} </span>
+                                    </div>
+                                    <div class="container-buton-more-optiones">
+                                        <button  mat-icon-button [matMenuTriggerFor]="menuCategory" >
+                                            <mat-icon>more_vert</mat-icon>
+                                        </button>
+                                        <mat-menu #menuCategory="matMenu" >
+                        
+                                           
+        
+                                            <button color="warn" (click)="removePRoductWithoutCateogry()" mat-menu-item> 
+                                                <mat-icon>delete</mat-icon>
+                                                <span>Eliminar productos</span>
+                                            </button>
+                        
+                                        </mat-menu>
+                                    </div>
+                                </div>
+                                @if (statusPanelWithCategory) {
+                                <div class="container-list-products">
+                                  
+                                        @for (product of filterProducts(''); track $index) {
+                                            <div class="card-product">
+                                                <div class="avatar-product">
+                                                    <img [src]="product.urlImage" alt="">
+                                                </div>
+                                                <div class="container-descriptions">
+                                                    <div class="section-one-description">
+                                                        <span class="name-product">{{product.name}}</span>
+                                                        <span class="price-product" >{{product.price | currency }}</span>
+                                                    </div>
+                                                    <div class="section-actions">
+                                                        <mat-slide-toggle (change)="toggleActive(product.id!)" [(ngModel)]="product.status" class="toggle" labelPosition="before"  ngSkipHydration >Activar-- </mat-slide-toggle>
+                                                        <button mat-icon-button color="warn" (click)="deleteProduct(product)" ><mat-icon>delete</mat-icon> </button>
+                                                        <button mat-icon-button (click)="openSheetAddProduct(product.id!, infoDemo.id!,'Edita tu producto', 'edit' , product )" ><mat-icon>edit</mat-icon> </button>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        }
+            
+                                  
+            
+                                </div>
+                            }
+                            </div>
+                        }
+                       </div>
+                   }@else {
+                    <div class="no-category-list">
+                        <mat-icon class="icon" >error</mat-icon>
+                        <p>No tienes ninguna categoria, crea una ahora</p>
+                        <button 
+                            (click)="openSheedAddCategory('Crea una categoria', infoDemo.id!, 'new', undefined, undefined, categoriesList.length)"
+                            mat-button class="add-category-btn" >
+                            <mat-icon class="icon" >inventory_2</mat-icon>
+                            <span class="text" >Crear categoria</span>
+                        </button>
+                    </div>
+                   }
+        
+        
+        
+                    
+                <!-- <mat-accordion class="accordion" >
+                    @for (item of categoriesList; track $index) {
+        
+                        <mat-expansion-panel >
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>{{item.name}}</mat-panel-title> 
+                                <mat-panel-description>Productos: {{filterProducts(item.id!).length }} </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            <div class="container-list-products">
+                                @for (item of filterProducts(item.id!); track item) {
+                                    <mat-card class="card-product"  appearance="outlined">
+                                        <mat-card-header class="header" >
+                                            <img class="image-avatar-card" mat-card-avatar [src]="item.urlImage" alt="">
+                                            <p class="title-card" >{{item.name}}</p>
+                                          
+                                        </mat-card-header>
+                                    </mat-card>
+                                }
+                            </div>
+                        </mat-expansion-panel>
+                        
+                    }
+                </mat-accordion> -->
+                </div>
+        
+            </div>
+        </div>
+    </div>
+}@else {
+   <div class="container-loading-principal">
+    <mat-spinner mode="indeterminate" ></mat-spinner>
+   </div>
+}
+
+
+

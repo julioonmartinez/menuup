@@ -4,9 +4,9 @@ import { Product } from "./product"
 export interface BusinessInformation {
 
     id?:string,
-    nameCompany:string,
-    nameUser:string,
-    emailCompany:string,
+    nameCompany?:string,
+    nameUser?:string,
+    emailCompany?:string,
     create?:Date,
     urlImgRestaurante?: string,
     filePath?:string,

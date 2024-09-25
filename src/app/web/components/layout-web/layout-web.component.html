@@ -1,13 +1,14 @@
 
-<div class="container-router">
+<div class="container-pages-layout-web">
+  <div class="container-router">
     <router-outlet></router-outlet>
 </div>
 <nav class="footer-menu">
     <ul>
-      <button mat-button routerLink="/web/search" routerLinkActive="active" >
+      <!-- <button mat-button routerLink="/web/search" routerLinkActive="active" >
         <mat-icon class="material-icons">search</mat-icon>
         <span>Buscar</span>
-      </button>
+      </button> -->
       <button mat-button routerLink="/web/feed" routerLinkActive="active" >
         <mat-icon class="material-icons">feed</mat-icon>
         <span>Feed</span>
@@ -22,3 +23,4 @@
       </button>
     </ul>
   </nav>
+</div>

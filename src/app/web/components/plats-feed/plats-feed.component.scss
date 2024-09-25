@@ -1,6 +1,7 @@
 .container-component-plats{
     display: grid;
     padding-top: 24px;
+    color: #4A4A4A;
 }
 
 .container-list-plats{
@@ -26,18 +27,12 @@
             }
         }
         
-        .footer{
-            display: flex;
-            justify-content: space-between;
-            align-self: baseline;
-            .container-star{
-                
-                .icon{
-                    font-size: 12px;
-                    width: fit-content;
-                }
-            }
-
-        }
+        
     }
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

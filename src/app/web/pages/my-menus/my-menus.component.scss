@@ -1,0 +1,112 @@
+
+.container-page-my-menus{
+    padding-top: 32px;
+    padding-bottom: 120px;
+    min-height: 100vh;
+}
+.container-title{
+    font-weight: 800;
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .title-page{
+        margin: 0;
+        font-size: 1.8rem;
+       color: #4A4A4A;
+    }
+
+    .btn-add-menu{
+        justify-self: flex-end;
+        background-color:#FF4500;
+        height: fit-content;
+        padding: 8px 16px;
+        border-radius: 8px;
+       
+
+        .icon{
+            color: white;
+            font-size: 2rem;
+            object-fit: contain;
+                width: fit-content;
+                height: fit-content;
+                margin: 0;
+
+
+        }
+    }
+    
+}
+.container-title.no-menus{
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.container-body{
+    padding-left: 16px;
+    padding-right: 16px;
+    .container-list-card-menus{
+        display: grid;
+        row-gap: 24px;
+    }
+}
+
+.card-no-menus{
+    padding-top: 16px;
+    padding-bottom: 20px;
+    max-width: 400px;
+    // background-color: #fcfcfc;
+    .header-card{
+        display: grid;
+        place-content: center;
+        .icon{
+            width: fit-content;
+            height: fit-content;
+            .img-icon{
+                // width: fit-content;
+            }
+        }
+       
+    }
+    .card-content{
+        margin-top: 24px;
+        .title{
+            font-size:1rem;
+            font-weight: 800;
+            text-align: center;
+            color: #4A4A4A;    
+        }
+        .description-card{
+            font-size: 0.9rem;
+            color: rgb(89, 89, 89);
+            text-align: center;
+        }
+    }
+    .card-actions{
+        display: grid;
+        margin-top: 24px;
+        .btn{
+            background-color: orangered;
+            color: white;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            height: fit-content;
+        }
+    }
+}
+
+@media (min-width:400px) {
+    .container-body{
+        display: grid;
+        justify-content: center;
+        .card-no-menus{
+            min-width: 360px;    
+        }
+    }
+    
+}

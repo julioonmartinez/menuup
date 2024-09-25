@@ -1,0 +1,47 @@
+<div class="page-accounts">
+    <div class="header-register">
+        <p class="title" >tapTaste</p>
+        <p class="subtitle" >Crea menus atractivos</p>
+    </div>
+
+    <mat-card appearance="outlined" class="container-option-register">
+        <p class="title" >Inicia sesión</p>
+        <mat-card-content class="card-content" >
+            <form [formGroup]="form" class="form">
+                <div class="form-field">
+                  <label for="email">Email:</label>
+                  <input formControlName="email" type="email" id="email" placeholder="Ingresa tu email" />
+                </div>
+          
+                <div class="form-field">
+                  <label for="password">Contraseña:</label>
+                  <input formControlName="password" type="password" id="password" placeholder="Ingresa tu contraseña" />
+                </div>
+          
+                <!-- <button (click)="onRegister()" class="btn-add-account">Crear cuenta</button> -->
+              </form>
+        </mat-card-content>
+        <mat-card-actions class="options-register">
+
+            <button (click)="onLogin()" class="btn-email" mat-fab extended  >
+                <mat-icon>mail</mat-icon>
+                Inicia sesión con tu email
+            </button>
+            <p class="text-option" >Otras opciones</p>
+            <button (click)="onLoginWithGoogle()" class="btn-google" mat-fab extended  >
+                <mat-icon><img width="100%" src="https://img.icons8.com/color/48/google-logo.png" alt=""></mat-icon>
+                Inicia con google
+            </button>
+
+            
+            
+        </mat-card-actions>
+    </mat-card>
+
+    <div class="container-account-login">
+        <p class="text" >¿Aún no tienes cuenta?</p>
+        <button mat-button class="btn" routerLink="/web/account">Registrate</button>
+    </div>
+   
+
+</div>

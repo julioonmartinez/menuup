@@ -1,8 +1,38 @@
-<div class="page-accounts">
+
     @if (currenUser) {
-        <p>Hola usuario</p>
+        <div class="container-page-user">
+            <mat-card appearance="outlined" class="profile-container">
+                <!-- Foto de perfil -->
+                <div class="profile-header">
+                  <img [src]="user?.photoURL ? user?.photoURL : 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Ficons8-user-50.png?alt=media&token=20156a12-51eb-4eb0-964b-5fd5edf26182'" alt="Foto de perfil" class="profile-avatar">
+                  <h2>{{ user?.displayName || 'Usuario' }}</h2>
+                  <p>{{ user?.role === 'premium' ? 'Miembro Premium' : 'Miembro Free' }}</p>
+                </div>
+              
+                <!-- Información de usuario -->
+                <div class="profile-info">
+                  <div class="info-item">
+                    <span class="label">Nombre:</span>
+                    <span>{{ user?.name || 'No especificado' }}</span>
+                  </div>
+              
+                  <div class="info-item">
+                    <span class="label">Email:</span>
+                    <span>{{ user?.email }}</span>
+                  </div>
+              
+                  <div class="info-item">
+                    <span class="label">Cuenta creada el:</span>
+                    <span>{{ user?.create | date: 'longDate' }}</span>
+                  </div>
+                </div>
+              
+                <!-- Botón para editar perfil -->
+                <button mat-button (click)="logout()" class="edit-btn">Cerrar sesión</button>
+            </mat-card>
+        </div>
     }@else {
         <app-no-register></app-no-register>
     }
 
-</div>
+

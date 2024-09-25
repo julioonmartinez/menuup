@@ -1,0 +1,62 @@
+<div class="dashboard-container">
+    <h1>Estadísticas de Encuestas</h1>
+
+   @if (surveys.length == 0) {
+    <div class="stat-card empty-survey-card">
+        <div class="empty-survey-content">
+            <img src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fdemo-app%2Ficons-web%2Ficons8-survey-64.png?alt=media&token=a7c78703-a374-4c04-af3b-2e8e28bf43c1" alt="Icono de encuesta" class="empty-survey-icon">
+            <h2>¡Aún no hay encuestas disponibles!</h2>
+            <p>Anima a tus clientes a compartir su opinión para mejorar la experiencia. Invítalos a completar la encuesta de satisfacción.</p>
+            <button mat-button class="invite-btn">Invitar a clientes</button>
+        </div>
+    </div>
+
+   }@else {
+     <!-- Total de encuestas completadas -->
+     <div class="stat-card">
+        <h2>Total de Encuestas Completadas</h2>
+        <p>{{ totalEncuestas }}</p>
+      </div>
+  
+    <!-- Tarjeta para el promedio del servicio -->
+    <div class="stat-card">
+      <h2>Promedio de Servicio</h2>
+      <p>{{ promedioServicio }} ★</p>
+    </div>
+  
+    <!-- Tarjeta para el promedio de calidad de la comida -->
+    <div class="stat-card">
+      <h2>Promedio de Calidad de Comida</h2>
+      <p>{{ promedioCalidadComida }} ★</p>
+    </div>
+  
+    <!-- Porcentaje de tiempo de espera adecuado -->
+    <div class="stat-card">
+      <h2>Tiempo de Espera Adecuado</h2>
+      <p>{{ porcentajeTiempoEspera }} % dijeron "Sí"</p>
+    </div>
+  
+    <!-- Porcentaje de recomendación del restaurante -->
+    <div class="stat-card">
+      <h2>Recomendación del Restaurante</h2>
+      <p>{{ porcentajeRecomendacion }} % recomendarían</p>
+    </div>
+  
+    <!-- Sugerencias de los clientes -->
+    <div class="suggestions-container">
+      <h2>Sugerencias de Clientes</h2>
+      <ul>
+        <li *ngFor="let sugerencia of sugerencias">{{ sugerencia }}</li>
+      </ul>
+    </div>
+  
+    
+  
+    <!-- Distribución por fecha -->
+    <div class="chart-container">
+      <h2>Distribución de Encuestas por Fecha</h2>
+      <canvas id="chart"></canvas>
+    </div>
+   }
+  </div>
+  

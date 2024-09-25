@@ -1,71 +1,75 @@
-.page-accounts{
-    min-height: 100vh;
-    background-image: url('https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/restaurant%2Fameyalli%2Fplatillos%2FDALL%C2%B7E%202024-08-31%2013.30.41%20-%20A%20delicious%20restaurant%20dish%20featuring%20Papas%20Gajo.%20The%20plate%20showcases%20golden%2C%20crispy%20potato%20wedges%2C%20seasoned%20perfectly%20and%20arranged%20elegantly%20on%20a%20rus.webp?alt=media&token=c312f7f3-932c-4fb9-a66c-01446adc9fa9');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+.container-page-user{
     display: grid;
-    place-content: center;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    min-height: 80vh;
 }
-.page-accounts::after   {
-    content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.2); /* Fondo semi-transparente para mejorar la legibilidad del texto */
-  z-index: 1; /* Coloca el overlay debajo del texto pero encima de la imagen */
-}
-.header-register{
-    padding-left: 16px;
-    padding-right: 16px;
-    background-color: white;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    margin-right: 16px;
-    margin-left: 16px;
-    z-index: 1000;
-    border-radius: 8px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.289);
-    .title{
-        font-size: 2rem;
-        text-align: center;
-        font-weight: 800;
-        letter-spacing: 0.1rem;
-        color: #2b2b2b;
 
-    }
-    .subtitle{
-        font-size: 1.4rem;
-        text-align: center;
-        font-weight: 800;
-        letter-spacing: 0.1rem;
-        color: #2b2b2b;
-
-    }
+.profile-container {
     
-}
-
-.container-option-register{
-    background-color: rgba(255, 255, 255, 0.242);
-    margin-top: 24px;
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+   
+    padding: 20px;
     text-align: center;
-    .title{
-        font-size: 1rem;
-        font-weight: 550;
-    }
-    .options-register{
-        display: flex;
-        justify-content: center;
-        column-gap: 12px;
-        button{
-            background-color: white;
-
-        }
-    }
-
-}
+  }
+  
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-header h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin: 5px 0;
+  }
+  
+  .profile-header p {
+    font-size: 1em;
+    color: OrangeRed;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .info-item .label {
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .edit-btn {
+    background-color: OrangeRed;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-btn:hover {
+    background-color: #cc3500;
+  }

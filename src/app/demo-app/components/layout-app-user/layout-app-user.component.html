@@ -1,0 +1,71 @@
+
+
+<mat-sidenav-container>
+    <mat-sidenav position="start" class="sidenav" #drawer [mode]="modeSideNav"   >
+        <mat-toolbar class="toolbar-side" >
+            <span class="samari-side" routerLink="/" >tapTaste</span>
+            <button (click)="drawer.toggle()" mat-icon-button >
+                <mat-icon >menu</mat-icon>
+            </button>
+        </mat-toolbar>
+       <div class="container-list-nav">
+                <!-- <button (click)="routerLinkShowDemoMenu()" class="btn" mat-button >Vista de menu</button> -->
+                @if(user){
+                    <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/" class="btn" mat-button >Menu Fav</button> -->
+                    <button (click)="drawer.toggle()" routerLink="/web/menus/app-samari/control/new-menu" class="btn btn-dark" mat-button >Crear nuevo menu</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/configuration', IdBusiness]" class="btn" mat-button >Estilos</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/surveys', IdBusiness ]" class="btn" mat-button >Ver encuestas</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/generate-code-qr', IdBusiness ]" class="btn" mat-button >Codigo Qr</button>
+                
+                }@else {
+                    <button (click)="drawer.toggle()" routerLink="/web/menus/app-samari/control/demo" class="btn" mat-button >Menu</button>
+                }
+
+                <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/generate-code-qr" class="btn" mat-button >Generar QR</button> -->
+                <!-- <button (click)="drawer.toggle()" class="btn" mat-button >Imprimir</button> -->
+                <!-- <button (click)="drawer.toggle()" class="btn" routerLink="/app-samari/configuration" mat-button >Configuración</button> -->
+                <button (click)="drawer.toggle()"  class="btn btn-register " mat-button >
+                    <mat-icon>menu</mat-icon>
+                    <div class="container-text">
+                        <span class="title-btn-menu-what" >Menu por Whatsapp</span>
+                        <!-- <span class="text-prueba" >Prueba gratis por 3 meses</span> -->
+                    </div>
+                </button>
+                <!-- @if (user) {
+                    <button (click)="logout()" class="btn cerrar"  mat-button >Cerrar sesión</button>
+
+                } -->
+
+       </div>
+            
+                <!-- <img matListItemAvatar src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fdemo-app%2Fimage_100dp_E8EAED_FILL0_wght400_GRAD0_opsz48%20(1).png?alt=media&token=4bf50080-9ea4-4dbc-9e21-ba1d0a50f4eb" alt="">
+            <mat-icon matListItemIcon >list</mat-icon>
+            <span matListItemTitle >Mis menus</span> -->
+           
+
+         
+      
+
+    </mat-sidenav>
+  
+    <mat-toolbar class="toolbar" >
+       
+            <button (click)="drawer.toggle()" mat-icon-button >
+                <mat-icon >menu</mat-icon>
+            </button>
+        
+        <span routerLink="/" >TapTaste</span>
+     <!-- @if (!user) {
+        <button class="btn-add-account" routerLink="/app-samari/register" mat-button >Crea tu cuenta</button>
+     
+    } -->
+    
+
+    </mat-toolbar>
+    <div class="container-router">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>
+
+
+

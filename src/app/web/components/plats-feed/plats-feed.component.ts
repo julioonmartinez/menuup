@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class PlatsFeedComponent {
 
   productList:Product[] = [];
+  urlNoImage:string = 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fdemo-app%2Ficons-web%2Ficons8-meal-100.png?alt=media&token=fa6c357b-e550-41cb-b9f6-90cca55f014f'
 
   constructor(
     private generalApp : GeneralAppService,

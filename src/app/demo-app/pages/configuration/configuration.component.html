@@ -1,0 +1,69 @@
+@if (spinner) {
+    <div class="container-spinner">
+        <mat-spinner mode="indeterminate" ></mat-spinner>
+    </div>
+}@else {
+    
+    <div class="container-page">
+        <div class="container-header">
+           <div class="container-name">
+            <span class="name" >Tu negocio</span>
+            <span class="company" >{{company?.nameCompany}}</span>
+           </div>
+            <a target="_blank" href="https://samari-app.web.app/menus/{{company?.id}}"   class="btn" mat-button >Ver menu</a>
+    
+        </div>
+        <div class="container-one-section-pages">
+            <div  class="container-list-selection-model-menu">
+                @for (item of listOptionMenusModel; track $index) {
+                    <button  [ngClass]="{'selectedMenu': item.id == selectedMenu}" (click)="onSelectedMenu(item.id)" mat-button class="container-model-menu">
+                        <mat-icon class="icon" >check</mat-icon> 
+                        <div class="container-btn">
+                       
+                        <p class="title" >  {{item.name | titlecase}} </p>
+                        <p class="subtitle" >{{item.permison == 'free' ? 'Gratis' : 'Premium' | titlecase }} </p>
+                       </div>
+                    </button>
+                }
+            </div>
+    
+            <div class="container-palet-colors">
+                <div class="contianer-color-principal">
+                    <label for="colorPrincipal">
+                        <span class="title-color" >Elige tu color principal</span>
+                        <span class="subtitle-color" >Color de fondo para tu menu</span>
+                    </label>
+                    <div class="container-input">
+                        <input class="input-color" [(ngModel)]="selectedColorPrincipal" (change)="onColorChangesPrincipal($event)" id="colorPrincipal" type="color">
+                        <input class="input-text" (change)="onColorChangesPrincipal($event)" type="text" id="colorPrincipal" [(ngModel)]="selectedColorPrincipal"  >
+                    </div>
+                </div>
+    
+                <div class="contianer-color-principal">
+                    <label for="colorSecondary">
+                        <span class="title-color" >Elige tu color secundario</span>
+                        <span class="subtitle-color" >Color para letras y algunos elementos </span>
+                    </label>
+                    <div class="container-input">
+                        <input class="input-color" [(ngModel)]="selectedColorSecondary" (change)="onColorChangesSencondary($event)" id="colorSecondary" type="color">
+                        <input class="input-text" type="text" id="" (change)="onColorChangesSencondary($event)" [(ngModel)]="selectedColorSecondary"  >
+                    </div>
+                </div>
+    
+                <div class="contianer-color-principal">
+                    <label for="colorTerciary">
+                        <span class="title-color" >Elige tu color terceario</span>
+                        <span class="subtitle-color" >Color para elementos destacados</span>
+                    </label>
+                    <div class="container-input">
+                        <input class="input-color" [(ngModel)]="selectedColorTerciary" (change)="onColorChangesTerceary($event)" id="colorTerciary" type="color">
+                        <input class="input-text" (change)="onColorChangesTerceary($event)" type="text" id="colorTerciary" [(ngModel)]="selectedColorTerciary"  >
+                    </div>
+                    </div>
+            </div>
+    
+    
+            
+        </div>
+    </div>
+}

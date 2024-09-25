@@ -19,61 +19,71 @@ import { PlatsFeedComponent } from './web/components/plats-feed/plats-feed.compo
 import { PromosFeedComponent } from './web/components/promos-feed/promos-feed.component';
 import { PlacesFeedComponent } from './web/components/places-feed/places-feed.component';
 import { MyMenusComponent } from './web/pages/my-menus/my-menus.component';
+import { LoginComponent } from './web/pages/login/login.component';
+import { RegisterComponent } from './web/pages/register/register.component';
 
 export const routes: Routes = [
-    {path:'menus/:idCompany',
+    {
+        path:'menus/:idCompany',
         component:LayoutRoutingComponent
-        },
-        {
-            path:'menu-demo-layout-01/:idCompany',
-            component:LayoutComponent01,
-            children: [
-                { path: 'home', component: HomeComponent01, data: { animation: 'isRight' } },
-                { path: 'home/sections/:id', component: SectionComponent, data: { animation: 'isLeft' } },
-                { path: 'detail-platillo/:id', component: DetailPlatilloComponent, data: { animation: 'detail' } },
-                { path: 'infogeneral', component: DialogInfoComponent, data: { animation: 'isLeft' } },
-                { path: '', redirectTo: 'home', pathMatch: 'full' }
-              ]
-        },
-        {
-            path:'menu-layout-02/:idCompany',
-            component:LayoutComponent02,
-            children:[
-                { path: 'home/:idCategory', component: HomeComponent02},
+    },
+    {
+        path:'menu-demo-layout-01/:idCompany',
+        component:LayoutComponent01,
+        children: [
+            { path: 'home', component: HomeComponent01, data: { animation: 'isRight' } },
+            { path: 'home/sections/:id', component: SectionComponent, data: { animation: 'isLeft' } },
+            { path: 'detail-platillo/:id', component: DetailPlatilloComponent, data: { animation: 'detail' } },
+            { path: 'infogeneral', component: DialogInfoComponent, data: { animation: 'isLeft' } },
+            { path: '', redirectTo: 'home', pathMatch: 'full' }
             ]
-        },
-        {
-            path:'',
-            component:LayoutWelcomeComponent,
-            children:[
-                {path:'', redirectTo:'/web/search', pathMatch:'full'}
-            ]
-        },
-        {
-            path:'web',
-            component:LayoutWebComponent,
-            children:[
-                {path:'search', component:SearchComponent},
-                {
-                    path:'feed', 
-                    component:RoutesFeedComponent,
-                    children:[
-                        {path:'menus', component:PagesHomeComponent},
-                        {path:'plats', component:PlatsFeedComponent},
-                        {path:'promos', component:PromosFeedComponent},
-                        {path:'places', component:PlacesFeedComponent},
-                        {path:'', redirectTo:'/web/feed/menus', pathMatch:'full'}
-                    ]
-                },
-                {path:'menus', component:MyMenusComponent},
-                {path:'account', component:AccountComponent},
-                {path: '', redirectTo: '/search' , pathMatch: 'full' }
-            ]
-        },
+    },
+    {
+        path:'menu-layout-02/:idCompany',
+        component:LayoutComponent02,
+        children:[
+            { path: 'home/:idCategory', component: HomeComponent02},
+        ]
+    },
+    
+    {
+        path:'',
+        component:LayoutWelcomeComponent,
+        children:[
+            {path:'', redirectTo:'/web/feed', pathMatch:'full'}
+        ]
+    },
+    {
+        path:'web',
+        component:LayoutWebComponent,
+        children:[
+            {path:'search', component:SearchComponent},
+            {
+                path:'feed', 
+                component:RoutesFeedComponent,
+                children:[
+                    {path:'menus', component:PagesHomeComponent},
+                    {path:'plats', component:PlatsFeedComponent},
+                    {path:'promos', component:PromosFeedComponent},
+                    {path:'places', component:PlacesFeedComponent},
+                    {path:'', redirectTo:'/web/feed/menus', pathMatch:'full'}
+                ]
+            },
+            {path:'account/login', component:LoginComponent},
+            {path:'account/register', component:RegisterComponent},
+            {path:'menus', component:MyMenusComponent},
+            {
+                path:'menus/app-samari',
+                loadChildren:()=> import('./demo-app/demo.routes')
+            },
+            {path:'account', component:AccountComponent},
+            {path: '', redirectTo: '/feed' , pathMatch: 'full' }
+        ]
+    },
     
         {
             path:'**',
-            redirectTo: '/web/search',
+            redirectTo: '/web/feed',
             pathMatch:'full'
         }  
     

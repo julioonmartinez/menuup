@@ -1,0 +1,38 @@
+
+@if (loading) {
+    <mat-progress-bar mode="query" ></mat-progress-bar>
+}
+
+<h2 mat-dialog-title >¿Seguro deseas borrar la categoria?</h2>
+<mat-dialog-content class="dialog-content" >
+    <span class="span-delete-product" >Si es asi, ¿Qué deseas hacer con los productos?</span>
+    <mat-radio-group class="radio-group"  [(ngModel)]=" electionDoProduct" >
+        <mat-radio-button value="deleteProducs" >Eliminar todos los productos</mat-radio-button>
+        <mat-radio-button value="mantenerProducts" >Mantener productos pero dejarlos sin categoria</mat-radio-button>
+       @if (listCategories.length > 0) {
+        <mat-radio-button value="otherCategory">Pasar todos los producto a otra categoria </mat-radio-button>
+       }
+    </mat-radio-group>
+    @if (electionDoProduct === 'otherCategory' ) {
+        <mat-form-field>
+            <mat-label>Elige una categoria</mat-label>
+            <mat-select [(ngModel)]="idCategoryChange" >
+                @for (item of listCategories; track $index) {
+                    <mat-option [value]="item.id" >{{item.name}}</mat-option>
+                }
+            </mat-select>
+    
+        </mat-form-field>
+    }
+
+    @if (textAdvertencia != '') {
+        <span>{{textAdvertencia}}</span>
+    }
+
+
+    
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="cancelDelete()" >Cancelar</button>
+    <button mat-button (click)="deleteCategory()" color="warn" >Eliminar Categoria</button>
+</mat-dialog-actions>

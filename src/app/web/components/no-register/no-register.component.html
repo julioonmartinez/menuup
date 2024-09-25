@@ -1,19 +1,46 @@
 <div class="page-accounts">
     <div class="header-register">
         <p class="title" >tapTaste</p>
-        <p class="subtitle" >Descrube tus platillos y lugares que te encantaran</p>
+        <p class="subtitle" >Crea un menu atractivo</p>
     </div>
 
-    <div class="container-option-register">
+    <mat-card appearance="outlined" class="container-option-register">
         <p class="title" >Registrate para guardar tus platillos y lugares favoritos</p>
-        <div class="options-register">
-            <button class="btn-google" mat-icon-button  >
-                <img src="https://img.icons8.com/color/48/google-logo.png" alt="">
+        <mat-card-content class="card-content" >
+            <form [formGroup]="form" class="form">
+                <div class="form-field">
+                  <label for="email">Email:</label>
+                  <input formControlName="email" type="email" id="email" placeholder="Ingresa tu email" />
+                </div>
+          
+                <div class="form-field">
+                  <label for="password">Contraseña:</label>
+                  <input formControlName="password" type="password" id="password" placeholder="Ingresa tu contraseña" />
+                </div>
+          
+                <!-- <button (click)="onRegister()" class="btn-add-account">Crear cuenta</button> -->
+              </form>
+        </mat-card-content>
+        <mat-card-actions class="options-register">
+
+            <button (click)="onRegister()" class="btn-email" mat-fab extended  >
+                <mat-icon>mail</mat-icon>
+                Registrate con tu email
             </button>
-            <button mat-icon-button class="btn-email" >
-                <img src="https://img.icons8.com/ios-filled/50/new-post.png" alt="">
+            <button (click)="onLoginWithGoogle()" class="btn-google" mat-fab extended  >
+                <mat-icon><img width="100%" src="https://img.icons8.com/color/48/google-logo.png" alt=""></mat-icon>
+                Inicia con google
             </button>
-        </div>
+
+            
+            
+        </mat-card-actions>
+    </mat-card>
+
+    <div class="container-account-login">
+        <p class="text" >¿Ya tienes cuenta?</p>
+        <button mat-button class="btn" routerLink="/web/account/login"> Inicia sesión</button>
     </div>
+   
 
 </div>

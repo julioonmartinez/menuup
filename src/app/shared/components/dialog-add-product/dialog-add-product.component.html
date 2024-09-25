@@ -1,0 +1,83 @@
+
+@if (isSaving) {
+  <mat-progress-bar class="fixed-progress-bar"  mode="indeterminate"></mat-progress-bar>
+}
+@if (isSavingForms) {
+  <mat-progress-bar class="fixed-progress-bar"  mode="indeterminate"></mat-progress-bar>
+}
+<mat-progress-bar class="fixed-progress-bar" *ngIf="isSaving" mode="indeterminate"></mat-progress-bar>
+<div class="container-gral">
+  <form (ngSubmit)="addProduct()" class="bottom-sheet-container" [formGroup]="myForm" autocomplete="off">
+    <span class="titleform">{{titleForm}}</span>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre del producto</mat-label>
+      <input formControlName="name" type="text" matInput>
+      <mat-hint>Ejemplo: Papas a la francesa, Dedos de queso, etc.</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+      <mat-label>Categoria</mat-label>
+      
+          <mat-select formControlName="idSection">
+            @for (category of listCategories; track $index) {
+              <mat-option [value]="category.id">{{category.name}}</mat-option>
+            }
+          </mat-select>
+        
+    </mat-form-field>
+  
+   
+    <mat-form-field appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input formControlName="price" type="number" matInput>
+      <span matTextPrefix>$&nbsp;</span>
+    </mat-form-field>
+
+    <div class="container-add-image">
+      
+      
+      @if (imagePreviewUrl) {
+        <input type="file" (change)="changeImage($event)" accept="image/*" hidden #fileInputChange>
+        <button [disabled]="upload"  type="button" class="button-image-change" mat-button (click)="fileInputChange.click()">Cambiar imagen(opcional)<mat-icon  class="icon">image</mat-icon></button>
+        <div  class="container-preview-image" >
+          <img [src]="imagePreviewUrl" alt="Vista previa de la imagen" class="image-product">
+        </div>
+      }@else {
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" hidden #fileInput>
+        <button [disabled]="upload"  type="button" class="button-image-unpload" mat-button (click)="fileInput.click()">Subir Imagen(opcional)<mat-icon class="icon" >image</mat-icon></button>
+        <div class="container-hint">
+          <mat-hint  class="hint">Te recomendamos una foto horizontal. </mat-hint>
+          <mat-hint class="hint" >Max: 5mb, formato: JPG, PNG y WEBp</mat-hint>
+        </div>
+      }
+
+    </div>
+    <mat-slide-toggle formControlName="status">Activo</mat-slide-toggle>
+
+  
+   
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Subtitulo (opcional)</mat-label>
+      <input formControlName="subtitle" type="text" matInput>
+      <mat-hint>Ejemplo: 3 Piezas, sabores: BBQ, etc.</mat-hint>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Descripción (Opcional)</mat-label>
+      <input formControlName="description" type="text" matInput>
+      <mat-hint>Deliciosas papas gajo, sazonadas y perfectas para compartir.</mat-hint>
+    </mat-form-field>
+   
+    <div *ngIf="saveMessage" class="save-message">{{ saveMessage }}</div>
+  </form>
+  <div class="buttons-actions">
+    <button type="button" class="cancel" mat-fab extended (click)="close()"><mat-icon>cancel</mat-icon> Cancelar</button>
+    <button class="add" (click)="addProduct()" mat-fab extended type="submit" [disabled]="isSaving"><mat-icon>add_circle</mat-icon>{{mood == 'edit' ? 'Guardar cambios' : 'Agregar producto' }}</button>
+  </div>
+</div>
+  
+
+  

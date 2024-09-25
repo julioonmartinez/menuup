@@ -1,0 +1,62 @@
+
+@if (loading) {
+    <div class="container-spiner">
+        <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+    </div>
+    
+
+}@else {
+    <div class="container-page">
+        <div class="header">
+            <p class="title" >Mis menús</p>
+            <button routerLink="/app-samari/control/new-menu" mat-button class="btn-add-menu" >
+                <!-- Agregar un menu -->
+                <mat-icon class="icon" >add_business</mat-icon>
+            </button>
+        </div>
+        <div class="list-options">
+        
+            @if (listMenu.length == 0) {
+                <div class="container-no-list">
+                    <mat-icon class="icon" >error</mat-icon>
+                    <p class="text" >Aun no creas ningún Menu crea uno ahora</p>
+                    <button mat-button class="btn-add" >
+                        <mat-icon>add_box</mat-icon>
+                        Crear menu</button>
+                </div>
+               }
+                
+                <mat-list class="list" >
+                    @for (item of listMenu; track $index) {
+                        <mat-card appearance="outlined" class="card" >
+                            <mat-card-header class="header-card" >
+                                @if (item.urlImgRestaurante) {
+                                    <img mat-card-avatar [src]="item.urlImgRestaurante" alt="">
+                                }@else {
+                                   
+                                    <mat-icon class="icon-avatar" >restaurant</mat-icon>
+                                }
+                                <p class="title" >{{item.nameCompany}}</p>
+                                
+                            </mat-card-header>
+                           <div class="container-card">
+                            <mat-divider class="divider"  ></mat-divider>
+                           </div>
+                            
+                            <mat-card-actions class="actions" >
+                                
+                                <button [routerLink]="['/app-samari/generate-code-qr', item.id]" class="btn" mat-button >QR</button>
+                                <!-- <button [routerLink]="['/menu', item.id]" class="btn" mat-button >Menú</button> -->
+                                <button [routerLink]="['/app-samari/surveys', item.id]" class="btn" mat-button >Encuestas</button>
+                                <button [routerLink]="['/app-samari/configuration', item.id]" class="btn" mat-button >Estilo</button>
+                                <button [routerLink]="['/app-samari/control', item.id]" class="btn btn-edit" mat-button >Editar</button>
+                            </mat-card-actions>
+        
+                        </mat-card>
+                    }
+                </mat-list>
+          
+        </div>
+    </div>
+}
+

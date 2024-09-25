@@ -57,9 +57,7 @@ export class MenuService {
     )
   }
 
-  setItemBusiness(busi:BusinessInformation){
 
-  }
   getCategoryDB(idBu:string, idCategory:string){
     const docRef = doc(this.firestore, `${this.nameColletionBussinesDemo}/${idBu}/${this.nameColletionListCategoriesDemo}/${idCategory}`)
     return from(docData(docRef, {idField: 'id'}))

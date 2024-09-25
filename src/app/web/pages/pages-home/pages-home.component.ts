@@ -9,11 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Product } from '../../../shared/interfaces/product';
+import { CardMenusPublicComponent } from '../../components/card-menu-public/card-menu-public.component';
 
 @Component({
   selector: 'app-pages-home',
   standalone: true,
-  imports:  [RouterLinkActive, RouterLink, MatButtonModule, MatProgressSpinnerModule , CommonModule, MatIconModule, MatCardModule],
+  imports:  [CardMenusPublicComponent, RouterLinkActive, RouterLink, MatButtonModule, MatProgressSpinnerModule , CommonModule, MatIconModule, MatCardModule],
   templateUrl: './pages-home.component.html',
   styleUrls: ['./pages-home.component.scss'],
 })

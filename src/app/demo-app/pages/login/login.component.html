@@ -1,0 +1,50 @@
+<div class="container-page">
+    <div class="container-form">
+    <p class="title-form" >Inicia sesión</p>
+    <form [formGroup]="form" class="form">
+       <mat-form-field  appearance="outline" >
+        <mat-label>Email:</mat-label>
+        <input formControlName="email" type="email" matInput >
+       </mat-form-field>
+
+       <mat-form-field appearance="outline" >
+        <mat-label>Contraseña</mat-label>
+        <input  formControlName="password" type="password" matInput >
+       </mat-form-field>
+
+       <!-- <mat-form-field>
+        <mat-label>Telefono</mat-label>
+        <input type="text" matInput >
+       </mat-form-field> -->
+
+       <button (click)="onRegister()" class="btn-add-account" mat-button >Iniciar sesion</button>
+    </form>
+
+    <div class="container-other-login">
+        <p class="title-other-logins" >Otras opciones</p>
+        <div (click)="loginWithGoogle()" mat-button class="btn-other-login google" >
+            <div class="container-icon-btn">
+                <img class="image-icon" src="https://img.icons8.com/color/48/google-logo.png" alt="">
+
+            </div>
+            <span>Inicia con Google</span>
+        </div>
+
+        <!-- <div mat-button class="btn-other-login google" >
+            <div class="container-icon-btn">
+                <img class="image-icon" src="https://img.icons8.com/color/48/microsoft.png" alt="">
+
+            </div>
+            <span>Inicia con Microsoft</span>
+        </div> -->
+
+        
+    </div>
+    </div>
+
+    <div class="container-account-login">
+        <p class="text" >¿Aun no tienes cuenta?</p>
+        <button mat-button class="btn" routerLink="/app-samari/register"> Registrate</button>
+    </div>
+
+</div>

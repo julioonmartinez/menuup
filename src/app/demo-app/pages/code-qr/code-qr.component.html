@@ -1,0 +1,67 @@
+@if (!isLoading) {
+ 
+        <div  class="container-page-login">
+
+            <div id="qr-layout" class="container-print">
+                <div class="contentent-title">
+                    <span class="title" >TapTaste</span>
+                </div>
+                <div  class="container-code-qr-login">
+                    <img  class="img-login" [src]="urlCodigoQR" alt="">
+                </div>
+                <div class="container-link">
+                    <button [cdkCopyToClipboard]="url" (click)="clickClip()" matTooltip="Copiar" class="btn" mat-icon-button >
+                        <mat-icon>content_copy</mat-icon>
+                    </button>
+                    <span   class="link" >{{url}} </span>
+                </div>
+                <div class="container-info-menu">
+                    <div class="name-menu">
+                        <p class="name">{{nameMenu}}</p>
+                    </div>
+                </div>
+                <div class="container-samari">
+                    <span>Crea tu menu con taptaste.com, es gratis.</span>
+                </div>
+
+            </div>
+          
+               
+          
+              
+          
+            <div class="container-generate-qr">
+                
+               
+                    <button (click)="generatePDF()" class="btn" mat-button >
+                        <mat-icon>qr_code_2</mat-icon>
+                        Descargar QR
+                    </button>
+
+                    @if (user) {
+                        <div class="container-no-account">
+                            <mat-icon class="icon" >info</mat-icon>
+                            <p class="text" >Vuelvete premium para crear menus ilimitados</p>
+                            <button class="btn" mat-button > 
+                                <mat-icon>workspace_premium</mat-icon>
+                                Ser premium</button>
+                        </div>
+                    }@else {
+                        <div class="container-no-account">
+                            <mat-icon class="icon" >info</mat-icon>
+                            <p class="text" >Crea una cuenta y no pierdas tu menu</p>
+                            <button class="btn" mat-button >Crear cuenta</button>
+                        </div>
+                    }
+        
+                    
+            </div>
+            
+        </div>
+
+    
+}@else {
+    <div class="container-spinner">
+        <mat-spinner mode="indeterminate" ></mat-spinner>
+    </div>
+}

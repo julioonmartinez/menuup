@@ -1,0 +1,276 @@
+.container-card{
+    display: grid;
+    padding: 12px 12px;
+    // justify-content: center;
+}
+
+.container-spiner{
+    min-height: 80vh;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+.container-page{
+    display: grid;
+    
+    .header{
+        padding-top: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        .title{
+            font-size: 1.6rem;
+            color: #2b2b2b;
+            font-weight: 800;
+            margin: 0;
+        }
+        .btn-add-menu{
+            justify-self: flex-end;
+            background-color: #2b2b2b;
+            height: fit-content;
+            padding: 8px 16px;
+            border-radius: 8px;
+           
+
+            .icon{
+                color: white;
+                font-size: 2rem;
+                object-fit: contain;
+                    width: fit-content;
+                    height: fit-content;
+                    margin: 0;
+
+
+            }
+        }
+
+    }
+}
+
+.list-options{
+    display: grid;
+    margin-top: 24px;
+
+    .container-no-list{
+        display: grid;
+        align-items: center;
+        justify-content: center;
+        max-width: 400px;
+        justify-self: center;
+        margin-top: 60px;
+        .icon{
+            color: #2b2b2b;
+            font-size: 2rem;
+            width: fit-content;
+            height: fit-content;
+            justify-self: center;
+            margin-bottom: 24px;
+        }
+        .text{
+            margin-bottom: 16px;
+        }
+        .btn-add{
+            color: white;
+            background-color: #2b2b2b;
+        }
+        
+    }
+    
+    .list{
+        display: flex;
+        gap: 12px 16px;
+        flex-wrap: wrap;
+        justify-content: center;
+        .card{
+            box-shadow: 2px 2px 6px  #e7e7e7;
+            flex: 1;
+            
+            box-sizing: border-box;
+
+            .header-card{
+                display: grid;
+                grid-template-columns: auto 3fr;
+                align-items: center;
+                column-gap: 20px;
+
+                .icon-avatar{
+                    grid-column:  1 / 2;
+                    color: white;
+                    padding: 8px;
+                    border-radius: 8px;
+                    background-color: #2b2b2b;
+                    font-size: 2rem;
+                    object-fit: contain;
+                    width: fit-content;
+                    height: fit-content;
+                    grid-row:  1 / 2;
+                    margin-bottom: 16px;
+                }
+                .title{
+                    font-size: 1.2rem;
+                    color: #2b2b2b;
+                    font-weight: 800;
+                    margin: 0;
+                    grid-column: 2 / 3;
+                    grid-row:  1 / 2;
+                }
+            }
+            .divider{
+                border-top-color: #e7e7e7;
+                align-self: flex-end;
+            }
+            .actions{
+                display: flex;
+                column-gap: 8px;
+                justify-content: space-between;
+                padding-bottom: 12px;
+                .btn{
+                    color: #2b2b2b;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                }
+                .btn-edit{
+                    background-color: #2b2b2b;
+                    color: white;
+                    
+                }
+            }
+
+        }
+
+    }
+}
+
+@media (min-width:420px) {
+
+
+    .list-options{
+      
+        
+        .list{
+         justify-content: center;
+            .card{
+                max-width: 360px;
+               
+                .header-card{
+                    
+                  
+                    .icon-avatar{
+                       
+                    }
+                    .title{
+                        
+                    }
+                }
+                .divider{
+                 
+                }
+                .actions{
+                    
+                    .btn{
+                        
+                    }
+                    .btn-edit{
+                       
+                        
+                    }
+                }
+    
+            }
+    
+        }
+    }
+    
+}
+
+@media (min-width:720px) {
+
+
+    .list-options{
+      
+        
+        .list{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+            .card{
+                max-width: 360px;
+                flex: 1;
+               
+                .header-card{
+                    
+                  
+                    .icon-avatar{
+                       
+                    }
+                    .title{
+                        
+                    }
+                }
+                .divider{
+                 
+                }
+                .actions{
+                    
+                    .btn{
+                        
+                    }
+                    .btn-edit{
+                       
+                        
+                    }
+                }
+    
+            }
+    
+        }
+    }
+    
+}
+
+@media (min-width:1100px) {
+
+
+    .list-options{
+      
+        
+        .list{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        
+            .card{
+                max-width: 360px;
+               
+               
+                .header-card{
+                    
+                  
+                    .icon-avatar{
+                       
+                    }
+                    .title{
+                        
+                    }
+                }
+                .divider{
+                 
+                }
+                .actions{
+                    
+                    .btn{
+                        
+                    }
+                    .btn-edit{
+                       
+                        
+                    }
+                }
+    
+            }
+    
+        }
+    }
+    
+}

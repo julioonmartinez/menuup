@@ -1,0 +1,66 @@
+<mat-card class="card-business" appearance="outlined">
+    <mat-card-header class="header-card-menu" >
+
+      @if (menu()?.urlImgRestaurante) {
+        <img [src]="menu()?.urlImgRestaurante ? menu()?.urlImgRestaurante : urlNoImage" mat-card-avatar alt="">
+      }@else {
+        <mat-icon class="icon-avatar" >restaurant</mat-icon>
+      }
+      
+      <mat-card-title class="title" >{{menu()?.nameCompany}}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="content-card-general">
+      <div class="container-categories-list">
+        
+        
+        @for (category of  menu()?.categories; track $index) {
+          <button (click)="selectedProduct(category.id!)" [ngClass]="{'active': category.id == menu()?.categorySelected}" class="btn-category"  >
+            <p>{{category.name}}</p>
+          </button>
+         
+
+        }
+      </div>
+      @if (menu()?.productsSelected?.length === 0) {
+      <div class="container-no-products">
+        <mat-icon class="icon" >error</mat-icon>
+        <p class="text" >Ups! parece no hay productos</p>
+      </div>
+      }@else {
+        <div class="container-slide">
+          @for (product of menu()?.productsSelected; track $index) {
+            <div class="container-image">
+              <img class="product-image" [src]="product.urlImage ? product.urlImage : urlNoImage " alt="">
+              <p class="name" >{{product.name}}</p>
+            </div>
+          }
+        </div>
+      }
+      
+    </mat-card-content>
+
+    <mat-card-actions class="actions-card">
+      <button class="btn-show" mat-button (click)="routerLinkMenu(menu()?.id!, menu()?.idMenu!)">Ver Menú</button>
+      <div class="container-icon-btns">
+        <!-- <button mat-icon-button>
+          <mat-icon>share</mat-icon>
+        </button> -->
+
+       
+        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/generate-code-qr', menu()?.id]" mat-icon-button>
+          <mat-icon  >qr_code</mat-icon>
+        </button>
+        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/surveys', menu()?.id]" mat-icon-button>
+          <mat-icon  >sentiment_satisfied</mat-icon>
+        </button>
+        
+        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/configuration', menu()?.id]" mat-icon-button>
+          <mat-icon  >palette</mat-icon>
+        </button>
+        <button (click)="routerLinkEditMenu(menu()?.id!)"  mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </div>
+    </mat-card-actions>
+  </mat-card>

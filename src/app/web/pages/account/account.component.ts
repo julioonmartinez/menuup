@@ -2,16 +2,50 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NoRegisterComponent } from '../../components/no-register/no-register.component';
+import { AuthService } from '../../../shared/services/auth.service';
+import { User } from 'firebase/auth';
+import { UserTap } from '../../../shared/interfaces/user-tap';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-account',
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, NoRegisterComponent],
+  imports: [MatCardModule, CommonModule, MatButtonModule, MatIconModule, NoRegisterComponent],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
 export class AccountComponent {
 
-  currenUser: boolean | null = null;
+  currenUser: User | null = null;
+
+  user: UserTap | null = null;
+
+
+  constructor(
+    private authService : AuthService,
+  ){
+
+    this.getCurretUser();
+
+  }
+
+  getCurretUser(){
+    this.authService.currentUser$.subscribe(userFirebase=>{
+      if(userFirebase){
+        this.currenUser = userFirebase
+        
+
+      }
+     
+      
+    })
+  }
+
+  logout(){
+    this.authService.logout()
+  }
+
+
 
 }
