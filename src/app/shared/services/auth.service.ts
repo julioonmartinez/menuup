@@ -44,6 +44,7 @@ export class AuthService {
           switchMap((docSnapshot) => {
             if (docSnapshot.exists()) {
               console.log('Usuario ya registrado, no se guarda nuevamente.');
+              console.log(user)
               return of(user); // Ya registrado, solo regresamos el usuario
             } else {
               // Guardar el nuevo usuario en Firestore
@@ -81,7 +82,7 @@ export class AuthService {
     return from(createUserWithEmailAndPassword(this.auth, email, password)).pipe(
       switchMap((result) => {
         const user = result.user;
-        const userDocRef = doc(this.firebase, `users/${user.uid}`);
+        const userDocRef = doc(this.firebase, `${this.nameColletionUsersSamari}/${user.uid}`);
 
         // Verificar si el usuario ya está en Firestore
         return from(getDoc(userDocRef)).pipe(

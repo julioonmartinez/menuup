@@ -48,14 +48,14 @@
         </button> -->
 
        
-        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/generate-code-qr', menu()?.id]" mat-icon-button>
+        <button (click)="setIdBu()" [routerLink]="['/app-samari/generate-code-qr', menu()?.id]" mat-icon-button>
           <mat-icon  >qr_code</mat-icon>
         </button>
-        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/surveys', menu()?.id]" mat-icon-button>
+        <button (click)="setIdBu()" [routerLink]="['/app-samari/surveys', menu()?.id]" mat-icon-button>
           <mat-icon  >sentiment_satisfied</mat-icon>
         </button>
         
-        <button (click)="setIdBu()" [routerLink]="['/web/menus/app-samari/configuration', menu()?.id]" mat-icon-button>
+        <button (click)="setIdBu()" [routerLink]="['/app-samari/configuration', menu()?.id]" mat-icon-button>
           <mat-icon  >palette</mat-icon>
         </button>
         <button (click)="routerLinkEditMenu(menu()?.id!)"  mat-icon-button>

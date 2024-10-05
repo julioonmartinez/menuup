@@ -1,0 +1,91 @@
+@if (menu) {
+
+   <div class="content-page-layout-04">
+    @if (menu.nivel === 'basic' || menu.nivel == undefined) {
+        <app-button-create-menu></app-button-create-menu>
+    }
+   <div class="content-toolbar">
+    <div class="toolbar">
+        <!-- <div [ngStyle]="{'background-image': 'url(' +  menu.urlImgRestaurante + ')' }" class="container-image-header">
+            
+        </div> -->
+        <div class="container-header-menu-name">
+            <div class="container-logo">
+                <img class="image-logo" [src]="menu.urlImgRestaurante ? menu.urlImgRestaurante : 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Ficons%2Ficons8-restaurant-menu-64.png?alt=media&token=0d5198bc-aeeb-4028-b410-c3a3a6214d04'" alt="">
+            </div>
+            <div class="container-name">
+                <p class="menu-name" >{{menu.nameCompany ? menu.nameCompany : ''}}</p>
+                <div class="contianer-icons-header">
+                    <button  class="icon-btn" mat-icon-button >
+                        <mat-icon class="icon" >info</mat-icon>
+                    </button>
+                    <button  class="icon-btn" mat-icon-button >
+                        <mat-icon  class="icon" >share</mat-icon>
+                    </button>
+                    <button class="btn-survey" mat-button  > <mat-icon class="icon" >comment</mat-icon> ¡Danos tu Opinión!</button>
+    
+                    
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-promos">
+        @for (promo of promos; track $index) {
+            <div class="content-promo">
+                <div class="content-text-promo">
+                    <p class="title-promo" >
+                      {{promo.title}}  
+                    </p>
+                    <p class="promo-description" >
+                        {{promo.subtitle }}
+                    </p>
+                   
+                </div>
+                <div [ngStyle]="{'background-image': 'url(' + promo.urlImage + ')' }" class="content-image">
+                    <button mat-icon-button class="button-conditions" >
+                        <mat-icon>info</mat-icon>
+                    </button>
+                </div>
+            </div>
+            
+        }
+    </div>
+
+    <div class="container-list-categories">
+        @for (category of catgories; track $index) {
+            <div (click)="scrollToCategory(category.id!)" [ngClass]="{'active': categorySelected == category.id}" class="content-category">
+                <p class="name" >{{category.name}}</p>
+            </div>
+        }
+    </div>
+   </div>
+    <div class="container-list-products">
+        @for (category of catgories; track $index) {
+            <div [id]="'category-' + category.id" class="content-catgory-of-products">
+                <p class="title-category" >{{category.name}}</p>
+                <div class="content-list-products">
+                    @for (product of getProductByCategory(category.id!); track $index) {
+                        <div class="content-product">
+                            <div  [id]="'container-product-' + category.id" class="content-text-product">
+                                <p class="name-product" >{{product.name}}</p>
+                                <p class="subtitle" >{{product.subtitle}}</p>
+                                <p class="price" >{{product.price | currency }} </p>
+                            </div>
+                            <div class="content-image">
+                                <img [src]="product.urlImage ? product.urlImage : 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fhome%2FGemini_Generated_Image_1i74661i74661i74%20(1)%20(1).jpeg?alt=media&token=7d71bd11-0d4d-4c50-9fa0-4c7ddee04a61'" alt="">
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    
+   </div>
+}@else {
+   <div class="container-progress">
+    <mat-progress-spinner mode="indeterminate" ></mat-progress-spinner>
+   </div>
+}

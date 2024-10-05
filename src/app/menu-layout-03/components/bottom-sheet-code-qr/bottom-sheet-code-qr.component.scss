@@ -1,0 +1,41 @@
+.container-botton-sheet{
+    min-height: 300px;
+    display: grid;
+    
+    .spinner{
+        align-self: center;
+        justify-self: center;
+    }
+    .container-title{
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 800;
+        letter-spacing: 0.1rem;
+        color: #4A4A4A;
+        font-weight: 800;
+        margin-top: 16px;
+
+    }
+    .container-qr{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 16px;
+        .image-qr{
+            min-width: 320px;
+            object-fit: contain;
+            border-radius: 12px;
+
+        }
+    }
+    .container-info{
+        color: #4A4A4A;
+        margin-top: 24px;
+        padding-bottom: 32px;
+        .container{
+            .title{
+                font-weight: 550;
+            }
+        }
+    }
+
+}

@@ -86,14 +86,17 @@ export class CardMenusComponent implements OnInit {
   
 
   routerLinkMenu(idBusiness:string, idMenu:string){
+    console.log(`${idMenu}/${idBusiness}`)
+    console.log('menu')
     if(idMenu == undefined){
      this.router.navigateByUrl(`menu-demo-layout-01/${idBusiness}`)
     }else{
+      
      this.router.navigateByUrl(`${idMenu}/${idBusiness}`)
     }
 
 
-    // this.router.navigateByUrl(`menus/${idBusiness}`)
+    this.router.navigateByUrl(`menus/${idBusiness}`)
     
      
    }
@@ -111,7 +114,7 @@ export class CardMenusComponent implements OnInit {
 
    routerLinkEditMenu(id: string){
     this.setIdBu()
-    this.router.navigateByUrl(`/web/menus/app-samari/control/${id}`)
+    this.router.navigateByUrl(`/app-samari/control/${id}`)
 
    }
 

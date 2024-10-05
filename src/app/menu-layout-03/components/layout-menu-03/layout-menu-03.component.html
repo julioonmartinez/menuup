@@ -1,0 +1,73 @@
+<div class="container-page-layout-03">
+    @if (menu) {
+     
+            @if (menu.nivel === 'basic' || menu.nivel == undefined) {
+                <app-button-create-menu></app-button-create-menu>
+            }
+       
+        <div class="container-toolbar">
+            <div class="toolbar">
+                <!-- <div [ngStyle]="{'background-image': 'url(' +  menu.urlImgRestaurante + ')' }" class="container-image-header">
+                    
+                </div> -->
+                <div class="container-header-menu-name">
+                    <div class="container-logo">
+                        <img class="image-logo" [src]="menu.urlImgRestaurante ? menu.urlImgRestaurante : 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Ficons%2Ficons8-restaurant-menu-64.png?alt=media&token=0d5198bc-aeeb-4028-b410-c3a3a6214d04'" alt="">
+                    </div>
+                    <div class="container-name">
+                        <p class="menu-name" >{{menu.nameCompany ? menu.nameCompany : ''}}</p>
+                        <div class="contianer-icons-header">
+                            <button (click)="openBottonSheetCodeQR()" class="icon-btn" mat-icon-button >
+                                <mat-icon class="icon" >info</mat-icon>
+                            </button>
+                            <button  class="icon-btn" mat-icon-button >
+                                <mat-icon  class="icon" >share</mat-icon>
+                            </button>
+                            <button class="btn-survey" mat-button (click)="openDialogSurvey()" > <mat-icon class="icon" >comment</mat-icon> ¡Danos tu Opinión!</button>
+            
+                            
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-list-cagories">
+                @for (category of categories; track $index) {
+                    <button (click)="scrollToCategory(category.id!)" [ngClass]="{'active': categorySelected === category?.id}" class="btn-category" [id]="'category-{{ category.id }}'" >
+                        {{category?.name}}
+                    </button>
+                }
+            </div>
+        </div>
+        <div class="container-list-products-by-categories">
+            @if (categories.length === 0) {
+                <mat-card appearance="outlined" class="container-no-products">
+                    <mat-icon class="icon" >
+                        info
+                    </mat-icon>
+                    <p class="text" >Aun no se agregan productos a este menú</p>
+                </mat-card>
+
+            }@else {
+                @for (category of categories; track $index) {
+                    <div [id]="'category-' + category.id" class="container-category">
+                        <p class="title-category" >{{category.name}}</p>
+                        <div class="container-list-propducts">
+                            @for (product of filterProducs(category.id!) ; track $index) {
+                                <div [id]="'container-product-' + category.id" class="container-product">
+                                    <p class="name-product" >{{product.name}}</p>
+                                    <p class="price" >{{product.price | currency }}</p>
+                                </div>
+                            }
+                        </div>
+            
+                    </div>
+                }
+            }
+        </div>
+    }@else {
+        <mat-progress-spinner class="spinner" ></mat-progress-spinner>
+    }
+    
+</div>
+

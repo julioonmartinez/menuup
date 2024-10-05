@@ -1,26 +1,119 @@
 
-<div class="container-pages-layout-web">
-  <div class="container-router">
-    <router-outlet></router-outlet>
-</div>
-<nav class="footer-menu">
-    <ul>
-      <!-- <button mat-button routerLink="/web/search" routerLinkActive="active" >
-        <mat-icon class="material-icons">search</mat-icon>
-        <span>Buscar</span>
-      </button> -->
-      <button mat-button routerLink="/web/feed" routerLinkActive="active" >
-        <mat-icon class="material-icons">feed</mat-icon>
-        <span>Feed</span>
+<mat-drawer-container>
+  <mat-drawer class="drawerr" #drawer mode="over" position="end" >
+    <mat-toolbar class="toolbar-drawer" >
+      <button class="btn" (click)="drawer.toggle()" mat-icon-button >
+          <mat-icon>menu</mat-icon>
       </button>
-      <button mat-button routerLink="/web/menus" routerLinkActive="active" >
-        <mat-icon class="material-icons">menu_book</mat-icon>
-        <span>Menus</span>
+  </mat-toolbar>
+  <div class="container-list-option">
+       <mat-list class="container-list-option">
+          @if (!currentUser) {
+              <mat-list routerLink="/user"  class="btn btn-dark mat-elevation-z3" >
+                  <span class="title" matListItemTitle >Probar Gratis</span>
+              </mat-list>
+          }
+      @if (currentUser) {
+          <mat-list routerLink="/user"  class="btn btn-white mat-elevation-z3" >
+              <mat-icon matListItemIcon >account_circle</mat-icon>
+              <span matListItemTitle >Ir a mi cuenta</span>
+          </mat-list>
+          <mat-list routerLink="/"  class="btn btn-dark mat-elevation-z3" >
+              <mat-icon class="icon" matListItemIcon >workspace_premium</mat-icon>
+              <span class="title" matListItemTitle >Hazte Premium</span>
+          </mat-list>
+      }@else {
+          <mat-list (click)="drawer.toggle()" routerLink="/web/account/login"  class="btn btn-white mat-elevation-z3 " >
+              <mat-icon matListItemIcon >account_circle</mat-icon>
+              <span matListItemTitle >Iniciar sesión</span>
+          </mat-list>
+
+          <mat-list (click)="drawer.toggle()" routerLink="/web/account/register"  class="btn btn-white mat-elevation-z3 " >
+              <mat-icon matListItemIcon >how_to_reg</mat-icon>
+              <span matListItemTitle>Registrate</span>
+          </mat-list>
+          
+      }
+  </mat-list>   
+  </div>
+  </mat-drawer>
+
+  <mat-toolbar class="toolbar" >
+    <p routerLink="/" class="name-page" >MenuUp.</p>
+    <div class="content-btn-big-screen">
+      <button class="btn-login btn-big" mat-button >
+        Iniciar sesión
       </button>
-      <button mat-button routerLink="/web/account" routerLinkActive="active" >
-        <mat-icon class="material-icons">account_circle</mat-icon>
-        <span>Mi perfil</span>
+      <button class="btn-register btn-big" mat-button >
+        Registrarse
       </button>
-    </ul>
-  </nav>
-</div>
+    </div>
+    <div class="container-icon-menu">
+      <button class="btn-menu" (click)="drawer.toggle()" mat-icon-button  >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+  </mat-toolbar>
+  <div class="container-pages-layout-web">
+    <div class="container-router">
+      <router-outlet></router-outlet>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Acerca de Nosotros</h3>
+          <p>MenuUp es una plataforma social que conecta a restaurantes y comensales a través de menús interactivos, recomendaciones y reseñas visuales, creando una experiencia gastronómica única y personalizada.</p>
+          <ul class="social-media">
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Enlaces Útiles</h3>
+          <ul>
+            <li><a (click)="scrollToTop()" mat-button routerLink="/" >Inicio</a></li>
+            <li><a (click)="scrollToTop()" mat-button routerLink="/web/politica-privacidad">Política de Privacidad</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h3>Contacnos</h3>
+          <a  mat-button href="https://wa.me/523511342239?text=Hola,%20quiero%20más%20información" target="_blank" ><mat-icon>
+            <img style="width: 100%; height: 100%;" src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Ficons%2Ficons8-whatsapp-100.png?alt=media&token=fc4bf22f-f87e-456b-ba3f-4cf426cde2fe" alt="">
+          </mat-icon> 3511342239</a>
+          <!-- <form>
+            <input type="email" placeholder="Tu correo electrónico">
+            <button type="submit">Suscribirse</button>
+          </form> -->
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 MenuUp. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- <nav class="footer-menu">
+      <ul>
+        <button mat-button routerLink="/web/search" routerLinkActive="active" >
+          <mat-icon class="material-icons">search</mat-icon>
+          <span>Buscar</span>
+        </button>
+        <button mat-button routerLink="/web/feed" routerLinkActive="active" >
+          <mat-icon class="material-icons">feed</mat-icon>
+          <span>Feed</span>
+        </button>
+        <button mat-button routerLink="/web/menus" routerLinkActive="active" >
+          <mat-icon class="material-icons">menu_book</mat-icon>
+          <span>Menus</span>
+        </button>
+        <button mat-button routerLink="/web/account" routerLinkActive="active" >
+          <mat-icon class="material-icons">account_circle</mat-icon>
+          <span>Mi perfil</span>
+        </button>
+      </ul>
+    </nav> -->
+  </div>
+</mat-drawer-container>
+

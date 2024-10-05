@@ -23,4 +23,5 @@ export interface BusinessInformation {
     products?: Product[],
     categories?:Categories[],
     likes?: number;
+    nivel?: 'basic' | 'premium' | 'elite'
 }

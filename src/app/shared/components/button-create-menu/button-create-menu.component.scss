@@ -1,0 +1,21 @@
+.container-free{
+    padding: 8px 24px;
+    display: grid;
+    .container-text{
+        background-color: #65ff8c;
+        color: #006118;
+        padding: 8px 8px;
+        border-radius: 8px;
+        p{
+            margin: 0;
+            font-size: 0.9rem;
+            text-align: center;
+            .tap{
+                font-weight: 800;
+                letter-spacing: 0.1rem;
+            }
+        }
+
+    }
+
+}

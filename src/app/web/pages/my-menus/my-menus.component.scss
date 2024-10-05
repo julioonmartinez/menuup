@@ -4,6 +4,24 @@
     padding-bottom: 120px;
     min-height: 100vh;
 }
+.container-no-account{
+    padding-left: 16px;
+    padding-right: 16px;
+    display: grid;
+    .container-text{
+        background-color: #9affb3;
+        color: #1ca03d;
+        padding: 16px;
+        border-radius: 8px;
+        height: fit-content;
+        .text{
+            margin: 0;
+            font-size: 1.2rem;
+            
+        }
+
+    }
+}
 .container-title{
     font-weight: 800;
     padding-left: 16px;

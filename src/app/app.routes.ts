@@ -22,11 +22,24 @@ import { MyMenusComponent } from './web/pages/my-menus/my-menus.component';
 import { LoginComponent } from './web/pages/login/login.component';
 import { RegisterComponent } from './web/pages/register/register.component';
 
+import { LayoutMenu03Component } from './menu-layout-03/components/layout-menu-03/layout-menu-03.component';
+import { Layout04Component } from './menu-layout-04/components/layout-04/layout-04.component';
+import { TemporalAdminComponent } from './temporal-admin/temporal-admin.component';
+import { HomeComponent } from './web/pages/home/home.component';
+import { NoRegisterComponent } from './web/components/no-register/no-register.component';
+import { PoliticaPrivacidadComponent } from './web/pages/politica-privacidad/politica-privacidad.component';
+import { SelectionPlanComponent } from './web/pages/selection-plan/selection-plan.component';
+
 export const routes: Routes = [
     {
         path:'menus/:idCompany',
         component:LayoutRoutingComponent
     },
+    {
+        path:'temporal',
+        component:TemporalAdminComponent
+    },
+   
     {
         path:'menu-demo-layout-01/:idCompany',
         component:LayoutComponent01,
@@ -45,13 +58,31 @@ export const routes: Routes = [
             { path: 'home/:idCategory', component: HomeComponent02},
         ]
     },
+    {
+        path:'menu-layout-04/:idCompany',
+        component:Layout04Component,
+    },
+    
+    {
+        path:'menu-layout-03/:idCompany',
+        component:LayoutMenu03Component,
+        children: [
+            { path: 'home', component: HomeComponent },
+            // { path:'', redirectTo: '/home', pathMatch: 'full' },
+            
+          ],
+    },
     
     {
         path:'',
         component:LayoutWelcomeComponent,
         children:[
-            {path:'', redirectTo:'/web/feed', pathMatch:'full'}
+            {path:'', redirectTo:'/web/home', pathMatch:'full'}
         ]
+    },
+    {
+        path:'user',
+        loadChildren:()=> import('./user/user.routes')
     },
     {
         path:'web',
@@ -66,24 +97,31 @@ export const routes: Routes = [
                     {path:'plats', component:PlatsFeedComponent},
                     {path:'promos', component:PromosFeedComponent},
                     {path:'places', component:PlacesFeedComponent},
-                    {path:'', redirectTo:'/web/feed/menus', pathMatch:'full'}
+                    // {path:'', redirectTo:'/web/feed/menus', pathMatch:'full'}
                 ]
             },
             {path:'account/login', component:LoginComponent},
-            {path:'account/register', component:RegisterComponent},
+            {path:'account/register', component:NoRegisterComponent},
             {path:'menus', component:MyMenusComponent},
+            {path:'home', component:HomeComponent},
+            {path:'politica-privacidad', component:PoliticaPrivacidadComponent},
+            {path:'plans', component:SelectionPlanComponent},
             {
                 path:'menus/app-samari',
                 loadChildren:()=> import('./demo-app/demo.routes')
             },
             {path:'account', component:AccountComponent},
-            {path: '', redirectTo: '/feed' , pathMatch: 'full' }
+            {path: '', redirectTo: '/home' , pathMatch: 'full' }
         ]
+    },
+    {
+        path:'app-samari',
+        loadChildren:()=> import('./demo-app/demo.routes')
     },
     
         {
             path:'**',
-            redirectTo: '/web/feed',
+            redirectTo: '/web/home',
             pathMatch:'full'
         }  
     

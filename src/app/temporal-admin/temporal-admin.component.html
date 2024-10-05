@@ -1,0 +1,19 @@
+<!-- <p>Lista categorias</p>
+<button (click)="saveCategory()" >Guardar categoria</button>
+<mat-list>
+    @for (item of categories; track $index) {
+        <mat-list-item>{{item.name}} </mat-list-item>
+    }
+</mat-list> -->
+
+<p>produc</p>
+<button (click)="savePRoduct()" >add product {{products.length}} </button>
+<button (click)="generatedb()" >generate db</button>
+<mat-list>
+    @for (item of products; track $index) {
+        <mat-list-item>
+            <p matListItemTitle >{{item.name}}</p>
+            <p matListItemLine >{{item.idSection}} </p>
+        </mat-list-item>
+    }
+</mat-list>

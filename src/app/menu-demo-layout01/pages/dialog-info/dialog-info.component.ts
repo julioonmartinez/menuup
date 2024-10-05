@@ -24,7 +24,7 @@ export class DialogInfoComponent {
     this.menuService.bussinesData$.subscribe(bu=>{
       if(bu){
         this.busines = bu
-        this.generateQRCode(`https://menus-menu-app.web.app/menus/${this.busines.id}`)
+        this.generateQRCode(`https://samari-app.web.app/menus/${this.busines.id}`)
         // this.cdr.detectChanges()
       }
     })

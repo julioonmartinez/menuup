@@ -643,7 +643,7 @@ changeImageRestaruante(event:any){
       this.demoServive.deleteBusiness(this.infoDemo.id!).then(result=>{
         console.log('delete', result)
         if(this.currenUser){
-          this.router.navigateByUrl('/app-samari/list-menus')
+          this.router.navigateByUrl('/user')
         }else{
           this.router.navigateByUrl('/')
         }

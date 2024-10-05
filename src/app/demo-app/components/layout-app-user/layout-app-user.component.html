@@ -12,22 +12,22 @@
                 <!-- <button (click)="routerLinkShowDemoMenu()" class="btn" mat-button >Vista de menu</button> -->
                 @if(user){
                     <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/" class="btn" mat-button >Menu Fav</button> -->
-                    <button (click)="drawer.toggle()" routerLink="/web/menus/app-samari/control/new-menu" class="btn btn-dark" mat-button >Crear nuevo menu</button>
-                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/configuration', IdBusiness]" class="btn" mat-button >Estilos</button>
-                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/surveys', IdBusiness ]" class="btn" mat-button >Ver encuestas</button>
-                    <button (click)="drawer.toggle()" [routerLink]="['/web/menus/app-samari/generate-code-qr', IdBusiness ]" class="btn" mat-button >Codigo Qr</button>
-                
+                    <button (click)="drawer.toggle()" routerLink="/control/new-menu" class="btn btn-dark" mat-button >Crear nuevo menu</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['configuration', IdBusiness]" class="btn" mat-button >Estilos</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['surveys', IdBusiness ]" class="btn" mat-button >Ver encuestas</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['generate-code-qr', IdBusiness ]" class="btn" mat-button >Codigo Qr</button>
+                    <button (click)="drawer.toggle()" class="btn btn-list-menus" routerLink="/user/home" mat-button >Mis menus</button>
                 }@else {
-                    <button (click)="drawer.toggle()" routerLink="/web/menus/app-samari/control/demo" class="btn" mat-button >Menu</button>
+                    <button (click)="drawer.toggle()" routerLink="/app-samari/control/demo" class="btn" mat-button >Menu</button>
                 }
 
                 <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/generate-code-qr" class="btn" mat-button >Generar QR</button> -->
                 <!-- <button (click)="drawer.toggle()" class="btn" mat-button >Imprimir</button> -->
-                <!-- <button (click)="drawer.toggle()" class="btn" routerLink="/app-samari/configuration" mat-button >Configuración</button> -->
-                <button (click)="drawer.toggle()"  class="btn btn-register " mat-button >
+                
+                <button routerLink="/user/account" (click)="drawer.toggle()"  class="btn btn-register " mat-button >
                     <mat-icon>menu</mat-icon>
                     <div class="container-text">
-                        <span class="title-btn-menu-what" >Menu por Whatsapp</span>
+                        <span class="title-btn-menu-what" >Crear cuenta</span>
                         <!-- <span class="text-prueba" >Prueba gratis por 3 meses</span> -->
                     </div>
                 </button>

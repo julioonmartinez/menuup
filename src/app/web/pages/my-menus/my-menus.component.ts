@@ -45,10 +45,21 @@ export class MyMenusComponent {
       }
     })
 
-    
+    // this.loadMenusStorage()
    
 
   }
+
+  // loadMenusStorage(){
+  //   const nameLocalStorageBussinessDemo = 'bussinessDemo';
+  //   const saveBussiness  =   localStorage.getItem(nameLocalStorageBussinessDemo)
+  //   if(saveBussiness){
+  //     const info: BusinessInformation = JSON.parse(saveBussiness)
+  //     console.log(info)
+  //   }else{
+  //     console.log('noHayINfo')
+  //   }
+  // }
 
   getMenusUser(idUser:string){
     this.menusUserService.getMenusUser(idUser).subscribe(menusData=>{

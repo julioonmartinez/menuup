@@ -35,10 +35,10 @@ export class ConfigurationComponent {
   loading:boolean = false;
 
   listOptionMenusModel:MenuModel[]=[
-    {id:'menu-demo-layout-01', name:'Menu Lindo' , permison:'free'},
-    {id:'menu-layout-02', name:'FastFood' , permison: 'premium'},
-    // {id:'menu-demo-layout-01', name:'Bar-Bar' , permison:'free'},
-    // {id:'menu-demo-layout-01', name:'Delux' , permison:'premium'},
+    {id:'menu-demo-layout-01', name:'Menu Lindo' , permison:'premium'},
+    {id:'menu-layout-02', name:'Elegance' , permison: 'premium'},
+    {id:'menu-layout-03', name:'Simple' , permison:'free'},
+    {id:'menu-layout-04', name:'Delux' , permison:'premium'},
     
   ]
 
@@ -144,7 +144,9 @@ export class ConfigurationComponent {
 
   openSnackBar(message:string){
     this._snackBar.open(message, 'Hecho',{
-      duration: 5 *1000
+      duration: 5 *1000,
+      verticalPosition:'top',
+      horizontalPosition:'center'
     })
   }
 

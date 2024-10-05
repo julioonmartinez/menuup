@@ -24,8 +24,13 @@ export class LayoutRoutingComponent implements OnInit {
       this.menuService.setBusinessId(idCompany);
       this.menuService.getBusinessDB(idCompany).subscribe({
         next: businesInformation=>{
-          console.log(businesInformation)
-          this.router.navigate([businesInformation.idMenu, idCompany ])
+          if(businesInformation.idMenu){
+            this.router.navigate([businesInformation.idMenu, idCompany ])
+          }else{
+            this.router.navigate(['menu-layout-03' , idCompany ])
+          }
+          console.log('idmenu', businesInformation.idMenu)
+          
         }
       })
     }else{

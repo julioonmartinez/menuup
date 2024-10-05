@@ -32,7 +32,7 @@ export class NoRegisterComponent {
     authService.currentUser$.subscribe({
       next:(user)=>{
         if(user){
-          this.router.navigateByUrl('/web/account')
+          this.router.navigateByUrl('/user/account')
         }else{
           this.buildForm();
       
@@ -64,7 +64,7 @@ export class NoRegisterComponent {
         const pass = this.form.get('password')?.value
       this.authService.signUp(email, pass).subscribe({
         next:(res)=>{
-          this.router.navigateByUrl('web/menus')
+          this.router.navigateByUrl('/user')
         }
       })
     }
@@ -74,7 +74,7 @@ export class NoRegisterComponent {
   onLoginWithGoogle(){
     this.authService.loginWithGoogle().subscribe({
       next:(result: User)=>{
-        this.router.navigateByUrl('web/menus')
+        this.router.navigateByUrl('/user')
       },
       error:(err)=>{
         console.log('error', err)

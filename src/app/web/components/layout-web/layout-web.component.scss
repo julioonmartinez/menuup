@@ -1,3 +1,26 @@
+.toolbar{
+  display: flex;
+  justify-content: space-between;
+  // background-color: white;
+  .name-page{
+    color: #4A4A4A;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.1rem;
+  }
+  p{
+    margin: 0;
+  }
+  .btn-menu{
+    color: #4A4A4A;
+  }
+  .content-btn-big-screen{
+    display: none;
+  }
+
+
+}
+
 .container-pages-layout-web{
   position: relative;
   min-height: 100vh;
@@ -8,49 +31,173 @@
 }
 
 
-.footer-menu {
+// .footer-menu {
    
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.06);
-    position: fixed;
-    align-items: center;
-    z-index: 10001;
-    // height: 120px;
+//     bottom: 0;
+//     left: 0;
+//     width: 100%;
+//     background-color: #fff;
+//     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.06);
+//     position: fixed;
+//     align-items: center;
+//     z-index: 10001;
+//     // height: 120px;
    
-  }
+//   }
   
-  .footer-menu ul {
+//   .footer-menu ul {
+//     list-style: none;
+//     margin: 0;
+//     padding: 0;
+//     display: grid;
+//     grid-template-columns: repeat(3, 1fr);
+//   }
+  
+//   .footer-menu button {
+//     text-align: center;
+//     display: grid;
+//     align-items: center;
+//     justify-content: center;
+//     border-radius: 0;
+//     padding-top: 12px;
+//     padding-bottom: 20px;
+//     height: fit-content;
+//     color: #a0a0a0;
+//     .material-icons{
+//         justify-self: center;
+//         margin: 0;
+//     }
+//     span{
+//         justify-self: center;
+//     }
+//   }
+  
+//   .footer-menu button.active {
+//     color: #FF4500 /* O el color que prefieras para el ícono activo */
+//   }
+
+
+.toolbar-drawer{
+    display: flex;
+    justify-content: space-between;
+    // background-color: #eeeeee;
+}
+
+.drawerr{
+    max-width: fit-content;
+    padding: 0 12px;
+    // background-color: #eeeeee;
+    
+    
+}
+.container-list-option{
+        display: grid;
+        // padding: 12px 16px;
+        margin-top: 24px;
+        row-gap:16px  ;
+       
+    .btn{
+        // min-height: 60px;
+        border-radius: 8px;
+        padding: 12px 16px;
+        align-items: center;
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        
+    }
+    .btn-dark{
+        background-color: #2b2b2b;
+       
+        .title{
+            color: white !important;
+        }
+        .icon{
+            color: white;
+        }
+    }
+    .btn-white{
+        background-color: white;
+        color: #2b2b2b;
+        
+
+    }
+
+}
+
+footer {
+  background-color: #f5f5f5;
+  padding: 50px 32px;
+  color: #333;
+  margin-top: 60px;
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  h3 {
+    color: #FF4500;
+    margin-bottom: 20px;
+  }
+
+  .social-media {
     list-style: none;
-    margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  
-  .footer-menu button {
-    text-align: center;
-    display: grid;
-    align-items: center;
+    display: flex;
     justify-content: center;
-    border-radius: 0;
-    padding-top: 12px;
-    padding-bottom: 20px;
-    height: fit-content;
-    color: #a0a0a0;
-    .material-icons{
-        justify-self: center;
-        margin: 0;
+
+    li {
+      margin: 0 10px;
     }
-    span{
-        justify-self: center;
+  }
+
+  .social-media a {
+    color: #333;
+    font-size: 24px;
+  }
+
+  form {
+    display: flex;
+
+    input[type="email"] {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
+
+    button[type="submit"] {
+      background-color: #FF4500;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+
+  .copyright {
+    text-align: center;
+    margin-top: 30px;
+  }
+}
+
+@media (min-width:600px) {
+
+  .toolbar{
+    .content-btn-big-screen{
+      display: flex;
+      gap: 16px;
+    }
+    .container-icon-menu{
+      display: none;
+    }
+
   }
   
-  .footer-menu button.active {
-    color: #FF4500 /* O el color que prefieras para el ícono activo */
-  }
+  
+}
+
 
   

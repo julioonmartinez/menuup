@@ -3,6 +3,7 @@ export interface Promos {
     idBussines:string,
     urlImage:string,
     title:string,
+    subtitle?:string,
     description?:string,
     conditions:string,
     nameBusiness:string,

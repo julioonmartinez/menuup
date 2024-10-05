@@ -1,13 +1,21 @@
 <div class="container-page-my-menus">
+    @if (!currenUser) {
+        <div class="container-no-account">
+           <button routerLink="/web/account/register" mat-button class="container-text">
+            <p class="text" >Crea una cuenta y no pierdas tu menú</p>
+           </button>
+        </div>
+    }
     <div [ngClass]="{'no-menus': menus.length === 0}"  class="container-title">
         <p class="title-page" >Menus</p>
         @if (menus.length != 0) {
-            <button routerLink="/web/menus/app-samari/control/new-menu" mat-button class="btn-add-menu" >
+            <button routerLink="/app-samari/control/new-menu" mat-button class="btn-add-menu" >
                 <!-- Agregar un menu -->
                 <mat-icon class="icon" >add_business</mat-icon>
             </button>
         }
     </div>
+
     @if(menus.length === 0){
         <div class="container-body">
             <mat-card appearance="outlined" class="card-no-menus" >
