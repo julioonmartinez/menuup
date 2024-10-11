@@ -1,5 +1,5 @@
 <mat-drawer-container class="big-drawer" >
-    <mat-drawer #drawer >
+    <mat-drawer #drawer class="drawer" >
         <mat-toolbar class="toolbar-drawer" >
             <button mat-icon-button (click)="drawer.toggle()" >
                 <mat-icon>menu</mat-icon>
@@ -11,46 +11,47 @@
         <div class="container-list-option">
             <mat-list class="container-list-option">
                @if (!currentUser) {
-                   <mat-list routerLink="/app-samari/control/demo"  class="btn btn-dark mat-elevation-z3" >
+                   <button routerLink="/app-samari/control/demo"  class="btn btn-dark mat-elevation-z3" >
                        <span class="title" matListItemTitle >Probar Gratis</span>
-                   </mat-list>
+                   </button>
                }
            @if (currentUser) {
-               <mat-list (click)="drawer.toggle()" routerLink="/user/account" class="btn btn-white mat-elevation-z3" >
-                   <mat-icon matListItemIcon >account_circle</mat-icon>
+               <button  (click)="drawer.toggle()" routerLink="/user/account" class="btn btn-white mat-elevation-z3" >
+                   <!-- <mat-icon matListItemIcon >account_circle</mat-icon> -->
                    <span matListItemTitle >Ir a mi cuenta</span>
-               </mat-list>
-               <mat-list (click)="drawer.toggle()" routerLink="/user/home" class="btn btn-white mat-elevation-z3" >
-                <mat-icon matListItemIcon >list_alt</mat-icon>
+               </button>
+               <button mat-button (click)="drawer.toggle()" routerLink="/user/home" class="btn btn-white mat-elevation-z3" >
+                <!-- <mat-icon matListItemIcon >list_alt</mat-icon> -->
                 <span matListItemTitle >Mis menus</span>
-            </mat-list>
-               <mat-list routerLink="/" (click)="logout()"  class="btn btn-dark mat-elevation-z3" >
+            </button >
+               <button mat-button routerLink="/" (click)="logout()"  class="btn btn-dark mat-elevation-z3" >
                    <!-- <mat-icon class="icon" matListItemIcon >workspace_premium</mat-icon> -->
                    <span class="title" matListItemTitle >Cerrar sesión</span>
-               </mat-list>
+               </button >
            }@else {
-            <mat-list (click)="drawer.toggle()" routerLink="/user/home" class="btn btn-white mat-elevation-z3" >
-                <mat-icon matListItemIcon >list_alt</mat-icon>
+            <button mat-button (click)="drawer.toggle()" routerLink="/user/home" class="btn btn-white mat-elevation-z3" >
+                <!-- <mat-icon matListItemIcon >list_alt</mat-icon> -->
                 <span matListItemTitle >Mi menu</span>
-            </mat-list>
-               <mat-list (click)="drawer.toggle()" routerLink="/user/account"  class="btn btn-white mat-elevation-z3 " >
-                   <mat-icon matListItemIcon >account_circle</mat-icon>
+            </button >
+               <button mat-button (click)="drawer.toggle()" routerLink="/user/account"  class="btn btn-white mat-elevation-z3 " >
+                   <!-- <mat-icon matListItemIcon >account_circle</mat-icon> -->
                    <span matListItemTitle >Iniciar sesión</span>
-               </mat-list>
+               </button >
      
-               <mat-list (click)="drawer.toggle()" routerLink="/user/account"  class="btn btn-white mat-elevation-z3 " >
-                   <mat-icon matListItemIcon >how_to_reg</mat-icon>
+               <button mat-button (click)="drawer.toggle()" routerLink="/user/account"  class="btn btn-white mat-elevation-z3 " >
+                   <!-- <mat-icon matListItemIcon >how_to_reg</mat-icon> -->
                    <span matListItemTitle>Registrate</span>
-               </mat-list>
+               </button >
                
            }
        </mat-list>   
        </div>
     </mat-drawer>
-    <mat-toolbar>
+    <mat-toolbar class="toolbar" >
         <button (click)="drawer.toggle()" mat-icon-button >
             <mat-icon>menu</mat-icon>
         </button>
+        <p class="name-menu" >MenuUp</p>
     </mat-toolbar>
     <router-outlet></router-outlet>
 </mat-drawer-container>

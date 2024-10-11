@@ -10,11 +10,11 @@
      <div class="container-description">
         <div class="container-slogan">
             <span class="slogan" >Un espacio</span>
-            <span class="slogan2" >Para tu menu</span>
+            <span class="slogan2" >Para tu menú</span>
         </div>
-        <p class="text" >Crea y personaliza menús atractivos de forma fácil y rápida con Samari.</p>
+        <p class="text" >Crea y personaliza menús atractivos de forma fácil y rápida con menuUp.</p>
         <div class="container-btn-action">
-            <button mat-button routerLink="/app-samari/control/demo" class="action-button mat-elevation-z3" >Inicia ahora gratis</button>
+            <button mat-button (click)="routerLinkDemo()" class="action-button mat-elevation-z3" >Inicia ahora gratis</button>
             <div class="container-text-btn">
                 <p class="free-text" >Prueba ahora sin costo</p>
             </div>
@@ -71,7 +71,7 @@
                     <span>Estilo</span>
                 </div>
                 <div class="title">
-                    <span>Dale estilo a tu menú</span>
+                    <span>Dale estilo</span>
                 </div>
                 <div class="content-description">
                     <span>Elige el diseño de menú que más te guste.</span>
@@ -109,7 +109,7 @@
 
 <div class="content-cards-menus">
     <div class="contet-header-cards">
-        <p class="title-list-card-demo" >Conoce nuestros menus </p>
+        <p class="title-list-card-demo" >Conoce nuestros menús</p>
     </div>
     <div class="content-list-cards">
         <div class="menu-card">
@@ -118,27 +118,27 @@
             <p class="nivel">Premium <mat-icon>workspace_premium</mat-icon> </p>
             <p class="ventajas">Un menú elegante que eleva la experiencia gastronómica de tu restaurante.</p>
            <div class="content-btn">
-            <a href="#" class="btn">Ver demo</a>
+            <a routerLink="/menu-layout-02/ajA42Ofj1ReopjSIc0Ks" class="btn">Ver demo</a>
            </div>
           </div>
 
           <div class="menu-card">
             <img src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fhome%2Fmodel-menu%2FVioleta%20Tel%C3%A9fonos%20Celular%20Foto%20Flores%20Marketing%20Presentaci%C3%B3n%20de%20Ventas%20(2).png?alt=media&token=a95a88ab-e9cb-4adf-b267-673cb678ad30" alt="Imagen del menú">
             <h2>Menú Lindo</h2>
-            <p class="nivel">Gratis <mat-icon>workspace_premium</mat-icon> </p>
+            <p class="nivel">Premium<mat-icon>workspace_premium</mat-icon> </p>
             <p class="ventajas">Un menú visualmente atractivo que te permitirá conocer la opinión de tus clientes a través de encuestas y mejorar continuamente tu servicio.</p>
             <div class="content-btn">
-                <a href="#" class="btn">Ver demo</a>
+                <a routerLink="/menu-demo-layout-01/DeYsGSv8cbzaTgVmyJm7/home" class="btn">Ver demo</a>
                </div>
           </div>
 
           <div class="menu-card">
             <img src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fhome%2Fmodel-menu%2FVioleta%20Tel%C3%A9fonos%20Celular%20Foto%20Flores%20Marketing%20Presentaci%C3%B3n%20de%20Ventas%20(3).png?alt=media&token=81424fb2-9772-4914-93f9-1772e1e652d2" alt="Imagen del menú">
-            <h2>Menú mix</h2>
-            <p class="nivel">Premium<mat-icon>workspace_premium</mat-icon> </p>
-            <p class="ventajas">Un menú de búsqueda rápida que te permite destacar tus promociones y paquetes especiales, adaptándolo a las necesidades de tu negocio. Además, incluye una opción para realizar encuestas y conocer la opinión de tus clientes.</p>
+            <h2>Menú List</h2>
+            <p class="nivel">Gratis</p>
+            <p class="ventajas">Un menú en forma de lista que muestra tus productos de forma rápida.</p>
             <div class="content-btn">
-                <a href="#" class="btn">Ver demo</a>
+                <a href="/menu-layout-04/y8EzZzvR3uL7s3MIgYlv" class="btn">Ver demo</a>
                </div>
           </div>
 
@@ -162,13 +162,13 @@
                     <mat-icon class="icon-premium" >workspace_premium</mat-icon>
                 </div>
             </div>
-            <span class="name-plan" >Super menú</span>
+            <span class="name-plan" >Premium</span>
             <span class="description-plan" >Crea un menú completo con todas nuestras ventajas.</span>
-            <span class="price-month" >$ 119.00 mes</span>
+            <span class="price-month" >$ 119.00/mxn mes</span>
             <span></span>
             <div class="container-discount">
                 <div class="container-text">
-                    <span class="price-anual" >50% de descuento en el pago anual</span>
+                    <span class="price-anual" >Ahorras $549.00 mxn en el plan anual</span>
                 </div>
             </div>
             <button (click)="scrollToTop()" routerLink="/web/plans" mat-button class="btn-free" >
@@ -178,40 +178,48 @@
             <mat-list class="list-adve" >
                 <mat-list-item class="item-list"  >
                     <mat-icon class="icon"  matListItemIcon >check</mat-icon>
-                    <span matListItemTitle class="title" >Selecciona las mejores plantillas</span>
+                    <p matListItemTitle class="title" >Sin publicidad</p>
+                </mat-list-item>
+                <mat-list-item class="item-list"  >
+                    <mat-icon class="icon"  matListItemIcon >check</mat-icon>
+                    <p matListItemTitle class="title" >Tu propio subdominio</p>
+                </mat-list-item>
+                <mat-list-item class="item-list"  >
+                    <mat-icon class="icon"  matListItemIcon >check</mat-icon>
+                    <p matListItemTitle class="title" >Selecciona las mejores plantillas</p>
                 </mat-list-item>
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Crea tu código QR.</span>
+                    <p matListItemTitle >Crea tu código QR.</p>
                 </mat-list-item>
                
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Encuestas de satisfacción.</span>
+                    <p matListItemTitle >Encuestas de satisfacción.</p>
                 </mat-list-item>
 
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Estadísticas de encuestas.</span>
+                    <p matListItemTitle >Estadísticas de encuestas.</p>
                 </mat-list-item>
 
+                <!-- <mat-list-item class="item-list">
+                    <mat-icon class="icon" matListItemIcon >check</mat-icon>
+                    <p matListItemTitle >Ver direcciones y números telefónicos de las encuestas.</p>
+                </mat-list-item> -->
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Ver direcciones y números telefónicos de las encuestas.</span>
-                </mat-list-item>
-                <mat-list-item class="item-list">
-                    <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Categorías y productos sin límite.</span>
-                </mat-list-item>
-    
-                <mat-list-item class="item-list">
-                    <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Tu menú adaptado para móviles.</span>
+                    <p matListItemTitle >Categorías y productos sin límite.</p>
                 </mat-list-item>
     
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Colores personalizados</span>
+                    <p matListItemTitle >Tu menú adaptado para móviles.</p>
+                </mat-list-item>
+    
+                <mat-list-item class="item-list">
+                    <mat-icon class="icon" matListItemIcon >check</mat-icon>
+                    <p matListItemTitle >Colores personalizados</p>
                 </mat-list-item>
             </mat-list>
         </div>
@@ -223,22 +231,30 @@
                 </div>
             </div>
             <span class="name-plan" >Pro Menú</span>
-            <span class="description-plan" >Tu menú, rapido y sencillo sin pagar nada.</span>
+            <span class="description-plan" >Tu menú, rápido y sencillo sin pagar nada.</span>
             <span class="price-month" >Gratis</span>
             <span></span>
             <div class="container-discount">
                 <div class="container-text">
-                    <span class="price-anual" >Cambia cuando quieras a Super menu</span>
+                    <span class="price-anual" >Cambia cuando quieras a Premium</span>
                 </div>
             </div>
-            <button (click)="scrollToTop()" routerLink="/web/plans" mat-button class="btn-free" >
+            <button (click)="scrollToTop()" routerLink="/web/account" mat-button class="btn-free" >
                 <span>Pruébalo ahora</span>
             </button>
-            <span class="ad-cancel" >Prueba ahora y participa por una suscripción anual gratis.</span>
+            <span class="ad-cancel" >Prueba ahora la versión gratuita, solo tienes que registrarte.</span>
             <mat-list class="list-adve" >
                 <mat-list-item class="item-list"  >
                     <mat-icon class="icon"  matListItemIcon >cancel</mat-icon>
-                    <span matListItemTitle class="title" >Selecciona las mejores plantillas</span>
+                    <span matListItemTitle class="title" >Sin publicidad.</span>
+                </mat-list-item>
+                <mat-list-item class="item-list"  >
+                    <mat-icon class="icon"  matListItemIcon >cancel</mat-icon>
+                    <span matListItemTitle class="title" >Tu propio subdominio.</span>
+                </mat-list-item>
+                <mat-list-item class="item-list"  >
+                    <mat-icon class="icon"  matListItemIcon >check</mat-icon>
+                    <span matListItemTitle class="title" >Selecciona las mejores plantillas.</span>
                 </mat-list-item>
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
@@ -252,12 +268,12 @@
 
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >check</mat-icon>
-                    <span matListItemTitle >Estadísticas de encuestas. (basicas) </span>
+                    <span matListItemTitle >Estadísticas (basicas).</span>
                 </mat-list-item>
 
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >cancel</mat-icon>
-                    <span matListItemTitle >Ver direcciones y números telefónicos de las encuestas.</span>
+                    <p  >Direcciones email y números.</p>
                 </mat-list-item>
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >cancel</mat-icon>
@@ -271,7 +287,7 @@
     
                 <mat-list-item class="item-list">
                     <mat-icon class="icon" matListItemIcon >cancel</mat-icon>
-                    <span matListItemTitle >Colores personalizados</span>
+                    <span matListItemTitle >Colores personalizados.</span>
                 </mat-list-item>
             </mat-list>
         </div>

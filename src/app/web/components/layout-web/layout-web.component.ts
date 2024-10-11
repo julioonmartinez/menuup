@@ -33,5 +33,9 @@ export class LayoutWebComponent {
   scrollToTop() {
     window.scrollTo(0, 0);
   }
+
+  logout(){
+    this.authService.logout()
+  }
   
 }

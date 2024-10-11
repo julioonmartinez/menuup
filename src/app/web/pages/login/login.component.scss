@@ -6,6 +6,7 @@
     // background-size: cover;
     display: grid;
    align-items: center;
+   justify-content: center;
 }
 
 .header-register{
@@ -46,6 +47,7 @@
     display: grid;
     text-align: start;
     // row-gap: 16px;
+    max-width: 400px;
     .form-field{
         display: grid;
         margin-bottom: 20px;

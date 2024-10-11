@@ -9,7 +9,7 @@
         <div class="container-section-one-page">
             @if (!currenUser) {
                 <div class="container-title">
-                    <span class="start-menu" >Crea una cuenta y no pierdas tu menu.
+                    <span routerLink="/user/account" class="start-menu" >Crea una cuenta y no pierdas tu menu.
                          <!-- <button mat-button (click)="clearLocalStorage()" >borrar</button> -->
                     </span>
                     <!-- <button class="btn menu" mat-button >Ver menu</button>
@@ -28,7 +28,7 @@
                             <mat-icon>more_horiz</mat-icon>
                         </button>
                         <mat-menu #menuInfo="matMenu" >
-                            <button  [routerLink]="['/web/menus/app-samari/generate-code-qr', infoDemo.id]"  mat-menu-item> 
+                            <button  [routerLink]="['/app-samari/generate-code-qr', infoDemo.id]"  mat-menu-item> 
                                 <mat-icon>qr_code_2</mat-icon>
                                 <span>Ver QR</span>
                             </button>
@@ -36,7 +36,7 @@
                                 <mat-icon>slideshow</mat-icon>
                                 <span>Vista del menu</span>
                             </button>
-                            <button [routerLink]="['/web/menus/app-samari/configuration', infoDemo.id]"  mat-menu-item> 
+                            <button [routerLink]="['/app-samari/configuration', infoDemo.id]"  mat-menu-item> 
                                 <mat-icon>palette</mat-icon>
                                 <span>Estilos</span>
                             </button>
@@ -58,19 +58,21 @@
                 
             </div>
             <div class="container-btn-screen-big">
-                <button [routerLink]="['/menu', infoDemo.id!]" class="btn" mat-button >Vista de menu</button>
-                <button class="btn" [routerLink]="['/web/menus/app-samari/generate-code-qr', infoDemo.id]" mat-button >Ver QR</button>
-                <button class="btn" [routerLink]="['/web/menus/app-samari/configuration', infoDemo.id]" mat-button >Configurar</button>
+                <button [routerLink]="['/menus', infoDemo.id!]" class="btn" mat-button >Vista de menu</button>
+                <button class="btn" [routerLink]="['/app-samari/generate-code-qr', infoDemo.id]" mat-button >Ver QR</button>
+                <button class="btn" [routerLink]="['/app-samari/configuration', infoDemo.id]" mat-button >Estilos</button>
                 <button color="warn" class="btn" (click)="openDialogDeleteBusiness()" mat-button >Borrar</button>
                 
                 
+               @if (infoDemo.nivel == 'basic' || infoDemo.nivel == undefined) {
                 <button class="btn btn-register " mat-button >
-                    <mat-icon>menu</mat-icon>
+                    <mat-icon class="icon" >workspace_premium</mat-icon>
                     <div class="container-text">
-                        <span class="title-btn-menu-what" >Menu por Whatsapp</span>
-                        <span class="text-prueba" >Prueba gratis por 3 meses</span>
+                        <span class="title-btn-menu-what" >Haz tu menú premium</span>
+                        <span class="text-prueba" >Prueba gratis por 30 días.</span>
                     </div>
                 </button>
+               }
                 
             </div>
 

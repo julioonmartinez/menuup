@@ -7,6 +7,7 @@
 
 .card-business{
     color: #4A4A4A;
+    max-width: 400px;
     .header-card-menu{
         display: grid;
         grid-template-columns: auto 1fr;
@@ -32,6 +33,19 @@
         .title{
             font-size: 1.2rem;
             // font-weight: 800;
+            margin-left: 16px;
+        }
+        .text-premium{
+            color: #FFA07A;
+            margin-left: 16px;
+        }
+        .btn-premium{
+            font-size: 0.8rem;
+            // background-color: #ffcfbc;
+            // color: #FF4500;
+            height: fit-content;
+            margin-left: 16px;
+            padding: 8px 16px;
         }
     }
 }
@@ -79,6 +93,7 @@
     place-content: center;
     margin-top: 24px;
     margin-bottom: 24px;
+    height: 166.2px;
     .icon{
         font-size: 2rem;
         width: fit-content;
@@ -89,6 +104,8 @@
     .text{
         font-size: 0.9rem;
         text-align: center;
+        margin-top: 16px;
+        margin-bottom: 12px;
     }
 }
 
@@ -126,6 +143,9 @@
         .name{
             text-align: center;
             font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }

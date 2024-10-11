@@ -135,12 +135,22 @@
                 display: grid;
                 grid-template-columns: auto 1fr;
                 align-items: center;
+                border: 2px solid orangered;
                 // line-height: 12px;
+
+                .icon{
+                    font-size: 3rem;
+                    width: fit-content;
+                    height: fit-content;
+                    color: orangered;
+                    // justify-self: flex-end;
+                }
                 .container-text{
                     display: grid;
                     // row-gap: 4px;
-                    .title-btn-menu-what{
 
+                    .title-btn-menu-what{
+                        color: orangered;
                     }
                     .text-prueba{
                         font-size: 0.8rem;
@@ -150,6 +160,19 @@
 
                 }
                 
+            }
+            .btn-register:hover{
+                background-color: #ffe2d7;
+                // color: white;
+                border: none;
+                .container-text{
+                    .title-btn-menu-what{
+                        // color: white;
+                    }
+                    .text-prueba{
+                        // color: white;
+                    }
+                }
             }
         }
 

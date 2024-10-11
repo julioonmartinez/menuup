@@ -11,7 +11,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 @Component({
   selector: 'app-layout-user',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, MatSidenavModule, MatButtonModule, MatIconModule, MatToolbarModule,MatListModule],
+  imports: [MatButtonModule, RouterLink, RouterOutlet, MatSidenavModule, MatButtonModule, MatIconModule, MatToolbarModule,MatListModule],
   templateUrl: './layout-user.component.html',
   styleUrl: './layout-user.component.scss'
 })

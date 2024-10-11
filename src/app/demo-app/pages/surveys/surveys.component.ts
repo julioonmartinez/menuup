@@ -35,7 +35,9 @@ export class SurveysComponent implements OnInit {
   promedioCalidadComida: number = 4.5;
   porcentajeTiempoEspera: number = 80; // 80% de "Sí" al tiempo de espera
   porcentajeRecomendacion: number = 90; // 90% recomendarían
-  sugerencias: string[] = ['Más opciones vegetarianas', 'Mejorar el servicio de bebidas'];
+  sugerencias: string[] = [
+    // 'Más opciones vegetarianas', 'Mejorar el servicio de bebidas'
+  ];
   totalEncuestas: number = 120;
 
   surveys: Survey[] = [];

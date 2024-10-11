@@ -9,29 +9,33 @@
   <div class="container-list-option">
        <mat-list class="container-list-option">
           @if (!currentUser) {
-              <mat-list routerLink="/user"  class="btn btn-dark mat-elevation-z3" >
+              <button mat-button routerLink="/user"  class="btn btn-dark mat-elevation-z3" >
                   <span class="title" matListItemTitle >Probar Gratis</span>
-              </mat-list>
+              </button >
           }
       @if (currentUser) {
-          <mat-list routerLink="/user"  class="btn btn-white mat-elevation-z3" >
-              <mat-icon matListItemIcon >account_circle</mat-icon>
+          <button mat-button routerLink="/user"  class="btn btn-white mat-elevation-z3" >
+              <!-- <mat-icon matListItemIcon >account_circle</mat-icon> -->
               <span matListItemTitle >Ir a mi cuenta</span>
-          </mat-list>
-          <mat-list routerLink="/"  class="btn btn-dark mat-elevation-z3" >
-              <mat-icon class="icon" matListItemIcon >workspace_premium</mat-icon>
+          </button>
+          <button mat-button (click)="logout()"  class="btn btn-white mat-elevation-z3" >
+            <!-- <mat-icon matListItemIcon >account_circle</mat-icon> -->
+            <span matListItemTitle >Cerrar sesión</span>
+        </button >
+          <button mat-button routerLink="/"  class="btn btn-dark mat-elevation-z3" >
+              <!-- <mat-icon class="icon" matListItemIcon >workspace_premium</mat-icon> -->
               <span class="title" matListItemTitle >Hazte Premium</span>
-          </mat-list>
+          </button >
       }@else {
-          <mat-list (click)="drawer.toggle()" routerLink="/web/account/login"  class="btn btn-white mat-elevation-z3 " >
-              <mat-icon matListItemIcon >account_circle</mat-icon>
+          <button mat-button (click)="drawer.toggle()" routerLink="/web/account/login"  class="btn btn-white mat-elevation-z3 " >
+              <!-- <mat-icon matListItemIcon >account_circle</mat-icon> -->
               <span matListItemTitle >Iniciar sesión</span>
-          </mat-list>
+          </button >
 
-          <mat-list (click)="drawer.toggle()" routerLink="/web/account/register"  class="btn btn-white mat-elevation-z3 " >
-              <mat-icon matListItemIcon >how_to_reg</mat-icon>
+          <button mat-button (click)="drawer.toggle()" routerLink="/web/account/register"  class="btn btn-white mat-elevation-z3 " >
+              <!-- <mat-icon matListItemIcon >how_to_reg</mat-icon> -->
               <span matListItemTitle>Registrate</span>
-          </mat-list>
+          </button>
           
       }
   </mat-list>   
@@ -41,12 +45,18 @@
   <mat-toolbar class="toolbar" >
     <p routerLink="/" class="name-page" >MenuUp.</p>
     <div class="content-btn-big-screen">
-      <button class="btn-login btn-big" mat-button >
-        Iniciar sesión
-      </button>
-      <button class="btn-register btn-big" mat-button >
-        Registrarse
-      </button>
+      @if(currentUser){
+        <button routerLink="/user" class="btn-login btn-big" mat-button >
+          Mi cuenta
+        </button>
+      }@else {
+        <button routerLink="/web/account/login" class="btn-login btn-big" mat-button >
+          Iniciar sesión
+        </button>
+        <button routerLink="/web/account/register" class="btn-register btn-big" mat-button >
+          Registrarse
+        </button>
+      }
     </div>
     <div class="container-icon-menu">
       <button class="btn-menu" (click)="drawer.toggle()" mat-icon-button  >
@@ -79,7 +89,7 @@
           </ul>
         </div>
         <div class="col-md-4">
-          <h3>Contacnos</h3>
+          <h3>Contáctanos</h3>
           <a  mat-button href="https://wa.me/523511342239?text=Hola,%20quiero%20más%20información" target="_blank" ><mat-icon>
             <img style="width: 100%; height: 100%;" src="https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Ficons%2Ficons8-whatsapp-100.png?alt=media&token=fc4bf22f-f87e-456b-ba3f-4cf426cde2fe" alt="">
           </mat-icon> 3511342239</a>

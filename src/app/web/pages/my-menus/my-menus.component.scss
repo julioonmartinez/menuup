@@ -66,6 +66,7 @@
 .container-body{
     padding-left: 16px;
     padding-right: 16px;
+    // display: grid;
     .container-list-card-menus{
         display: grid;
         row-gap: 24px;
@@ -120,11 +121,37 @@
 
 @media (min-width:400px) {
     .container-body{
-        display: grid;
-        justify-content: center;
+        // display: grid;
+        // justify-content: center;
+        .container-list-card-menus{
+
+        }
         .card-no-menus{
             min-width: 360px;    
+            justify-self: center;
         }
     }
+    
+}
+
+@media (min-width:800px) {
+    .container-body{
+        padding-left: 120px;
+        padding-right: 120px;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: row;
+        .container-list-card-menus{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            .card-menu{
+                max-width: 320px;
+                height: fit-content;
+            }
+            
+        }
+    }
+    
     
 }

@@ -11,6 +11,15 @@ html {
   .dashboard-container {
     // padding: 1rem;
     padding-bottom: 120px;
+    display: grid;
+    grid-template-columns: minmax(320px 400px);
+  }
+
+  @media (min-width: 400px) {
+    .dashboard-container{
+      justify-content: center;
+    }
+    
   }
 
   .stat-card.empty-survey-card {
@@ -22,6 +31,7 @@ html {
     border: 2px dashed #cccccc;
     border-radius: 10px;
     text-align: center;
+    max-width: 400px;
 }
 
 .empty-survey-icon {

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationStart, RouterLink, RouterOutlet } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,11 +12,14 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Subscription } from 'rxjs';
 import { MenuService } from '../../shared/services/menu.service';
 import { BusinessInformation } from '../../shared/interfaces/business-information';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { DialogSurveyComponent } from '../../shared/components/dialog-survey/dialog-survey.component';
+import { ButtonCreateMenuComponent } from '../../shared/components/button-create-menu/button-create-menu.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [ MatProgressSpinnerModule, RouterOutlet, MatButtonModule, MatIconModule, MatToolbarModule, CommonModule, RouterLink],
+  imports: [ButtonCreateMenuComponent, MatDialogModule, MatProgressSpinnerModule, RouterOutlet, MatButtonModule, MatIconModule, MatToolbarModule, CommonModule, RouterLink],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +34,7 @@ import { BusinessInformation } from '../../shared/interfaces/business-informatio
   ]
 })
 export class LayoutComponent01 implements OnInit {
-
+  _matDialog = inject(MatDialog)
   showBackButton = false;
   bussines!: BusinessInformation;
   loading:boolean = true;
@@ -60,39 +63,76 @@ export class LayoutComponent01 implements OnInit {
     //   }
     // })
 
-    this.activatedRouter.params.subscribe(params=>{
-      const idBusiness = params['idCompany']
-      console.log(idBusiness)
-      if(idBusiness){
-        this.menuService.setBusinessId(idBusiness)
-        this.menuService.getBusinessDB(idBusiness).subscribe(data=>{
-          this.bussines = data;
-
-          this.loading = false
-          this.cdr.detectChanges()
-        })
+    this.activatedRouter.params.subscribe(params => {
+      const idBusiness = params['idCompany'];
+      console.log('ID Business from params:', idBusiness);  // Verificar si params contiene el ID de la empresa
+      if (idBusiness) {
+          this.menuService.setBusinessId(idBusiness);
+          this.menuService.getBusinessDB(idBusiness).subscribe(data => {
+              this.bussines = data;
+              console.log('Business data:', data);  // Verificar si se están recibiendo los datos del negocio
+              this.idBussiness = data.id!;
+              this.loading = false;
+              this.cdr.detectChanges();
+              this.checkCurrentUrl();
+              // Inicializa los eventos del router después de cargar los datos
+              this.setupRouterEvents();
+          });
       }
-    })
+  });
+
+
+  
+
     
-    this.idBussiness = this.menuService.getBusinessId()
+
+    
+
+    
+
+    
+  };
+
+  checkCurrentUrl(): void {
+    const currentUrl = this.router.url;
+    console.log('Initial URL:', currentUrl);  // Verifica la URL al cargar o recargar
+    // Evalúa la visibilidad del botón "back" según la URL actual
+    this.showBackButton = currentUrl !== `/menu-demo-layout-01/${this.bussines?.id}/home`;
+    this.cdr.detectChanges();
+}
+
+
+  setupRouterEvents(): void {
     this.routeSubscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
-    ).subscribe(()=> {
-      console.log( `menus/${this.bussines.id}/menu-demo-layout-01/home`)
-      const currentUrl = this.router.url;
-      this.showBackButton = currentUrl !== `/menu-demo-layout-01/${this.bussines.id}/home` && currentUrl !== '/';
-      
-      this.cdr.detectChanges()
-      
-    });
+  ).subscribe((event) => {
+      console.log('NavigationEnd event detected:', event);  // Debug para verificar si NavigationEnd se dispara
+      if (this.bussines?.id) {
+          const currentUrl = this.router.url;
+          console.log('Current URL:', currentUrl);  // Asegurar que el valor de la URL actual se imprima
+          this.showBackButton = currentUrl !== `/menu-demo-layout-01/${this.bussines.id}/home`;
+          this.cdr.detectChanges();
+      }
+  });
 
-    
+     // Verificar si los eventos de NavigationStart se disparan
+     this.routeSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+  ).subscribe((event) => {
+      console.log('NavigationStart event detected:', event);  // Debug para verificar si NavigationStart se dispara
+      if (this.bussines?.id) {
+          const currentUrl = this.router.url;
+          console.log('Current URL on start:', currentUrl);  // Asegurar que el valor de la URL actual se imprima
+          this.showBackButton = currentUrl !== `/menu-demo-layout-01/${this.bussines.id}/home`;
+          this.cdr.detectChanges();
+      }
+  });
+};
 
-    
-
-    
-
-    
+  openDialogSurvey(){
+    this._matDialog.open(DialogSurveyComponent,{
+      data:this.bussines,
+    })
   }
 
   goBack(): void {

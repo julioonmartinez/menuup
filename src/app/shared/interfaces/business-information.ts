@@ -1,4 +1,5 @@
 import { Categories } from "./categories"
+import { Credit } from "./credit";
 import { Product } from "./product"
 
 export interface BusinessInformation {
@@ -23,5 +24,9 @@ export interface BusinessInformation {
     products?: Product[],
     categories?:Categories[],
     likes?: number;
-    nivel?: 'basic' | 'premium' | 'elite'
+    nivel?: 'basic' | 'premium' ;
+    idPay?: string;
+    period?: 'monthly' | 'annual'
+    lastPay?: Date,
+    credit?: Credit,
 }

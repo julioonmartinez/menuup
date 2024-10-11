@@ -8,6 +8,11 @@
     place-content: center;
 }
 
+.snackbar-error {
+    background-color: #f44336;
+    color: #fff;
+  }
+
 .header-register{
     padding-left: 16px;
     padding-right: 16px;
@@ -45,6 +50,7 @@
     display: grid;
     text-align: start;
     // row-gap: 16px;
+    max-width: 400px;
     .form-field{
         display: grid;
         margin-bottom: 20px;
@@ -72,6 +78,7 @@
 
       
 }
+
 
 .container-option-register{
    

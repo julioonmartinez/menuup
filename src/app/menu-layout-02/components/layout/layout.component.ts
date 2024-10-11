@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -17,11 +17,15 @@ import { ICONS } from '../../../shared/enums/icon';
 import { BusinessInformation } from '../../../shared/interfaces/business-information';
 import { SurveyButtonComponent } from "../../../shared/components/survey-button/survey-button.component";
 import { DialogSurveyComponent } from '../../../shared/components/dialog-survey/dialog-survey.component';
+import { ButtonCreateMenuComponent } from '../../../shared/components/button-create-menu/button-create-menu.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { Product } from '../../../shared/interfaces/product';
+import { DetailProductComponent } from '../../pages/detail-product/detail-product.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [MatDialogModule, SurveyButtonComponent, MatBottomSheetModule, RouterLink, RouterLinkActive, CommonModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, SurveyButtonComponent],
+  imports: [MatProgressSpinnerModule, ButtonCreateMenuComponent, MatDialogModule, SurveyButtonComponent, MatBottomSheetModule, RouterLink, RouterLinkActive, CommonModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, SurveyButtonComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })
@@ -37,8 +41,13 @@ export class LayoutComponent02 {
     
   ]
   business!: BusinessInformation;
+  loading : boolean = true;
 
   categorySelect: string = '';
+
+  private _bottomSheet = inject(MatBottomSheet);
+  products:  Product[] = [];
+
 
   constructor(
     private activatedRouter : ActivatedRoute,
@@ -69,8 +78,16 @@ export class LayoutComponent02 {
         this.business = data
         this.menuService.getCategoriesLIst(this.business.id!).subscribe(list=>{
           this.listCategories = list.sort((a,b)=> a.position! - b.position!)
-          this.router.navigateByUrl(`menu-layout-02/${idCompany}/home/${this.listCategories[0].id}`)
-        })
+          this.categorySelect = this.listCategories[0].id!
+          console.log(this.categorySelect);
+          this.menuService.getProductbyCategory(idCompany, this.categorySelect).subscribe(productList=>{
+            this.products = productList;
+            this.loading = false;
+          })
+
+        });
+
+        
         
       })
     }
@@ -113,7 +130,10 @@ export class LayoutComponent02 {
 
   setIDCategorySelected(id:string){
     this.categorySelect = id;
-    console.log(this.categorySelect)
+    this.menuService.getProductbyCategory(this.business.id!, this.categorySelect).subscribe(productList=>{
+      this.products = productList;
+      this.loading = false;
+    })
 
     
 
@@ -126,6 +146,14 @@ export class LayoutComponent02 {
       }
     })
 
+  }
+
+  openBottomSheet(product: Product): void {
+    this._bottomSheet.open(DetailProductComponent, {
+      data:{
+        product: product
+      }
+    });
   }
   
 }

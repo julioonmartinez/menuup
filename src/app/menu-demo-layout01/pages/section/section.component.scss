@@ -51,23 +51,28 @@
         // grid-template-rows: 16vh auto;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         overflow: hidden;
-        max-width: 320px;
+        // max-width: 320px;
+        height: 320px;
+        display: grid;
+        grid-template-rows: 180px 140px;
+
         img{
-            border-radius:  12px 12px 0 0 ;
+            
             position: relative;
-            max-width: 320px;
-            // width: 130%;
-            max-height: 140px;
+            // max-width: 320px;
+            width: 110%;
+            height: 100%;
             object-fit: cover;
             object-position:center;
             
-             overflow: clip;
+            //  overflow: clip;
 
           
             // z-index: 100;
         }
         .content-card-platillo{
-            display: grid;
+            display: flex;
+            flex-direction: column;
             // row-gap: 12px;
             padding-top: 12px;
        
@@ -75,7 +80,7 @@
             z-index: 200;
             .price{
                
-                font-size: 1.2rem;
+                font-size: 1.5rem;
                 font-weight: 800;
                 margin-top: 12px;
 
@@ -93,6 +98,15 @@
             }
         }
     }
+}
+@media (min-width:420px) {
+    .content-platillos-list{
+        grid-template-columns: 1fr 1fr;
+        .card{
+
+        }
+    }
+    
 }
 
 @media (min-width:1024px) {

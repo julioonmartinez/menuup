@@ -3,34 +3,48 @@
 <mat-sidenav-container>
     <mat-sidenav position="start" class="sidenav" #drawer [mode]="modeSideNav"   >
         <mat-toolbar class="toolbar-side" >
-            <span class="samari-side" routerLink="/" >tapTaste</span>
+            <span class="samari-side" routerLink="/" >MenuUp</span>
             <button (click)="drawer.toggle()" mat-icon-button >
                 <mat-icon >menu</mat-icon>
             </button>
         </mat-toolbar>
        <div class="container-list-nav">
+            <p class="name-menu" >{{menu?.nameCompany}}</p>
+            <p class="title-list-nav" [ngClass]="{'premium': menu?.nivel == 'premium' }" >{{menu?.nivel == 'premium' ? 'Nivel Premium' : 'Nivel Básico' }} </p>
                 <!-- <button (click)="routerLinkShowDemoMenu()" class="btn" mat-button >Vista de menu</button> -->
                 @if(user){
                     <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/" class="btn" mat-button >Menu Fav</button> -->
-                    <button (click)="drawer.toggle()" routerLink="/control/new-menu" class="btn btn-dark" mat-button >Crear nuevo menu</button>
+                    <button (click)="drawer.toggle()" routerLink="/control/new-menu" class="btn btn-dark" mat-button >Crear nuevo menú</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['control', IdBusiness]" class="btn" mat-button >Editar menú</button>
                     <button (click)="drawer.toggle()" [routerLink]="['configuration', IdBusiness]" class="btn" mat-button >Estilos</button>
                     <button (click)="drawer.toggle()" [routerLink]="['surveys', IdBusiness ]" class="btn" mat-button >Ver encuestas</button>
-                    <button (click)="drawer.toggle()" [routerLink]="['generate-code-qr', IdBusiness ]" class="btn" mat-button >Codigo Qr</button>
-                    <button (click)="drawer.toggle()" class="btn btn-list-menus" routerLink="/user/home" mat-button >Mis menus</button>
+                    <button (click)="drawer.toggle()" [routerLink]="['generate-code-qr', IdBusiness ]" class="btn" mat-button >Código Qr</button>
+                    <button (click)="drawer.toggle()" class="btn btn-list-menus" routerLink="/user/home" mat-button >Mis menús</button>
+                    @if (menu?.nivel == 'basic' || menu?.nivel == undefined) {
+                        <button routerLink="/web/plans" (click)="drawer.toggle()"  class="btn btn-create-premium " mat-button >
+                            <mat-icon>workspace_premium</mat-icon>
+                            <div class="container-text">
+                                <span class="title-btn-menu-what" >Haz premium tu Menú</span>
+                                <!-- <span class="text-prueba" >Prueba gratis por 3 meses</span> -->
+                            </div>
+                        </button>
+                    }    
+                
                 }@else {
-                    <button (click)="drawer.toggle()" routerLink="/app-samari/control/demo" class="btn" mat-button >Menu</button>
+                    <button (click)="drawer.toggle()" routerLink="/app-samari/control/demo" class="btn" mat-button >Menú</button>
+                    <button routerLink="/user/account" (click)="drawer.toggle()"  class="btn btn-register " mat-button >
+                        <mat-icon>menu</mat-icon>
+                        <div class="container-text">
+                            <span class="title-btn-menu-what" >Crear cuenta</span>
+                            <!-- <span class="text-prueba" >Prueba gratis por 3 meses</span> -->
+                        </div>
+                    </button>
                 }
 
                 <!-- <button (click)="drawer.toggle()" routerLink="/app-samari/generate-code-qr" class="btn" mat-button >Generar QR</button> -->
                 <!-- <button (click)="drawer.toggle()" class="btn" mat-button >Imprimir</button> -->
                 
-                <button routerLink="/user/account" (click)="drawer.toggle()"  class="btn btn-register " mat-button >
-                    <mat-icon>menu</mat-icon>
-                    <div class="container-text">
-                        <span class="title-btn-menu-what" >Crear cuenta</span>
-                        <!-- <span class="text-prueba" >Prueba gratis por 3 meses</span> -->
-                    </div>
-                </button>
+                
                 <!-- @if (user) {
                     <button (click)="logout()" class="btn cerrar"  mat-button >Cerrar sesión</button>
 
@@ -54,7 +68,7 @@
                 <mat-icon >menu</mat-icon>
             </button>
         
-        <span routerLink="/" >TapTaste</span>
+        <span  >{{menu?.nameCompany}}</span>
      <!-- @if (!user) {
         <button class="btn-add-account" routerLink="/app-samari/register" mat-button >Crea tu cuenta</button>
      

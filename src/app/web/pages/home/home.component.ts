@@ -6,8 +6,10 @@ import { BusinessInformation } from '../../../shared/interfaces/business-informa
 import { GeneralAppService } from '../../../shared/services/general-app.service';
 import { MatListModule } from '@angular/material/list';
 import { User } from 'firebase/auth';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatCardModule, MatCardSmImage } from '@angular/material/card';
+import { AuthService } from '../../../shared/services/auth.service';
+import { user } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-home',
@@ -34,26 +36,26 @@ export class HomeComponent {
 
   urlCodigoQR = 'https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/web%2Fhome%2F_aca806e1-da52-472f-a01e-c4a9256847fb.jpeg?alt=media&token=62103b22-83d8-4aab-a28a-df0061c851b4'
 
-  menuList: BusinessInformation[] = [];
+  currentUser: User | null = null;
+
   constructor(
-    private generalAppService: GeneralAppService
+    private authServive : AuthService,
+    private router : Router,
   ){
 
-    this.generalAppService.getBusinessActive().subscribe({
-      next:(menusData: BusinessInformation[])=>{
-        console.log(menusData)
-        menusData.forEach(menu=>{
-          if(menu.urlImgRestaurante){
-            this.menuList.push(menu)
-          }
-        })
-        
-      }
-    })
+
   }
 
   scrollToTop() {
     window.scrollTo(0, 0);
+  }
+
+  routerLinkDemo(){
+    if(this.currentUser){
+      this.router.navigateByUrl('/user')
+    }else{
+      this.router.navigateByUrl('/app-samari/control/demo')
+    }
   }
   
 

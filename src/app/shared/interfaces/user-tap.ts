@@ -1,3 +1,5 @@
+import { Credit } from "./credit"
+
 export interface UserTap {
 
     id?:string
@@ -8,4 +10,5 @@ export interface UserTap {
     photoURL?:string | null,
     role: 'free' | 'premium' | 'admin',
     create:Date,
+    credits?: Credit[],
 }

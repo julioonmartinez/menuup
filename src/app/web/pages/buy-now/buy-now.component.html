@@ -1,0 +1,75 @@
+<div class="content-page-buy-now">
+    @if(currentUser){
+        <div class="container-user">
+            <div class="content-page">
+                <div class="content-plan mat-elevation-z3">
+                    <div class="plan-header">
+                        <p  class="title-header">Selecciona el plan que más te convenga</p>
+                        <div class="content-period-list">
+                            <button  [ngClass]="{'active': period?.period  == 'monthly'}" (click)="setMonthly()" class="content-period btn">
+                                <p class="period" >1 Mes</p>
+                                <p class="price" >$ 129.00</p>
+                            </button>
+                            <button  [ngClass]="{'active': period?.period ===  'annual' }" (click)="setAnnual()" class="content-period btn">
+                                <p class="period" >12 meses</p>
+                                <p class="price" >$ 999</p>
+                                <!-- <p class="save">Ahorra un 36%</p> -->
+                            </button>
+                        </div>
+                    </div>
+            
+                    @if (period?.period == 'annual') {
+                        <div  class="content-model-premium">
+                            <p class="title-plan" >Plan premium  <mat-icon class="icon" >workspace_premium</mat-icon></p>
+                            <p class="price" >$999 / año</p>
+                            <div class="content-save">
+                                <p class="save" >Ahorras $ 549.00</p>
+                            </div>
+                        </div>
+                    }@else {
+                        <div  class="content-model-premium-month">
+                            <p class="title-plan" >Plan Premium Mensual </p>
+                            <p class="price" >$129 / mensual</p>
+                            <div class="content-save">
+                                <p class="no-save" >Sin ahorro</p>
+                            </div>
+                        </div>
+                    }
+            
+                    
+                    <div class="content-buttons">
+                        <!-- <button [routerLink]="['/web/buy-now', period]" class="btn btn-buy" mat-button >Comprar ahora</button> -->
+                        
+                        <app-paypal-button  [period]="period?.period!" ></app-paypal-button>
+                        
+                        <button  class="btn btn-free" mat-button >Prueba gratis 30 días</button>
+                        <p class="text-ad" >*Cancela cuando quieras.</p>
+                        <p class="text-ad">*No cobraremos nada hasta despues de 30 días en tu prueba gratuita.</p>
+                    </div>
+        </div>
+    </div>
+</div>
+    }@else {
+        <div class="container-no-user">
+            <p class="title" >Antes de continuar con tu compra registrate o inica sesión</p>
+            <div class="content-selection">
+                <div class="content-selection-btn">
+                    <div class="content-btn">
+                        <button [ngClass]="{'active': actionWithoutAccount == 'register'}" (click)="setRegister()" class="btn btn-register" >
+                            Registrate
+                        </button>
+                        <button [ngClass]="{'active': actionWithoutAccount == 'login'}" (click)="setLogin()" class="btn btn-login" >
+                            Iniciar sesión
+                        </button>
+                    </div>
+                </div>
+                
+                 @if (actionWithoutAccount == 'register') {
+                    <app-register-buy></app-register-buy>
+                 }@else {
+                    <app-login-buy></app-login-buy>
+                 }
+            </div>
+        </div>
+    }
+</div>

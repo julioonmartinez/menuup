@@ -1,0 +1,63 @@
+@if (loading) {
+    <div class="container-loading-spinner">
+        <mat-spinner class="progress-spinner" mode="indeterminate" ></mat-spinner>
+    </div>
+}@else {
+    @if (user) {
+        <div class="content-page-selction-credit">
+    
+            <div class="container-page-my-menus">
+                <div [ngClass]="{'no-menus': menus.length === 0}"  class="container-title">
+                    <p class="title-page" >Tus Menus  </p>
+                    <p class="subtitle" >Selecciona un menú y hazlo prime <mat-icon>workspace_premium</mat-icon> </p>
+                    <p class="type-suscription" >Estas eligiendo una suscripcción: {{suscription}} </p>
+                    <!-- @if (menus.length != 0) {
+                        <button routerLink="/app-samari/control/new-menu" mat-button class="btn-add-menu" >
+                     
+                            <mat-icon class="icon" >add_business</mat-icon>
+                        </button>
+                    } -->
+                </div>
+            
+                @if(menus.length === 0){
+                    <div class="container-body">
+                        <mat-card appearance="outlined" class="card-no-menus" >
+                            <mat-card-header class="header-card" >
+                                <mat-icon class="icon" >
+                                    <img class="img-icon"  src="https://img.icons8.com/pastel-glyph/64/restaurant-menu.png" alt="restaurant-menu"/>
+                                </mat-icon>
+                            </mat-card-header>
+                            <mat-card-content class="card-content" >
+                                <p class="title" >No tienes ningún menu para hacerlo premium...</p>
+                                <p class="title"> ¡por ahora!</p>
+                                <p class="description-card" >Crea un menú atractivo, ahora es rápido, sencillo y es<span>¡gratis!</span></p>
+                            </mat-card-content>
+                            <mat-card-actions class="card-actions" >
+                                <button mat-button class="btn"(click)="createMenu()" >Crea tu menu </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                }@else {
+                    <form [formGroup]="form"  class="container-body" >
+                        <mat-selection-list formControlName="idMenu" name="item" class="container-list-card-menus" multiple="false" >
+                            @for (item of menus; track $index) {
+                                <mat-list-option [value]="item.id" class="item-menu" >
+                                    @if (item.urlImgRestaurante) {
+                                        <img matListItemAvatar [src]="item.urlImgRestaurante" alt="">
+                                    }@else {
+                                        <mat-icon style="width:fit-content; height: fit-content; padding: 8px;" matListItemAvatar>restaurant</mat-icon>
+                                    }
+                                    <p matListItemTitle class="text" >{{item.nameCompany}}</p>
+                                </mat-list-option>
+                            }
+                        </mat-selection-list>
+                        <button type="button" (click)="upNivelMenu()" mat-button class="create-premium" >Hacer premium</button>
+                    </form>
+                    
+                    
+                }
+                
+            </div>
+        </div>
+    }
+}

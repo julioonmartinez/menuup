@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,11 +11,12 @@ import { AuthService } from '../../../shared/services/auth.service';
 
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { BusinessInformation } from '../../../shared/interfaces/business-information';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-layout-app-user',
   standalone: true,
-  imports: [ RouterLink, MatProgressBarModule, RouterModule, MatListModule ,MatSidenavModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, RouterModule],
+  imports: [CommonModule, RouterLink, MatProgressBarModule, RouterModule, MatListModule ,MatSidenavModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, RouterModule],
   templateUrl: './layout-app-user.component.html',
   styleUrl: './layout-app-user.component.scss'
 })
@@ -29,6 +30,8 @@ export class LayoutAppUserComponent implements OnInit {
   moodMenuDemoMake = false;
   loading:boolean = true;
 
+  menu:BusinessInformation | null = null;
+
   listNav: {link:string, icon:string}[] = [];
 
   constructor(
@@ -36,8 +39,16 @@ export class LayoutAppUserComponent implements OnInit {
     private router : Router,
     private authService : AuthService,
   ){}
+  
   ngOnInit(): void {
   this.adjustSidenav(window.innerWidth);
+
+  this.demoService.currentMene$.subscribe(dataMenu=>{
+    this.menu = dataMenu;
+    console.log('menu:', this.menu)
+  })
+
+  
 
   
   this.authService.currentUser$.subscribe((user) => {
@@ -52,7 +63,9 @@ export class LayoutAppUserComponent implements OnInit {
       user = null
     }
   });
-  }
+  };
+
+  
 
 
   @HostListener('window:resize', ['$event'])

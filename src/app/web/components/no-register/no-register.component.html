@@ -1,11 +1,14 @@
+@if (loading) {
+    <mat-progress-bar mode="indeterminate" ></mat-progress-bar>
+}
 <div class="page-accounts">
     <div class="header-register">
-        <p class="title" >tapTaste</p>
+        <!-- <p class="title" >tapTaste</p> -->
         <p class="subtitle" >Crea un menu atractivo</p>
     </div>
 
     <mat-card appearance="outlined" class="container-option-register">
-        <p class="title" >Registrate para guardar tus platillos y lugares favoritos</p>
+        <p class="title" >{{titleForm}}</p>
         <mat-card-content class="card-content" >
             <form [formGroup]="form" class="form">
                 <div class="form-field">
@@ -23,7 +26,7 @@
         </mat-card-content>
         <mat-card-actions class="options-register">
 
-            <button (click)="onRegister()" class="btn-email" mat-fab extended  >
+            <button [disabled]="loading" (click)="onRegister()" class="btn-email" mat-fab extended  >
                 <mat-icon>mail</mat-icon>
                 Registrate con tu email
             </button>

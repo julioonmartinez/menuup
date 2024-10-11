@@ -29,6 +29,8 @@ import { HomeComponent } from './web/pages/home/home.component';
 import { NoRegisterComponent } from './web/components/no-register/no-register.component';
 import { PoliticaPrivacidadComponent } from './web/pages/politica-privacidad/politica-privacidad.component';
 import { SelectionPlanComponent } from './web/pages/selection-plan/selection-plan.component';
+import { BuyNowComponent } from './web/pages/buy-now/buy-now.component';
+import { SelectionMenuCreditComponent } from './web/pages/selection-menu-credit/selection-menu-credit.component';
 
 export const routes: Routes = [
     {
@@ -106,6 +108,8 @@ export const routes: Routes = [
             {path:'home', component:HomeComponent},
             {path:'politica-privacidad', component:PoliticaPrivacidadComponent},
             {path:'plans', component:SelectionPlanComponent},
+            {path:'buy-now/:period', component:BuyNowComponent},
+            {path:'selection-menu-credit/:idPay', component:SelectionMenuCreditComponent},
             {
                 path:'menus/app-samari',
                 loadChildren:()=> import('./demo-app/demo.routes')

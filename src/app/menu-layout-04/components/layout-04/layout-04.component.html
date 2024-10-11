@@ -16,13 +16,13 @@
             <div class="container-name">
                 <p class="menu-name" >{{menu.nameCompany ? menu.nameCompany : ''}}</p>
                 <div class="contianer-icons-header">
-                    <button  class="icon-btn" mat-icon-button >
+                    <button (click)="openDialogInfo()"  class="icon-btn" mat-icon-button >
                         <mat-icon class="icon" >info</mat-icon>
                     </button>
-                    <button  class="icon-btn" mat-icon-button >
+                    <!-- <button  class="icon-btn" mat-icon-button >
                         <mat-icon  class="icon" >share</mat-icon>
-                    </button>
-                    <button class="btn-survey" mat-button  > <mat-icon class="icon" >comment</mat-icon> ¡Danos tu Opinión!</button>
+                    </button> -->
+                    <button (click)="openDialogSurvey()" class="btn-survey" mat-button  > <mat-icon class="icon" >comment</mat-icon> ¡Danos tu Opinión!</button>
     
                     
     
@@ -30,7 +30,7 @@
             </div>
         </div>
     </div>
-    <div class="container-promos">
+    <!-- <div class="container-promos">
         @for (promo of promos; track $index) {
             <div class="content-promo">
                 <div class="content-text-promo">
@@ -50,11 +50,11 @@
             </div>
             
         }
-    </div>
+    </div> -->
 
     <div class="container-list-categories">
         @for (category of catgories; track $index) {
-            <div (click)="scrollToCategory(category.id!)" [ngClass]="{'active': categorySelected == category.id}" class="content-category">
+            <div [id]="'category-scroll-' + category.id" (click)="scrollToCategory(category.id!)" [ngClass]="{'active': categorySelected == category.id}" class="content-category">
                 <p class="name" >{{category.name}}</p>
             </div>
         }
@@ -63,7 +63,7 @@
     <div class="container-list-products">
         @for (category of catgories; track $index) {
             <div [id]="'category-' + category.id" class="content-catgory-of-products">
-                <p class="title-category" >{{category.name}}</p>
+                <p class="title-category" [id]="'title-category-' + category.id"  >{{category.name}}</p>
                 <div class="content-list-products">
                     @for (product of getProductByCategory(category.id!); track $index) {
                         <div class="content-product">

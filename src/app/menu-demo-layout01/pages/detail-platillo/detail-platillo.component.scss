@@ -11,9 +11,9 @@
   .header-platillo-image {
     width: 100%; /* Asegura que la imagen cubra todo el ancho del contenedor */
     height: 100%; /* Asegura que la imagen cubra toda la altura del contenedor */
-    object-fit: cover; /* Similar a background-size: cover; */
+    object-fit: contain; /* Similar a background-size: cover; */
     object-position:center; /* Centra la imagen dentro del contenedor */
-    
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.204);
   }
 
   .container-platillo{

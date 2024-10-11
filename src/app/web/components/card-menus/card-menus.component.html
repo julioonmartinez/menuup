@@ -8,6 +8,11 @@
       }
       
       <mat-card-title class="title" >{{menu()?.nameCompany}}</mat-card-title>
+      @if (menu()?.nivel === 'premium') {
+        <mat-card-subtitle class="text-premium" >Premium</mat-card-subtitle>
+      }@else {
+        <button routerLink="/web/plans" mat-card-subtitle mat-button class="btn-premium" >Básico</button>
+      }
     </mat-card-header>
 
     <mat-card-content class="content-card-general">

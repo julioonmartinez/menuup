@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { Storage, ref, uploadBytesResumable, getDownloadURL, UploadTask, deleteObject } from '@angular/fire/storage';
-import { Observable, Subject, catchError, from, map } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, catchError, from, map, tap } from 'rxjs';
 import { Firestore, collection, addDoc, doc, updateDoc, deleteDoc, collectionData, docData, setDoc, DocumentReference, DocumentData} from '@angular/fire/firestore';
 import {  query, where } from 'firebase/firestore';
 import { Categories } from '../interfaces/categories';
@@ -24,6 +24,9 @@ export class DemoService {
   nameColletionListCategoriesDemo: string = 'categories';
  
   idBusiness: string  | null = null;
+
+  currentMenuSubject: BehaviorSubject<BusinessInformation | null> = new BehaviorSubject<BusinessInformation | null>(null);
+  currentMene$: Observable<BusinessInformation | null> = this.currentMenuSubject.asObservable();
   
   constructor(
     private storage: Storage,
@@ -125,9 +128,15 @@ export class DemoService {
     return from(updateDoc(docRef, {position: newPosition} ))
   }
 
-  getBussiness(idBUssiness:string){
-    const docRef = doc(this.firestore, `${this.nameColletionBussinesDemo}/${idBUssiness}`)
-    return from(docData(docRef, { idField: 'id' }))
+  getBussiness(idBUssiness: string) {
+    const docRef = doc(this.firestore, `${this.nameColletionBussinesDemo}/${idBUssiness}`);
+    this.setIdBusiness(idBUssiness)
+    return from(docData(docRef, { idField: 'id' })).pipe(
+      tap((menu: BusinessInformation) => {
+        // Actualiza el currentMenuSubject con los datos obtenidos
+        this.currentMenuSubject.next(menu);
+      })
+    );
   }
 
   getCategoryList(idBussiness: string) {
@@ -286,6 +295,18 @@ export class DemoService {
   deleteFile(filePath: string): Promise<void> {
     const fileRef = ref(this.storage, filePath);
     return deleteObject(fileRef);
+  }
+
+  createMenuWithNameAndIdUser(name: string, idUser: string){
+    const menuColletion = collection(this.firestore, this.nameColletionBussinesDemo)
+    const menu : BusinessInformation = {
+      nameCompany: name,
+      create: new Date(),
+      idUSer: idUser,
+    };
+
+    return from(addDoc(menuColletion, menu))
+    
   }
 
   

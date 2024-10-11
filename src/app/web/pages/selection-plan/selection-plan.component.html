@@ -3,11 +3,11 @@
         <div class="plan-header">
             <p  class="title-header">Selecciona el plan que más te convenga</p>
             <div class="content-period-list">
-                <button  [ngClass]="{'active': period == 'month'}" (click)="selectionPeriod('month')" class="content-period btn">
+                <button  [ngClass]="{'active': period == 'monthly'}" (click)="setMonthly()" class="content-period btn">
                     <p class="period" >1 Mes</p>
                     <p class="price" >$ 129.00</p>
                 </button>
-                <button  [ngClass]="{'active': period == 'year'}" (click)="selectionPeriod('year')" class="content-period btn">
+                <button  [ngClass]="{'active': period == 'annual'}" (click)="setAnnual()" class="content-period btn">
                     <p class="period" >12 meses</p>
                     <p class="price" >$ 999</p>
                     <!-- <p class="save">Ahorra un 36%</p> -->
@@ -15,24 +15,32 @@
             </div>
         </div>
 
-        <div [ngClass]="{'active': period === 'month'}" class="content-model-premium">
+        <div [ngClass]="{'active': period === 'monthly'}" class="content-model-premium">
             <p class="title-plan" >Plan premium  <mat-icon class="icon" >workspace_premium</mat-icon></p>
             <p class="price" >$999 / año</p>
             <div class="content-save">
                 <p class="save" >Ahorras $ 549.00</p>
+                <p class="day-free" >30 dias gratis</p>
             </div>
         </div>
 
-        <div [ngClass]="{'active': period === 'year'}" class="content-model-premium-month">
-            <p class="title-plan" >Plan Premium Mensual <mat-icon class="icon" >workspace_premium</mat-icon></p>
-            <p class="price" >$129 / año</p>
+        <div [ngClass]="{'active': period === 'annual'}" class="content-model-premium-month">
+            <p class="title-plan" >Plan Premium Mensual </p>
+            <p class="price" >$129 / mensual</p>
             <div class="content-save">
-                <p class="no-save" >Sin ahorro</p>
+                <p class="no-save" >30 días gratis</p>
             </div>
         </div>
         <div class="content-buttons">
-            <button class="btn btn-buy" mat-button >Comprar ahora</button>
-            <button  class="btn btn-free" mat-button >Prueba gratis 30 días</button>
+           @if (user == null) {
+            <button [routerLink]="['/web/buy-now', period]" class="btn btn-buy" mat-button >Comprar ahora</button>
+           }@else {
+            <app-paypal-button [period]="period" ></app-paypal-button>
+
+           }
+            
+            
+            <!-- <button  class="btn btn-free" mat-button >Prueba gratis 30 días</button> -->
             <p class="text-ad" >*Cancela cuando quieras.</p>
             <p class="text-ad">*No cobraremos nada hasta despues de 30 días en tu prueba gratuita.</p>
         </div>

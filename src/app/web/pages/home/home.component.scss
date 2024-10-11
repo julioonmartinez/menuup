@@ -67,7 +67,7 @@
     }
     .card{
         border-radius: 12px;
-        border: 1px solid #D8DBCD;
+        border: 1px solid #F0F0F0;
         display: grid;
         grid-template-columns: 60% 40%;
         align-items: flex-start;
@@ -152,8 +152,8 @@
             background-color: orangered;
             color: #f6f6f6;
             font-size: 1.2rem;
-            padding: 16px ;
-            height: 52px;
+            padding: 12px 32px ;
+            height: 60px;
             // min-width: 320px;
             // box-shadow: 2px 2px 4px 0px  #e7e7e7;
             border-radius: 8px;
@@ -281,7 +281,7 @@
     }
     .container-plan{
         border-radius: 8px;
-        border: 1px solid #dcdcdc;
+        border: 1px solid #F0F0F0;
         padding: 24px 16px;
         display: grid;
         margin-top: 32px;
@@ -376,8 +376,13 @@
                     color: #c5c500;
                 
                 }
-                span{
-                    text-wrap: wrap;
+                p, span{
+                    max-width: 100%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    // white-space: nowrap;
+                    // overflow: hidden;
+                    // text-overflow: ellipsis;
                 }
 
             }

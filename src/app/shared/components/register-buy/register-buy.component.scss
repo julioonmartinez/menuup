@@ -1,0 +1,112 @@
+.page-accounts{
+    // min-height: 80vh;
+    // background-image: url('https://firebasestorage.googleapis.com/v0/b/menu-app-c542c.appspot.com/o/restaurant%2Fameyalli%2Fplatillos%2FDALL%C2%B7E%202024-08-31%2013.30.41%20-%20A%20delicious%20restaurant%20dish%20featuring%20Papas%20Gajo.%20The%20plate%20showcases%20golden%2C%20crispy%20potato%20wedges%2C%20seasoned%20perfectly%20and%20arranged%20elegantly%20on%20a%20rus.webp?alt=media&token=c312f7f3-932c-4fb9-a66c-01446adc9fa9');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    
+}
+
+
+.card-content{
+    padding: 8px;
+}
+
+.form{
+    display: grid;
+    text-align: start;
+    // row-gap: 16px;
+    .form-field{
+        display: grid;
+        margin-bottom: 20px;
+        label{
+            font-size: 14px;
+        color: #4a4a4a;
+        margin-bottom: 5px;
+        display: block;
+        }
+        input {
+            // width: 100%;
+            padding: 10px;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            font-size: 16px;
+            height: 32px;
+          }
+        
+    }
+    .form-field input:focus {
+        border-color: #ff4500;
+        outline: none;
+        box-shadow: 0 0 5px rgba(255, 69, 0, 0.5);
+      }
+
+      
+}
+
+.container-option-register{
+   
+    margin-top: 24px;
+    padding: 16px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 10001;
+    
+    .title{
+        font-size: 1rem;
+        font-weight: 550;
+        color: #4A4A4A;
+    }
+    .options-register{
+        display: grid;
+        row-gap: 16px;
+
+        // justify-content: center;
+        column-gap: 12px;
+        button{
+            // background-color: white;
+            // z-index: 1000;
+            border-radius: 8px;
+            box-shadow: none;
+            
+
+        }
+        .btn-google{
+            background-color: white;
+            color: #4A4A4A;
+            border: 1px solid  #dcdcdc;
+           
+        }
+        .btn-email{
+            background-color: #ff4500;
+            color: white;
+        }
+    }
+
+}
+
+ /* Account login section */
+ .container-account-login {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .text {
+    font-size: 14px;
+    color: #4a4a4a;
+  }
+  
+  .btn-login {
+    background-color: #4a4a4a;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-login:hover {
+    background-color: #333333;
+  }

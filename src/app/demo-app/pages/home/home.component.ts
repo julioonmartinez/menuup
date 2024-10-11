@@ -111,17 +111,20 @@ export class HomeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.activsatedRouter.paramMap.subscribe(params=>{
-      const idParams = params.get('id');
-      if(idParams){
-        
-        this.loadBussiness(idParams)
-      }
+    this.authService.currentUser$.subscribe(userData=>{
+      this.currenUser = userData;
+      this.activsatedRouter.paramMap.subscribe(params=>{
+        const idParams = params.get('id');
+        if(idParams){
+          
+          this.loadBussiness(idParams);
+          
+        }
+      })
     })
+    
 
-  this.authService.currentUser$.subscribe(userData=>{
-    this.currenUser = userData
-  })
+
     
 
   }
@@ -295,21 +298,28 @@ changeImageRestaruante(event:any){
   async loadBussiness(idParams:string){
    if(idParams === 'demo'){
     if(this.currenUser){
-      this.router.navigateByUrl('/app-samari/list-menus')
+      this.router.navigateByUrl('/user')
       return
-    }
-    const nameLocalStorageBussinessDemo =  this.demoServive.nameLocalStorageDemoBussiness
-    const saveBussiness  =   localStorage.getItem(nameLocalStorageBussinessDemo)
-    console.log('save', saveBussiness)
+    }else{
+      const nameLocalStorageBussinessDemo =  this.demoServive.nameLocalStorageDemoBussiness
+      const saveBussiness  =   localStorage.getItem(nameLocalStorageBussinessDemo)
     if(saveBussiness){
-      const info: BusinessInformation = await JSON.parse(saveBussiness)
+      const info: BusinessInformation = await JSON.parse(saveBussiness);
       this.demoServive.getBussiness(info.id!).subscribe({
         next: async (data: BusinessInformation)=>{
-          this.infoDemo = data;
-          if(this.infoDemo.id){
-            await this.getListCategories(this.infoDemo.id);
-          await this.getListProducts(this.infoDemo.id);
+          
+          if(data.idUSer && !this.currenUser){
+            this.openDialogCompanyName('new',this.infoDemo)
+          }else{
+            this.infoDemo = data;
+            if(this.infoDemo.id){
+              
+              await this.getListCategories(this.infoDemo.id);
+              await this.getListProducts(this.infoDemo.id);
+            }
+
           }
+         
         },
         error:()=>{
           this.openDialogCompanyName('new', this.infoDemo)
@@ -332,6 +342,9 @@ changeImageRestaruante(event:any){
       
    
     }
+      
+    }
+    
    }else if(idParams === 'new-menu'){
     
     if(this.infoDemo.id){
@@ -509,7 +522,8 @@ changeImageRestaruante(event:any){
       
       console.log( 'afterclose', result)
      
-      if(result){
+      if(result && mood == 'new'){
+        console.log('saveLOcal')
         this.saveLocalStorageCompany(result)
         
 

@@ -59,16 +59,46 @@ export class LoginComponent {
   }
 
 
-  onLogin(){
-    if(this.form.valid){
-      const email = this.form.get('email')?.value
-        const pass = this.form.get('password')?.value
+  onLogin() {
+    if (this.form.valid) {
+      const email = this.form.get('email')?.value;
+      const pass = this.form.get('password')?.value;
+  
       this.authService.login(email, pass).subscribe({
-        next:(res)=>{
-          this.router.navigateByUrl('/user')
+        next: (res) => {
+          this.router.navigateByUrl('/user');
+        },
+        error: (err) => {
+          this.handleLoginError(err);
         }
-      })
+      });
+    } else {
+      this.openSnackBar('Ingresa tu correo y tu contraseña por favor.');
     }
+  }
+  
+  handleLoginError(error: any) {
+    let message = 'An unknown error occurred';
+  
+    switch (error.code) {
+      case 'auth/invalid-email':
+        message = 'The email address is not valid.';
+        break;
+      case 'auth/user-disabled':
+        message = 'The user account has been disabled.';
+        break;
+      case 'auth/user-not-found':
+        message = 'No user found with this email.';
+        break;
+      case 'auth/wrong-password':
+        message = 'The password is incorrect.';
+        break;
+      case 'auth/network-request-failed':
+        message = 'A network error occurred. Please try again later.';
+        break;
+    }
+  
+    this.openSnackBar(message);
   }
 
 
@@ -83,4 +113,6 @@ export class LoginComponent {
     })
 
   }
+
+
 }

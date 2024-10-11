@@ -3,6 +3,11 @@
         <mat-progress-spinner  class="progress-spinner" mode="indeterminate"></mat-progress-spinner>
     </div>
 }@else {
+    @if (bussines.nivel === 'basic' || bussines.nivel == undefined) {
+       <div class="container-promo">
+        <app-button-create-menu></app-button-create-menu>
+       </div>
+    }
     <mat-toolbar [ngStyle]="{'background-color': bussines.principalColor}" class="toolbar">
         <ng-container *ngIf="!showBackButton">
             <div class="container-left">
@@ -23,10 +28,13 @@
         </ng-container>
        
         <span [ngStyle]="{'color': bussines.secondaryColor}" >{{bussines.nameCompany  == undefined ? '' : bussines.nameCompany}}</span>
+        
+    
     </mat-toolbar>
     
     <div [ngStyle]="{'background-color': bussines.principalColor}" class="content-router" [@routeAnimations]="prepareRoute(outlet)">
         <router-outlet #outlet="outlet"></router-outlet>
+        <button class="btn-survey" mat-fab extended (click)="openDialogSurvey()" > <mat-icon class="icon" >comment</mat-icon> ¡Danos tu Opinión!</button>
     </div>
    
 }
