@@ -31,8 +31,8 @@
            </div> 
         </div>
         <div class="container-icons-categorias">
-            @for (category of listCategories; track $index) {
-                <button (click)="setIDCategorySelected(category.id!)" class="container-icon" [ngClass]="{'active': categorySelect == category.id} " >
+            @for (category of listCategories; let i = $index;track $index) {
+                <button (click)="goToSlide(i, category.id!)" class="container-icon" [ngClass]="{'active': categorySelect == category.id} " >
                    
                         <img class="icon icon-active" width="30" height="30" [src]="searchIconSelected(category.idIcons!)" [alt]="category.name"/>
         
@@ -43,34 +43,66 @@
             }
         </div>
         <div class="container-router">
-           
-            
-            <div class="container-page-home">
-                <div class="list-paltillos">
-                   @for (item of products; track $index) {
-                    <div (click)="openBottomSheet(item)" class="card">
-                        <div class="image-platillo">
-                            <img  [src]="item.urlImage" alt="">
-                            <div class="shadow"></div>
-                        </div>
-                        <div class="container-text">
-                            <div class="title">
-                                <p>{{item.name}} </p>
-                            </div>
-                            <div class="subtitle">
-                                {{item.subtitle}}
-                            </div>
-                            <div class="container-footer">
-                                <p  class="price" >{{item.price | currency}} </p>
-                                <button mat-icon-button class="btn-favorite" >
-                                    <mat-icon class="icon" >favorite</mat-icon>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                   }
+            <!-- <div class="swiper mySwiper" #swiperContainer  >
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">Slide 1</div>
+                  <div class="swiper-slide">Slide 2</div>
+                  <div class="swiper-slide">Slide 3</div>
+                  <div class="swiper-slide">Slide 4</div>
+                  <div class="swiper-slide">Slide 5</div>
+                  <div class="swiper-slide">Slide 6</div>
+                  <div class="swiper-slide">Slide 7</div>
+                  <div class="swiper-slide">Slide 8</div>
+                  <div class="swiper-slide">Slide 9</div>
                 </div>
-            </div>
+                <div class="swiper-pagination"></div>
+              </div> -->
+           
+            <!-- <swiper-container 
+            [navigation]="false"
+            [pagination]="false"
+            #swiper
+            >
+                 
+                @for (item of listCategories; track $index) {
+                    <swiper-slide>
+                        <img loading="lazy"  style="width:100%; height: 200px; object-fit: contain;" [src]="item.urlImage" alt="">
+                    </swiper-slide>
+                }
+                
+            </swiper-container> -->
+            <swiper-container #swiper class="container-page-home"      
+            >
+               
+                
+                @for (category of listCategories; track $index) {
+                    <swiper-slide class="list-paltillos">
+                        @for (item of category.products; track $index) {
+                         <div (click)="openBottomSheet(item)" class="card">
+                             <div class="image-platillo">
+                                 <img  [src]="item.urlImage" alt="">
+                                 <div class="shadow"></div>
+                             </div>
+                             <div class="container-text">
+                                 <div class="title">
+                                     <p>{{item.name}} </p>
+                                 </div>
+                                 <div class="subtitle">
+                                     {{item.subtitle}}
+                                 </div>
+                                 <div class="container-footer">
+                                     <p  class="price" >{{item.price | currency}} </p>
+                                     <button mat-icon-button class="btn-favorite" >
+                                         <mat-icon class="icon" >favorite</mat-icon>
+                                     </button>
+                                 </div>
+                             </div>
+                         </div>
+                        }
+                    </swiper-slide>
+                }
+            
+            </swiper-container>
             
         </div>
         </div>

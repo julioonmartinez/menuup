@@ -1,3 +1,5 @@
+import { Product } from "./product";
+
 export interface Categories {
     id?:string,
     name:string,
@@ -7,4 +9,5 @@ export interface Categories {
     filePath?:string,
     useIcons?:boolean,
     idIcons?:string,
+    products?: Product[];
 }

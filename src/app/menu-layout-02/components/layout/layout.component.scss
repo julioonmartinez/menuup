@@ -134,16 +134,16 @@
 .container-router{
    
     .container-page-home{
-        padding-top: 32px 12px 24px 12px;
+        // padding-top: 32px 12px 24px 12px;
         
         .list-paltillos{
             // display: flex;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: 16px;
+            column-gap: 0px;
             row-gap: 100px;
-            padding-left: 16px;
-            padding-right: 16px;
+            // padding-left: 16px;
+            // padding-right: 16px;
             margin-top: 80px;
     
             .card{
@@ -157,6 +157,8 @@
                 max-width: 180px;
                 display: grid;
                 grid-row: 1fr 1fr 1fr;
+                margin-left: 16px;
+                margin-right: 16px;
                 .image-platillo{
                     img{
                         position: absolute;
@@ -251,3 +253,4 @@
     }
     
 }
+
