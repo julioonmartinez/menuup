@@ -20,8 +20,8 @@ export class PaypalButtonComponent implements AfterViewInit {
   
   @Input() period: 'monthly' | 'annual' = 'monthly'; // Por defecto 'monthly';
 
-  @Input() planIDMonthly: string = 'P-98T60076WB077714GM4D6MTI' // ID del plan de suscripción mensual
-  @Input() planIDAnnual: string = 'P-1B508058VD351563YM4D6NFQ' // ID del plan de suscripción anual
+  @Input() planIDMonthly: string = 'P-91N85478YU465272HM4DMWFI' // ID del plan de suscripción mensual
+  @Input() planIDAnnual: string = 'P-6L07754650982774HM4D564I' // ID del plan de suscripción anual
 
 
   constructor(

@@ -1,0 +1,30 @@
+<mat-dialog-content>
+    <p mat-dialog-title >Tus datos</p>
+    <form  class="form" [formGroup]="form"  >
+        <mat-form-field class="field" appearance="outline" >
+            <mat-label>Dirección:</mat-label>
+            <input formControlName="adress" type="text" matInput >
+            <mat-hint>Ejemplo: Madero 301 Sur, Zamora Mich.</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" >
+            <mat-label>Teléfono:</mat-label>
+            <input formControlName="phone" type="number" matInput >
+            <mat-hint>Ejemplo: 351-338-2525</mat-hint>
+        </mat-form-field>
+        <mat-form-field  class="field" appearance="outline">
+            <mat-label>Horario:</mat-label>
+            <input formControlName="horario" type="text" matInput >
+            <mat-hint>Ejemplo: L-V 2:00pm - 11:00 pm, S-D 2:00 pm - 6:00pm</mat-hint>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions class="actions" >
+    <button mat-dialog-close mat-button class="btn" cdkClose >
+        Cancelar
+    </button>
+
+    <button (click)="saveForm()"  mat-button class="btn" cdkFocusInitial  >
+         Guardar
+    </button>
+</mat-dialog-actions>

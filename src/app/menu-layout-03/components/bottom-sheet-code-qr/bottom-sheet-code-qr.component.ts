@@ -21,7 +21,7 @@ export class BottomSheetCodeQrComponent {
 
   ){
     this.menu = data
-    this.generateQRCode(`https://menus-menu-app.web.app/${data.id}`)
+    this.generateQRCode(`http://menuupp.com/menus/${data.id}`)
   }
 
 

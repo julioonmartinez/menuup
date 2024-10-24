@@ -46,7 +46,7 @@ export class CodeQrComponent implements OnInit {
     this.activateRoutes.paramMap.subscribe(params=>{
       const id  = params.get('id')
       if(id){
-        this.url = `https://samari-app.web.app/menus/${id}`
+        this.url = `http://menuupp.com/menus/${id}`
         this.generateQRCode(this.url)
         this.demoService.getBussiness(id).subscribe((data: BusinessInformation)=>{
           if(data.nameCompany){

@@ -15,7 +15,7 @@ export class DialogInfoComponent {
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) public data: {company:BusinessInformation}
   ){
-    this.generateQRCode(`https://menus-menu-app.web.app/${data.company.id}`)
+    this.generateQRCode(`http://menuupp.com/menus/${data.company.id}`)
 
   }
 

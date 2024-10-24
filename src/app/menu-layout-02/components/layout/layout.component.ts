@@ -42,8 +42,8 @@ export class LayoutComponent02 implements AfterViewInit, OnDestroy {
   icons: Icon[] = ICONS;
  
   
-
-
+ 
+  
 
   listCategories: Categories [] = [
     // {name:'Hamburguesas', idIcons:'A01', id:'158' },
@@ -77,7 +77,7 @@ export class LayoutComponent02 implements AfterViewInit, OnDestroy {
   ){
     
 
-    
+
   this.activatedRouter.paramMap.subscribe(params=>{
     const idCompany = params.get('idCompany')
     if(idCompany){
@@ -111,6 +111,8 @@ export class LayoutComponent02 implements AfterViewInit, OnDestroy {
       })
     }
   })
+
+
 
   
 
@@ -273,5 +275,6 @@ export class LayoutComponent02 implements AfterViewInit, OnDestroy {
       }
     });
   }
-  
+
+ 
 }

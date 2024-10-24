@@ -40,6 +40,7 @@ import { Product } from '../../../shared/interfaces/product';
 import { Icon } from '../../../shared/interfaces/icon';
 import { ICONS } from '../../../shared/enums/icon';
 import { BusinessInformation } from '../../../shared/interfaces/business-information';
+import { DialogAddressEditComponent } from '../../components/dialogs/dialog-address-edit/dialog-address-edit.component';
 
 @Component({
   selector: 'app-home',
@@ -138,6 +139,16 @@ export class HomeComponent implements OnInit {
       return this.icons.find(icon=> icon.id == 'A14')?.url
     }
     
+  }
+
+  openDialogAddress(){
+  this.matDialog.open(DialogAddressEditComponent, {
+    data: this.infoDemo
+  }).afterClosed().subscribe(result=>{
+    // console.log( 'desde', result)
+    this.demoServive.updateBussiness(this.infoDemo.id!, result)
+  })
+
   }
 
   clickDrop(idCategory:string){

@@ -1,8 +1,8 @@
 {
   "name": "menus-app",
   "short_name": "menus-app",
-  "theme_color": "#fff",
-  "background_color": "#ffff",
+  "theme_color": "#faf9fd",
+  "background_color": "#faf9fd",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

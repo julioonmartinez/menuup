@@ -40,6 +40,10 @@
                                 <mat-icon>palette</mat-icon>
                                 <span>Estilos</span>
                             </button>
+                            <button (click)="openDialogAddress()"  mat-menu-item> 
+                                <mat-icon>home</mat-icon>
+                                <span>Dirección</span>
+                            </button>
                             <button (click)="openDialogDeleteBusiness()"  mat-menu-item> 
                                 <mat-icon>delete</mat-icon>
                                 <span>Borrar</span>
@@ -61,6 +65,7 @@
                 <button [routerLink]="['/menus', infoDemo.id!]" class="btn" mat-button >Vista de menu</button>
                 <button class="btn" [routerLink]="['/app-samari/generate-code-qr', infoDemo.id]" mat-button >Ver QR</button>
                 <button class="btn" [routerLink]="['/app-samari/configuration', infoDemo.id]" mat-button >Estilos</button>
+                <button class="btn" (click)="openDialogAddress()" mat-button >Datos</button>
                 <button color="warn" class="btn" (click)="openDialogDeleteBusiness()" mat-button >Borrar</button>
                 
                 
