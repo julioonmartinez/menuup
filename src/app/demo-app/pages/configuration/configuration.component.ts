@@ -37,8 +37,8 @@ export class ConfigurationComponent {
   listOptionMenusModel:MenuModel[]=[
     {id:'menu-demo-layout-01', name:'Menu Lindo' , permison:'premium'},
     {id:'menu-layout-02', name:'Elegance' , permison: 'premium'},
+    {id:'menu-layout-04', name:'Menú List' , permison:'premium'},
     {id:'menu-layout-03', name:'Simple' , permison:'free'},
-    {id:'menu-layout-04', name:'Delux' , permison:'premium'},
     
   ]
 

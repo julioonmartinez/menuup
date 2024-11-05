@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toDataURL } from 'qrcode';
 import { DemoService } from '../../../shared/services/demo.service';
 
@@ -19,7 +19,7 @@ import { BusinessInformation } from '../../../shared/interfaces/business-informa
 @Component({
   selector: 'app-code-qr',
   standalone: true,
-  imports: [MatSnackBarModule, MatTooltipModule, ClipboardModule, MatButtonModule, MatIconModule, CommonModule, MatProgressSpinnerModule],
+  imports: [RouterLink, MatSnackBarModule, MatTooltipModule, ClipboardModule, MatButtonModule, MatIconModule, CommonModule, MatProgressSpinnerModule],
   templateUrl: './code-qr.component.html',
   styleUrl: './code-qr.component.scss'
 })

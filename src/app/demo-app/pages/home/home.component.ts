@@ -531,7 +531,9 @@ changeImageRestaruante(event:any){
       disableClose: mood == 'new' ? true : false
     }).afterClosed().subscribe(  (result:BusinessInformation)=>{
       
-      console.log( 'afterclose', result)
+     if(result == null){
+      this.router.navigateByUrl('/')
+     }
      
       if(result && mood == 'new'){
         console.log('saveLOcal')

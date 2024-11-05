@@ -17,6 +17,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { BusinessInformation } from '../../interfaces/business-information';
+import { User } from 'firebase/auth';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -31,16 +34,21 @@ export class DialogEditBusinessComponent {
   companyInfo!: BusinessInformation
   mood: 'edit' | 'new' = 'new';
   progressBar = false;
+  currenUser: User | null = null;
   
   myForm!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private demoService : DemoService,
     private _snackBar : MatSnackBar,
-    private dialogRef : MatDialogRef<DialogEditBusinessComponent>
+    private authService : AuthService,
+    private dialogRef : MatDialogRef<DialogEditBusinessComponent>,
+    private router : Router,
 
   ){
-    
+    authService.currentUser$.subscribe(user=>{
+      this.currenUser = user;
+    })
     this.companyInfo = this.data.infoCompany
     console.log(this.data.infoCompany)
     this.mood = this.data.mood
@@ -115,33 +123,29 @@ export class DialogEditBusinessComponent {
   }
 
   buttonCancelar() {
-    if (this.mood === 'new') {
-      this.companyInfo.nameCompany = 'Demo';
-      this.demoService.createBussinessWithName(this.companyInfo.nameCompany).subscribe({
-        next: (info) => {
-          if (info.nameCompany) {
-            this.companyInfo = info;
-            this.dialogRef.close(this.companyInfo);
+    if(this.currenUser){
+      if (this.mood === 'new') {
+        this.companyInfo.nameCompany = 'Demo';
+        this.demoService.createBussinessWithName(this.companyInfo.nameCompany).subscribe({
+          next: (info) => {
+            if (info.nameCompany) {
+              this.companyInfo = info;
+              this.dialogRef.close(this.companyInfo);
+            }
+          },
+          error: (err) => {
+            this.openackBar('Error al crear el negocio:')
+            // Manejo adicional de errores si es necesario
           }
-        },
-        error: (err) => {
-          this.openackBar('Error al crear el negocio:')
-          // Manejo adicional de errores si es necesario
-        }
-      });
-    } else {
-      this.dialogRef.close();
-      // this.demoService.updateBussinessWithName(this.companyInfo.id!, this.myForm.value).subscribe({
-      //   next: (data) => {
-      //     this.companyInfo = data;
-      //     console.log(this.companyInfo);
-      //     this.dialogRef.close(this.companyInfo);
-      //   },
-      //   error: (err) => {
-      //     console.error('Error al actualizar el negocio:', err);
-      //     // Manejo adicional de errores si es necesario
-      //   }
-      // });
+        });
+      } else {
+        this.dialogRef.close();
+        
+      }
+    }else{
+      this.dialogRef.close(null);
+      // this.router.navigateByUrl('/')
+    
     }
   }
 

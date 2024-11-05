@@ -4,7 +4,7 @@
 
             <div id="qr-layout" class="container-print">
                 <div class="contentent-title">
-                    <span class="title" >TapTaste</span>
+                    <span class="title" >menuup</span>
                 </div>
                 <div  class="container-code-qr-login">
                     <img  class="img-login" [src]="urlCodigoQR" alt="">
@@ -13,7 +13,7 @@
                     <button [cdkCopyToClipboard]="url" (click)="clickClip()" matTooltip="Copiar" class="btn" mat-icon-button >
                         <mat-icon>content_copy</mat-icon>
                     </button>
-                    <span   class="link" >{{url}} </span>
+                    <p   class="link" >{{url}} </p>
                 </div>
                 <div class="container-info-menu">
                     <div class="name-menu">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="container-samari">
-                    <span>Crea tu menu con taptaste.com, es gratis.</span>
+                    <span>Crea tu menú con menuupp.com, es gratis.</span>
                 </div>
 
             </div>
@@ -39,18 +39,18 @@
                     </button>
 
                     @if (user) {
-                        <div class="container-no-account">
+                        <!-- <div class="container-no-account">
                             <mat-icon class="icon" >info</mat-icon>
-                            <p class="text" >Vuelvete premium para crear menus ilimitados</p>
+                            <p class="text" >Vuelvete premium para crear menús ilimitados</p>
                             <button class="btn" mat-button > 
                                 <mat-icon>workspace_premium</mat-icon>
                                 Ser premium</button>
-                        </div>
+                        </div> -->
                     }@else {
                         <div class="container-no-account">
                             <mat-icon class="icon" >info</mat-icon>
-                            <p class="text" >Crea una cuenta y no pierdas tu menu</p>
-                            <button class="btn" mat-button >Crear cuenta</button>
+                            <p class="text" >Crea una cuenta y no pierdas tu menú.</p>
+                            <button routerLink="/web/account/login" class="btn" mat-button >Crear cuenta</button>
                         </div>
                     }
         
