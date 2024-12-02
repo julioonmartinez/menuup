@@ -727,15 +727,14 @@
   
   .cdk-drag-placeholder {
     opacity: 0;
+   
   }
   
   .cdk-drag-animating {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
   
-  .container-category:last-child {
-    border: none;
-  }
+
   
   .container-categories-list.cdk-drop-list-dragging .container-category:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
